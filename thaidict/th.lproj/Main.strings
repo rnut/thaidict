@@ -1,0 +1,27 @@
+
+/* Class = "IBUILabel"; text = "Search"; ObjectID = "62u-td-rak"; */
+"62u-td-rak.text" = "Search";
+
+/* Class = "IBUINavigationItem"; title = "Favorites"; ObjectID = "CLu-jz-Nch"; */
+"CLu-jz-Nch.title" = "Favorites";
+
+/* Class = "IBUITextField"; placeholder = "Search Here"; ObjectID = "DVP-Kg-PpO"; */
+"DVP-Kg-PpO.placeholder" = "Search Here";
+
+/* Class = "IBUINavigationItem"; title = "Thai Dict"; ObjectID = "NHx-3n-oBf"; */
+"NHx-3n-oBf.title" = "Thai Dict";
+
+/* Class = "IBUIButton"; normalTitle = "Speak!"; ObjectID = "Y84-BG-PXN"; */
+"Y84-BG-PXN.normalTitle" = "Speak!";
+
+/* Class = "IBUISegmentedControl"; fk7-2D-zjT.segmentTitles[0] = "Thai"; ObjectID = "fk7-2D-zjT"; */
+"fk7-2D-zjT.segmentTitles[0]" = "Thai";
+
+/* Class = "IBUISegmentedControl"; fk7-2D-zjT.segmentTitles[1] = "English"; ObjectID = "fk7-2D-zjT"; */
+"fk7-2D-zjT.segmentTitles[1]" = "English";
+
+/* Class = "IBUIBarButtonItem"; title = "other"; ObjectID = "fz0-BY-qyV"; */
+"fz0-BY-qyV.title" = "other";
+
+/* Class = "IBUINavigationItem"; title = "Thai Dict"; ObjectID = "sZJ-PZ-Bzx"; */
+"sZJ-PZ-Bzx.title" = "Thai Dict";
