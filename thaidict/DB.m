@@ -31,6 +31,10 @@
 -(BOOL)insertWithString:(NSString*)query{
     return [ObjDb executeUpdate:query];
 }
+-(BOOL)executeUpdateWithString:(NSString*)query{
+    NSError *error;
+    return [ObjDb executeUpdate:query withErrorAndBindings:&error];
+}
 
 #pragma mark Helper Method
 
@@ -49,7 +53,7 @@
     return idrec;
 }
 -(int)getLastRecordIDWithTable:(NSString*)table Column:(NSString*)col{
-    NSString *strQuery = [NSString stringWithFormat:@"select %@ as lastID from %@",col,table];
+    NSString *strQuery = [NSString stringWithFormat:@"select %@ as lastID from %@ order by %@ limit 1",col,table,col];
     [self queryWithString:strQuery];
     while ([ObjResult next]) {
         return [ObjResult intForColumn:@"lastID"];

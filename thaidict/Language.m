@@ -25,7 +25,7 @@
 +(DictLanguage)checkLanguage:(NSString*)search{
     DictLanguage lang;
     int ascii = [search characterAtIndex:0];
-    NSLog(@"search : %@ ;ascii : %d",search,ascii);
+//    NSLog(@"search : %@ ;ascii : %d",search,ascii);
 //    int xx = 3660;
 //    NSString *string = [NSString stringWithFormat:@"%c", xx];
 //    NSLog(@"int %d  : ascii : %@",xx,string);

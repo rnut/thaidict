@@ -31,7 +31,8 @@
     [TranslateTable setDataSource:self];
     [TranslateTable reloadData];
     
-
+    //keep history
+    [History keepHistory:ChooseVocab];
 }
 
 

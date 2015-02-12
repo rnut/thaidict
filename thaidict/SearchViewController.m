@@ -42,13 +42,43 @@ int idrec = 0;
     self.tabBarController.tabBar.translucent = NO;
 }
 
+#pragma mark textfield
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    
     [[self view] endEditing:TRUE];
+}
+-(void)textFieldDidChange :(UITextField *)theTextField{
+    //    NSLog(@"%lu",(unsigned long)[theTextField.text length]);
+    //    int x = [theTextField.text characterAtIndex:0];
+    //    NSLog(@"ascii : %@ is %d",theTextField.text,x);
+    if ([theTextField.text length] > 0) {
+        ArrayWords = [Vocab listDictByVocab:theTextField.text];
+        [TableWords reloadData];
+    }
     
 }
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    //    NSLog(@"%lu",(unsigned long)range.length);
+    
+    [textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+    return YES;
+}
 
-//
+
+- (NSArray *)rightButtons
+{
+    //make the button when swipe
+    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
+    [rightUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor redColor] title:@"Favorite"];
+    
+    
+    return rightUtilityButtons;
+}
+
+
+
+#pragma mark tableview
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.ArrayWords count];
 }
@@ -67,9 +97,6 @@ int idrec = 0;
     
     Vocab *info = [ArrayWords objectAtIndex:indexPath.row];
     cell.textLabel.text = info.Search;
-    
-    
-    
     return cell;
     
 }
@@ -77,46 +104,18 @@ int idrec = 0;
 -(UITableViewCellEditingStyle)tableView:(UITableView*)tableView editingStyleForRowAtIndexPath:(NSIndexPath*)indexPath {
     return 3;
 }
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    
-//    NSLog(@"%lu",(unsigned long)range.length);
-    
-    [textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
-    return YES;
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self performSegueWithIdentifier:@"ChooseVocab" sender:self];
 }
 
--(void)textFieldDidChange :(UITextField *)theTextField{
-//    NSLog(@"%lu",(unsigned long)[theTextField.text length]);
-//    int x = [theTextField.text characterAtIndex:0];
-//    NSLog(@"ascii : %@ is %d",theTextField.text,x);
-    if ([theTextField.text length] > 0) {
-        ArrayWords = [Vocab listDictByVocab:theTextField.text];
-        [TableWords reloadData];
-    }
-    
-}
-
-- (NSArray *)rightButtons
-{
-    //make the button when swipe
-    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
-    [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor redColor] title:@"Favorite"];
-    
-    
-    return rightUtilityButtons;
-}
-
+#pragma mark swipeable
 
 - (BOOL)swipeableTableViewCellShouldHideUtilityButtonsOnSwipe:(SWTableViewCell *)cell
 {
-    // allow just one cell's utility button to be open at once
     return YES;
 }
 
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
-    
     NSIndexPath *indexPath = [TableWords indexPathForCell:cell];
     switch (index) {
         case 0:
@@ -133,49 +132,16 @@ int idrec = 0;
             break;
     }
 }
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//
-//}
 
-//- (NSMutableArray *)findWordInfos: (NSString *) str
-//{
-//    //to look up the string user typed in database
-//    NSMutableArray *retrieval = [[NSMutableArray alloc] init];
-//    DB *db = [[DB alloc ]init];
-//    if ([str length] == 0) {
-//        str = @"a";
-//    }
-//    if([WordInfo checkLanguage:str] == 0)
-//    {
-//        NSString *strQuery = [NSString stringWithFormat:@"SELECT * FROM th2eng_%@ WHERE tsearch like '%@%%' GROUP BY tsearch ORDER BY tsearch", [str substringToIndex:1], str];
-//        
-//        [db queryWithString:strQuery];
-//        while([db.ObjResult next]) {
-//            WordInfo *temp = [[WordInfo alloc] initWithUniqueId:LanguageTHA uniqueId:[db.ObjResult intForColumn:@"id"] esearch:[db.ObjResult stringForColumn:@"tsearch"] eentry:[db.ObjResult stringForColumn:@"tentry"] tentry:[db.ObjResult stringForColumn:@"eentry"] ecat:[db.ObjResult stringForColumn:@"tcat"] ethai:[db.ObjResult stringForColumn:@"tenglish"] esyn:[db.ObjResult stringForColumn:@"tsyn"] eant:[db.ObjResult stringForColumn:@"tant"]];
-//            [retrieval addObject:temp];
-//        }
-//        [db closeDB];
-//    }
-//    else
-//    {
-//        NSString *strQuery = [NSString stringWithFormat:@"SELECT * FROM eng2th_%@ WHERE esearch like '%@%%' GROUP BY esearch ORDER BY LOWER(esearch), esearch", [[str substringToIndex:1] capitalizedString], str];
-//        
-//        [db queryWithString:strQuery];
-//        while([db.ObjResult next]) {
-//            WordInfo *temp = [[WordInfo alloc] initWithUniqueId:LanguageENG uniqueId:[db.ObjResult intForColumn:@"id"] esearch:[db.ObjResult stringForColumn:@"esearch"] eentry:[db.ObjResult stringForColumn:@"eentry"] tentry:[db.ObjResult stringForColumn:@"tentry"] ecat:[db.ObjResult stringForColumn:@"ecat"] ethai:[db.ObjResult stringForColumn:@"ethai"] esyn:[db.ObjResult stringForColumn:@"esyn"] eant:[db.ObjResult stringForColumn:@"eant"]];
-//            [retrieval addObject:temp];
-//        }
-//        [db closeDB];
-//    }
-//    
-//    return retrieval;
-//}
 
 - (void) insertFavInDatabase:(Vocab *) favword;
 {
     //int favID = fav;
-    if ([Favorite checkExistanceOfFavWord:favword.Search] == FALSE) {
-        Favorite *Added = [[Favorite alloc] initWithVocab:favword];
+    Favorite *obj = [[Favorite alloc] init];
+    
+    if ([obj keepFavorite:favword]) {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Success Favorite Word++" message:@"Added word to your favorite list" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+        [alert show];
     }
     else {
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Repeated Favorite Word" message:@"This word has been already added on your favorite list" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil];
@@ -183,20 +149,6 @@ int idrec = 0;
     }
     
 }
--(int)getIDLastRecord
-{
-    //    select id_fav from fav ORDER by id_fav desc LIMIT 1
-    DB *db = [[DB alloc] init];
-    [db queryWithString:@"select id_fav from fav ORDER by id_fav desc LIMIT 1"];
-    while([db.ObjResult next]) {
-        idrec =  [db.ObjResult intForColumn:@"id_fav"];
-    }
-    [db closeDB];
-    return idrec;
-    
-    
-}
-//
 
 
 - (void)didReceiveMemoryWarning {
@@ -206,9 +158,6 @@ int idrec = 0;
 
 
 #pragma mark - Navigation
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self performSegueWithIdentifier:@"ChooseVocab" sender:self];
-}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"ChooseVocab"])

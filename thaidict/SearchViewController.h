@@ -25,7 +25,7 @@
 
 
 
--(int) getIDLastRecord;
+//-(int) getIDLastRecord;
 
 
 

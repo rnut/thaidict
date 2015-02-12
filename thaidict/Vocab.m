@@ -34,20 +34,19 @@
         //  ก-ฮ  :  3585 - 3630  , สระ 3632-3676
         int ascii = [vocab characterAtIndex:0];
         if (ascii > 3584 && ascii < 3631) {
-//            NSString *first = [vocab characterAtIndex:0];
-            tableName = [NSString  stringWithFormat:@"th2eng_%@",[vocab substringFromIndex:0]];
+            tableName = [NSString  stringWithFormat:@"th2eng_%@",[vocab substringWithRange:NSMakeRange(0, 1)]];
         }
         else if(ascii > 3647 && ascii <3653){
             if ([vocab length]>1) {
                 int asciix = [vocab characterAtIndex:1];
                 if (asciix > 3584 && asciix < 3631) {
-                    tableName = [NSString  stringWithFormat:@"th2eng_%@",[vocab substringFromIndex:1]];
+                    tableName = [NSString  stringWithFormat:@"th2eng_%@",[vocab substringWithRange:NSMakeRange(1, 1)]];
                 }
             }
         }
         
         if (tableName != nil) {
-            [db queryWithString:[NSString stringWithFormat:@"select IFNULL(id, '') as id, IFNULL(tsearch, '') as esearch,IFNULL(eentry, '') as eentry,IFNULL(tcat, '') as ecat,IFNULL(tsyn, '') as esyn,IFNULL(tant, '') as eant from %@ where esearch LIKE '%@%%' order by tsearch",tableName,vocab]];
+            [db queryWithString:[NSString stringWithFormat:@"select IFNULL(id, '') as id, IFNULL(tsearch, '') as esearch,IFNULL(eentry, '') as eentry,IFNULL(tcat, '') as ecat,IFNULL(tsyn, '') as esyn,IFNULL(tant, '') as eant from %@ where esearch LIKE '%@%%' group by tsearch order by tsearch",tableName,vocab]];
             while([db.ObjResult next]) {
                 Vocab *temp = [[Vocab alloc] initWithLanguage:lang IDvocab:[db.ObjResult intForColumn:@"id"] Search:[db.ObjResult stringForColumn:@"esearch"] Entry:[db.ObjResult stringForColumn:@"eentry"] Cat:[db.ObjResult stringForColumn:@"ecat"] Synonym:[db.ObjResult stringForColumn:@"esyn"] Antonym:[db.ObjResult stringForColumn:@"eant"]];
                 [ret addObject:temp];
@@ -76,16 +75,20 @@
     NSString *t; //temp
     if (vocab.Language == LanguageTHA) {
         NSString *tableName;
-        //    ก-ฮ  :  161 - 206  , สระ 207-251
-        int ascii = [vocab.Search characterAtIndex:0];
-        if (ascii > 160 && ascii <207) {
-            char first = [vocab.Search characterAtIndex:0];
-            tableName = [NSString  stringWithFormat:@"th2eng_%c",first];
+        //  ก-ฮ  :  3585 - 3630  , สระ 3632-3676
+        int ascii = [[vocab Search] characterAtIndex:0];
+        if (ascii > 3584 && ascii < 3631) {
+            tableName = [NSString  stringWithFormat:@"th2eng_%@",[[vocab Search] substringWithRange:NSMakeRange(0, 1)]];
         }
-        else{
-            char first = [vocab.Search characterAtIndex:1];
-            tableName = [NSString  stringWithFormat:@"th2eng_%c",first];
+        else if(ascii > 3647 && ascii <3653){
+            if ([[vocab Search] length]>1) {
+                int asciix = [[vocab Search] characterAtIndex:1];
+                if (asciix > 3584 && asciix < 3631) {
+                    tableName = [NSString  stringWithFormat:@"th2eng_%@",[[vocab Search]substringWithRange:NSMakeRange(1, 1)]];
+                }
+            }
         }
+        
         [db queryWithString:[NSString stringWithFormat:@"select IFNULL(id, '') as id, IFNULL(tsearch, '') as esearch,IFNULL(eentry, '') as eentry,IFNULL(tcat, '') as cat,IFNULL(tsyn, '') as esyn,IFNULL(tant, '') as eant from %@ where esearch = '%@' order by tsearch",tableName,vocab.Search]];
         int i =0;
         while([db.ObjResult next]) {

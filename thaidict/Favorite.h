@@ -7,14 +7,23 @@
 //
 
 #import "Vocab.h"
-
+#import "Language.h"
 @interface Favorite : Vocab
 
 @property(nonatomic,assign)int Fav_ID;
 @property(nonatomic,strong)Vocab *Fav_vocab;
 
--(id)initWithVocab:(Vocab*)favWord;
--(BOOL)keepFavorite:(Vocab*)fav_vocab;
+
 +(NSMutableArray *)listFavorite;
-+(BOOL)checkExistanceOfFavWord:(NSString *) favword;
+
++(BOOL)deleteFavorite:(Favorite *)favVocab;
+-(int)getFavIDLastRecordOfLang : (DictLanguage)lang;
+
+-(id)initWithVocab:(Vocab*)favWord FAVID:(int)id_fav;
+-(BOOL)keepFavorite:(Vocab*)fav_vocab;
+-(BOOL)checkExistanceOfFavWord;
+
+
++(BOOL)favoriteVocabForReorder:(Vocab*)vocab;
++(BOOL)reOrderFav:(NSMutableArray *)arrayFav;
 @end

@@ -17,7 +17,11 @@
 @property(nonatomic,assign)int ID_his;
 @property(nonatomic,strong)Vocab *Voc;
 -(id)initWithVocab:(Vocab *)voc;
-+(NSMutableArray *)listHistoryByLanguage:(DictLanguage)lang;
-+(BOOL)clearHistoryWithLanguage:(DictLanguage)lang;
+-(BOOL)checkLimitHistory;
+
++(BOOL)keepHistory:(Vocab*)voc;
++(NSMutableArray *)listHistory;
+
++(BOOL)clearHistory;
 +(BOOL)deleteHistory:(History*)hist;
 @end

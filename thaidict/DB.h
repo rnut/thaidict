@@ -22,6 +22,7 @@
 -(void)closeDB;
 
 -(void)queryWithString:(NSString*)query;
+-(BOOL)executeUpdateWithString:(NSString*)query;
 -(int)checkNumRecordWithTable:(NSString*)table Condition:(NSString*)condition;
 -(int)getLastRecordIDWithTable:(NSString*)table Column:(NSString*)col;
 -(BOOL)insertWithString:(NSString*)query;

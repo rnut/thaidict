@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6906AF101A88C30C00087B93 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6906AF0F1A88C30C00087B93 /* HistoryViewController.m */; };
 		695981F71A70965D00C2002D /* DetailVocabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 695981F61A70965D00C2002D /* DetailVocabViewController.m */; };
 		697A6AD81A6F8D6A008A893A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 697A6AD71A6F8D6A008A893A /* main.m */; };
 		697A6ADB1A6F8D6A008A893A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 697A6ADA1A6F8D6A008A893A /* AppDelegate.m */; };
@@ -46,12 +47,12 @@
 		697A6C001A6F98BC008A893A /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 697A6BEA1A6F98BC008A893A /* UIWebView+AFNetworking.m */; };
 		697A6C031A6F991C008A893A /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 697A6C021A6F991C008A893A /* libsqlite3.0.dylib */; };
 		697A6C061A6F99EE008A893A /* DB.m in Sources */ = {isa = PBXBuildFile; fileRef = 697A6C051A6F99EE008A893A /* DB.m */; };
-		697A6C0B1A6F9B14008A893A /* WordInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 697A6C0A1A6F9B14008A893A /* WordInfo.m */; };
 		697A6C0F1A6FA0E6008A893A /* Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 697A6C0E1A6FA0E6008A893A /* Language.m */; };
 		697A6C121A6FA2E4008A893A /* Vocab.m in Sources */ = {isa = PBXBuildFile; fileRef = 697A6C111A6FA2E4008A893A /* Vocab.m */; };
 		697A6C171A6FA5C7008A893A /* APImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 697A6C141A6FA5C7008A893A /* APImage.m */; };
 		697A6C181A6FA5C7008A893A /* APSpeech.m in Sources */ = {isa = PBXBuildFile; fileRef = 697A6C161A6FA5C7008A893A /* APSpeech.m */; };
 		697A6C1A1A6FB310008A893A /* lexitron2.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 697A6C191A6FB310008A893A /* lexitron2.sqlite */; };
+		69BC97781A8361250019F71B /* Edit_Fav_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BC97771A8361250019F71B /* Edit_Fav_ViewController.m */; };
 		69C9FF9C1A7787FA0059BB6B /* Favorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C9FF9B1A7787FA0059BB6B /* Favorite.m */; };
 		69C9FF9F1A7788040059BB6B /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C9FF9E1A7788040059BB6B /* History.m */; };
 		69DF55D91A77513500BBCDEC /* FavoriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DF55D81A77513500BBCDEC /* FavoriteViewController.m */; };
@@ -68,6 +69,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6906AF0E1A88C30C00087B93 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
+		6906AF0F1A88C30C00087B93 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		695981F51A70965D00C2002D /* DetailVocabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailVocabViewController.h; sourceTree = "<group>"; };
 		695981F61A70965D00C2002D /* DetailVocabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailVocabViewController.m; sourceTree = "<group>"; };
 		697A6AD21A6F8D6A008A893A /* thaidict.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = thaidict.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,8 +149,6 @@
 		697A6C021A6F991C008A893A /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		697A6C041A6F99EE008A893A /* DB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DB.h; sourceTree = "<group>"; };
 		697A6C051A6F99EE008A893A /* DB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DB.m; sourceTree = "<group>"; };
-		697A6C091A6F9B14008A893A /* WordInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordInfo.h; sourceTree = "<group>"; };
-		697A6C0A1A6F9B14008A893A /* WordInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordInfo.m; sourceTree = "<group>"; };
 		697A6C0D1A6FA0E6008A893A /* Language.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Language.h; sourceTree = "<group>"; };
 		697A6C0E1A6FA0E6008A893A /* Language.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Language.m; sourceTree = "<group>"; };
 		697A6C101A6FA2E4008A893A /* Vocab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vocab.h; sourceTree = "<group>"; };
@@ -157,6 +158,8 @@
 		697A6C151A6FA5C7008A893A /* APSpeech.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APSpeech.h; sourceTree = "<group>"; };
 		697A6C161A6FA5C7008A893A /* APSpeech.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APSpeech.m; sourceTree = "<group>"; };
 		697A6C191A6FB310008A893A /* lexitron2.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = lexitron2.sqlite; sourceTree = "<group>"; };
+		69BC97761A8361250019F71B /* Edit_Fav_ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Edit_Fav_ViewController.h; sourceTree = "<group>"; };
+		69BC97771A8361250019F71B /* Edit_Fav_ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Edit_Fav_ViewController.m; sourceTree = "<group>"; };
 		69C9FF9A1A7787FA0059BB6B /* Favorite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Favorite.h; sourceTree = "<group>"; };
 		69C9FF9B1A7787FA0059BB6B /* Favorite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Favorite.m; sourceTree = "<group>"; };
 		69C9FF9D1A7788040059BB6B /* History.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = History.h; sourceTree = "<group>"; };
@@ -189,6 +192,10 @@
 		695981F81A70966A00C2002D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				6906AF0E1A88C30C00087B93 /* HistoryViewController.h */,
+				6906AF0F1A88C30C00087B93 /* HistoryViewController.m */,
+				69BC97761A8361250019F71B /* Edit_Fav_ViewController.h */,
+				69BC97771A8361250019F71B /* Edit_Fav_ViewController.m */,
 				69DF55D71A77513500BBCDEC /* FavoriteViewController.h */,
 				69DF55D81A77513500BBCDEC /* FavoriteViewController.m */,
 				695981F51A70965D00C2002D /* DetailVocabViewController.h */,
@@ -377,8 +384,6 @@
 				697A6C111A6FA2E4008A893A /* Vocab.m */,
 				697A6C0D1A6FA0E6008A893A /* Language.h */,
 				697A6C0E1A6FA0E6008A893A /* Language.m */,
-				697A6C091A6F9B14008A893A /* WordInfo.h */,
-				697A6C0A1A6F9B14008A893A /* WordInfo.m */,
 				69C9FF9A1A7787FA0059BB6B /* Favorite.h */,
 				69C9FF9B1A7787FA0059BB6B /* Favorite.m */,
 				69C9FF9D1A7788040059BB6B /* History.h */,
@@ -497,9 +502,11 @@
 				697A6C171A6FA5C7008A893A /* APImage.m in Sources */,
 				697A6BFF1A6F98BC008A893A /* UIRefreshControl+AFNetworking.m in Sources */,
 				697A6ADB1A6F8D6A008A893A /* AppDelegate.m in Sources */,
+				6906AF101A88C30C00087B93 /* HistoryViewController.m in Sources */,
 				697A6AD81A6F8D6A008A893A /* main.m in Sources */,
 				697A6C001A6F98BC008A893A /* UIWebView+AFNetworking.m in Sources */,
 				697A6BF61A6F98BC008A893A /* FMDatabasePool.m in Sources */,
+				69BC97781A8361250019F71B /* Edit_Fav_ViewController.m in Sources */,
 				697A6BF41A6F98BC008A893A /* FMDatabase.m in Sources */,
 				697A6BB61A6F989E008A893A /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				69DF55D91A77513500BBCDEC /* FavoriteViewController.m in Sources */,
@@ -513,7 +520,6 @@
 				697A6BFE1A6F98BC008A893A /* UIProgressView+AFNetworking.m in Sources */,
 				697A6C181A6FA5C7008A893A /* APSpeech.m in Sources */,
 				697A6BB21A6F989E008A893A /* NSMutableArray+SWUtilityButtons.m in Sources */,
-				697A6C0B1A6F9B14008A893A /* WordInfo.m in Sources */,
 				697A6BFC1A6F98BC008A893A /* UIButton+AFNetworking.m in Sources */,
 				697A6BEE1A6F98BC008A893A /* AFNetworkReachabilityManager.m in Sources */,
 				697A6C061A6F99EE008A893A /* DB.m in Sources */,
