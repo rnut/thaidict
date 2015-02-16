@@ -16,10 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self.splitViewController setPreferredDisplayMode:UISplitViewControllerDisplayModeAllVisible];
     [self setDelegate:self];
-
-    NSLog(@"test");
 }
 
 - (void)didReceiveMemoryWarning {

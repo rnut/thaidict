@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Vocab.h"
 #import "APImage.h"
-#import "History.h"
+
 @interface DetailVocabViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>
 {
     NSMutableArray *TranslateInfo;

@@ -26,7 +26,7 @@ int idrec = 0;
     [TableWords setDataSource:self];
     [SearchBox setDelegate:self];
     
-    [TableWords setRowHeight:44];
+//    [TableWords setRowHeight:44];
     
     ArrayWords = [Vocab listDictByVocab:@"test"];
     [TableWords reloadData];
@@ -161,9 +161,11 @@ int idrec = 0;
     if ([[segue identifier] isEqualToString:@"chooseVocab"])
     {
         // Get reference to the destination view controller
+        
         DetailVocabViewController *vc = [segue destinationViewController];
         Vocab *choose = [ArrayWords objectAtIndex:[[TableWords indexPathForSelectedRow] row]];
-        // Pass any objects to the view controller here, like...
+        
+        [History keepHistory:choose];
         [vc setChooseVocab:choose];
     }
 }

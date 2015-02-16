@@ -33,8 +33,10 @@
     
 
     //keep history
-    [History keepHistory:ChooseVocab];
-    [ChooseVocab loadSampleENG];
+
+    
+    //loadSample phrase
+//    [ChooseVocab loadSampleENG];
 }
 
 
