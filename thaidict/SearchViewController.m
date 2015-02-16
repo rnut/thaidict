@@ -31,6 +31,7 @@ int idrec = 0;
     ArrayWords = [Vocab listDictByVocab:@"test"];
     [TableWords reloadData];
 
+//    [APSample SearchSample:[ArrayWords objectAtIndex:0]];
 }
 -(void)setInterface{
     [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:(228/255.0) green:3/255.0 blue:21/255.0 alpha:1.0f]];

@@ -33,6 +33,7 @@
     
     //keep history
     [History keepHistory:ChooseVocab];
+    [ChooseVocab loadSampleENG];
 }
 
 

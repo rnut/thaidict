@@ -9,11 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "SWTableViewCell.h"
 #import "DB.h"
-//#import "WordInfo.h"
 #import "Vocab.h"
 #import "DetailVocabViewController.h"
 #import "Favorite.h"
-
+#import "APSample.h"
 @interface SearchViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, SWTableViewCellDelegate>
 {
     IBOutlet UITextField *SearchBox;

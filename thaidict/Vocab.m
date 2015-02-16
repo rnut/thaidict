@@ -10,7 +10,7 @@
 
 @implementation Vocab
 
-@synthesize Language,IDvocab,Search,Cat,Antonym,SoundPath,ImgPath;
+@synthesize Language,IDvocab,Search,Cat,Antonym,SoundPath,ImgPath,Sample;
 
 
 -(id)initWithLanguage:(DictLanguage)lang IDvocab:(int)idvocab Search :(NSString *)strsearch Entry:(NSString *)strentry Cat:(NSString*)strcat Synonym:(NSString*)strsyn Antonym:(NSString*)strant{
@@ -89,11 +89,16 @@
             }
         }
         
-        [db queryWithString:[NSString stringWithFormat:@"select IFNULL(id, '') as id, IFNULL(tsearch, '') as esearch,IFNULL(eentry, '') as eentry,IFNULL(tcat, '') as cat,IFNULL(tsyn, '') as esyn,IFNULL(tant, '') as eant from %@ where esearch = '%@' order by tsearch",tableName,vocab.Search]];
+        [db queryWithString:[NSString stringWithFormat:@"select IFNULL(id, '') as id, IFNULL(tsearch, '') as esearch,IFNULL(eentry, '') as eentry,IFNULL(tcat, '') as cat,IFNULL(tsyn, '') as esyn,IFNULL(tant, '') as eant,IFNULL(tsample, '') as sample, from %@ where esearch = '%@' order by tsearch",tableName,vocab.Search]];
         int i =0;
         while([db.ObjResult next]) {
             NSString *cat = [db.ObjResult stringForColumn:@"cat"];
             Vocab *temp = [[Vocab alloc] initWithLanguage:LanguageTHA IDvocab:[db.ObjResult intForColumn:@"id"] Search:[db.ObjResult stringForColumn:@"esearch"] Entry:[db.ObjResult stringForColumn:@"eentry"] Cat:cat Synonym:[db.ObjResult stringForColumn:@"esyn"] Antonym:[db.ObjResult stringForColumn:@"eant"]];
+            
+            if (![[db.ObjResult stringForColumn:@"sample"] isEqualToString:@""] && [[db.ObjResult stringForColumn:@"sample"] length] != 0) {
+                [temp setSample:[db.ObjResult stringForColumn:@"sample"]];
+            }
+            
             [ret addObject:temp];
             if (i== 0) {
                 numberOfType++;
@@ -104,8 +109,6 @@
             if (![cat isEqualToString:t]) {
                 numberOfType++;
             }
-
-
             i++;
         }
         [db closeDB];
@@ -191,4 +194,15 @@
         return YES;
     }
     return NO;
-}@end
+}
+-(BOOL)loadSampleENG{
+    NSString *sample = [APSample SearchSample:[self Search]];
+    if (![sample isEqualToString:@""] && sample.length != 0) {
+        [self setSample:sample];
+        return YES;
+    }
+    
+    return NO;
+}
+
+@end

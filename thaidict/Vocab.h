@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "DB.h"
 #import "APSpeech.h"
+#import "APSample.h"
 #import "Language.h"
 @interface Vocab : NSObject
 
@@ -29,6 +30,7 @@
 @property(nonatomic,strong)NSString *Antonym; //คำตรงข้าม
 @property(nonatomic,strong)NSString *SoundPath;
 @property(nonatomic,strong)NSString *ImgPath;
+@property(nonatomic,strong)NSString *Sample;
 
 
 
@@ -43,6 +45,7 @@
 
 //getData form api server
 -(BOOL)loadSound;
+-(BOOL)loadSampleENG;
 //-(BOOL)loadImageWithAPIPath:(NSString *)path;
 
 @end

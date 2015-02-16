@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		6906AF101A88C30C00087B93 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6906AF0F1A88C30C00087B93 /* HistoryViewController.m */; };
 		695981F71A70965D00C2002D /* DetailVocabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 695981F61A70965D00C2002D /* DetailVocabViewController.m */; };
+		697544F61A91956F009ACB65 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 697544F31A91956F009ACB65 /* HTMLNode.m */; };
+		697544F71A91956F009ACB65 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 697544F51A91956F009ACB65 /* HTMLParser.m */; };
+		697544FB1A919650009ACB65 /* APSample.m in Sources */ = {isa = PBXBuildFile; fileRef = 697544FA1A919650009ACB65 /* APSample.m */; };
+		697544FD1A919812009ACB65 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 697544FC1A919812009ACB65 /* libxml2.dylib */; };
+		697545001A919A51009ACB65 /* Connect.m in Sources */ = {isa = PBXBuildFile; fileRef = 697544FF1A919A51009ACB65 /* Connect.m */; };
+		697545031A91B20C009ACB65 /* NSString_stripHtml.m in Sources */ = {isa = PBXBuildFile; fileRef = 697545021A91B20C009ACB65 /* NSString_stripHtml.m */; };
 		697A6AD81A6F8D6A008A893A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 697A6AD71A6F8D6A008A893A /* main.m */; };
 		697A6ADB1A6F8D6A008A893A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 697A6ADA1A6F8D6A008A893A /* AppDelegate.m */; };
 		697A6ADE1A6F8D6B008A893A /* thaidict.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 697A6ADC1A6F8D6A008A893A /* thaidict.xcdatamodeld */; };
@@ -73,6 +79,17 @@
 		6906AF0F1A88C30C00087B93 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		695981F51A70965D00C2002D /* DetailVocabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailVocabViewController.h; sourceTree = "<group>"; };
 		695981F61A70965D00C2002D /* DetailVocabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailVocabViewController.m; sourceTree = "<group>"; };
+		697544F21A91956F009ACB65 /* HTMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLNode.h; sourceTree = "<group>"; };
+		697544F31A91956F009ACB65 /* HTMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLNode.m; sourceTree = "<group>"; };
+		697544F41A91956F009ACB65 /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLParser.h; sourceTree = "<group>"; };
+		697544F51A91956F009ACB65 /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLParser.m; sourceTree = "<group>"; };
+		697544F91A919650009ACB65 /* APSample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APSample.h; sourceTree = "<group>"; };
+		697544FA1A919650009ACB65 /* APSample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APSample.m; sourceTree = "<group>"; };
+		697544FC1A919812009ACB65 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		697544FE1A919A51009ACB65 /* Connect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Connect.h; sourceTree = "<group>"; };
+		697544FF1A919A51009ACB65 /* Connect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Connect.m; sourceTree = "<group>"; };
+		697545011A91B20C009ACB65 /* NSString_stripHtml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSString_stripHtml.h; sourceTree = "<group>"; };
+		697545021A91B20C009ACB65 /* NSString_stripHtml.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSString_stripHtml.m; sourceTree = "<group>"; };
 		697A6AD21A6F8D6A008A893A /* thaidict.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = thaidict.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		697A6AD61A6F8D6A008A893A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		697A6AD71A6F8D6A008A893A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -175,6 +192,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				697544FD1A919812009ACB65 /* libxml2.dylib in Frameworks */,
 				697A6C031A6F991C008A893A /* libsqlite3.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -204,6 +222,17 @@
 				697A6B371A6F955B008A893A /* SearchViewController.m */,
 			);
 			name = ViewController;
+			sourceTree = "<group>";
+		};
+		697544F81A919574009ACB65 /* HTMLParser */ = {
+			isa = PBXGroup;
+			children = (
+				697544F21A91956F009ACB65 /* HTMLNode.h */,
+				697544F31A91956F009ACB65 /* HTMLNode.m */,
+				697544F41A91956F009ACB65 /* HTMLParser.h */,
+				697544F51A91956F009ACB65 /* HTMLParser.m */,
+			);
+			name = HTMLParser;
 			sourceTree = "<group>";
 		};
 		697A6AC91A6F8D6A008A893A = {
@@ -360,6 +389,7 @@
 		697A6C011A6F98C6008A893A /* thirdparty */ = {
 			isa = PBXGroup;
 			children = (
+				697544F81A919574009ACB65 /* HTMLParser */,
 				697A6C191A6FB310008A893A /* lexitron2.sqlite */,
 				697A6BB91A6F98BC008A893A /* fmdb */,
 				697A6BB81A6F98A4008A893A /* sw */,
@@ -370,6 +400,7 @@
 		697A6C071A6F99FA008A893A /* framwork */ = {
 			isa = PBXGroup;
 			children = (
+				697544FC1A919812009ACB65 /* libxml2.dylib */,
 				697A6C021A6F991C008A893A /* libsqlite3.0.dylib */,
 			);
 			name = framwork;
@@ -378,6 +409,8 @@
 		697A6C081A6F9B09008A893A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				697544FE1A919A51009ACB65 /* Connect.h */,
+				697544FF1A919A51009ACB65 /* Connect.m */,
 				697A6C041A6F99EE008A893A /* DB.h */,
 				697A6C051A6F99EE008A893A /* DB.m */,
 				697A6C101A6FA2E4008A893A /* Vocab.h */,
@@ -392,6 +425,10 @@
 				697A6C141A6FA5C7008A893A /* APImage.m */,
 				697A6C151A6FA5C7008A893A /* APSpeech.h */,
 				697A6C161A6FA5C7008A893A /* APSpeech.m */,
+				697544F91A919650009ACB65 /* APSample.h */,
+				697544FA1A919650009ACB65 /* APSample.m */,
+				697545011A91B20C009ACB65 /* NSString_stripHtml.h */,
+				697545021A91B20C009ACB65 /* NSString_stripHtml.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -501,12 +538,15 @@
 				697A6BFD1A6F98BC008A893A /* UIImageView+AFNetworking.m in Sources */,
 				697A6C171A6FA5C7008A893A /* APImage.m in Sources */,
 				697A6BFF1A6F98BC008A893A /* UIRefreshControl+AFNetworking.m in Sources */,
+				697544F71A91956F009ACB65 /* HTMLParser.m in Sources */,
+				697544F61A91956F009ACB65 /* HTMLNode.m in Sources */,
 				697A6ADB1A6F8D6A008A893A /* AppDelegate.m in Sources */,
 				6906AF101A88C30C00087B93 /* HistoryViewController.m in Sources */,
 				697A6AD81A6F8D6A008A893A /* main.m in Sources */,
 				697A6C001A6F98BC008A893A /* UIWebView+AFNetworking.m in Sources */,
 				697A6BF61A6F98BC008A893A /* FMDatabasePool.m in Sources */,
 				69BC97781A8361250019F71B /* Edit_Fav_ViewController.m in Sources */,
+				697544FB1A919650009ACB65 /* APSample.m in Sources */,
 				697A6BF41A6F98BC008A893A /* FMDatabase.m in Sources */,
 				697A6BB61A6F989E008A893A /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				69DF55D91A77513500BBCDEC /* FavoriteViewController.m in Sources */,
@@ -538,6 +578,8 @@
 				697A6BF91A6F98BC008A893A /* AFNetworkActivityIndicatorManager.m in Sources */,
 				697A6ADE1A6F8D6B008A893A /* thaidict.xcdatamodeld in Sources */,
 				697A6BFA1A6F98BC008A893A /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				697545001A919A51009ACB65 /* Connect.m in Sources */,
+				697545031A91B20C009ACB65 /* NSString_stripHtml.m in Sources */,
 				697A6BB71A6F989E008A893A /* SWUtilityButtonView.m in Sources */,
 				697A6BB41A6F989E008A893A /* SWLongPressGestureRecognizer.m in Sources */,
 			);
@@ -617,6 +659,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/include/libxml2,
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -653,6 +700,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/include/libxml2,
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
