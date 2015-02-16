@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6906AF101A88C30C00087B93 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6906AF0F1A88C30C00087B93 /* HistoryViewController.m */; };
+		693A53771A91E2B80081120C /* SplitViewSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 693A53761A91E2B80081120C /* SplitViewSearch.m */; };
 		695981F71A70965D00C2002D /* DetailVocabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 695981F61A70965D00C2002D /* DetailVocabViewController.m */; };
 		697544F61A91956F009ACB65 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 697544F31A91956F009ACB65 /* HTMLNode.m */; };
 		697544F71A91956F009ACB65 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 697544F51A91956F009ACB65 /* HTMLParser.m */; };
@@ -77,6 +78,8 @@
 /* Begin PBXFileReference section */
 		6906AF0E1A88C30C00087B93 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
 		6906AF0F1A88C30C00087B93 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
+		693A53751A91E2B80081120C /* SplitViewSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitViewSearch.h; sourceTree = "<group>"; };
+		693A53761A91E2B80081120C /* SplitViewSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitViewSearch.m; sourceTree = "<group>"; };
 		695981F51A70965D00C2002D /* DetailVocabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailVocabViewController.h; sourceTree = "<group>"; };
 		695981F61A70965D00C2002D /* DetailVocabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailVocabViewController.m; sourceTree = "<group>"; };
 		697544F21A91956F009ACB65 /* HTMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLNode.h; sourceTree = "<group>"; };
@@ -220,6 +223,8 @@
 				695981F61A70965D00C2002D /* DetailVocabViewController.m */,
 				697A6B361A6F955B008A893A /* SearchViewController.h */,
 				697A6B371A6F955B008A893A /* SearchViewController.m */,
+				693A53751A91E2B80081120C /* SplitViewSearch.h */,
+				693A53761A91E2B80081120C /* SplitViewSearch.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -579,6 +584,7 @@
 				697A6ADE1A6F8D6B008A893A /* thaidict.xcdatamodeld in Sources */,
 				697A6BFA1A6F98BC008A893A /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				697545001A919A51009ACB65 /* Connect.m in Sources */,
+				693A53771A91E2B80081120C /* SplitViewSearch.m in Sources */,
 				697545031A91B20C009ACB65 /* NSString_stripHtml.m in Sources */,
 				697A6BB71A6F989E008A893A /* SWUtilityButtonView.m in Sources */,
 				697A6BB41A6F989E008A893A /* SWLongPressGestureRecognizer.m in Sources */,

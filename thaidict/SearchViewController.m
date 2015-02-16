@@ -30,8 +30,6 @@ int idrec = 0;
     
     ArrayWords = [Vocab listDictByVocab:@"test"];
     [TableWords reloadData];
-
-//    [APSample SearchSample:[ArrayWords objectAtIndex:0]];
 }
 -(void)setInterface{
     [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:(228/255.0) green:3/255.0 blue:21/255.0 alpha:1.0f]];
@@ -106,7 +104,7 @@ int idrec = 0;
     return 3;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self performSegueWithIdentifier:@"ChooseVocab" sender:self];
+    [self performSegueWithIdentifier:@"chooseVocab" sender:self];
 }
 
 #pragma mark swipeable
@@ -157,11 +155,10 @@ int idrec = 0;
     // Dispose of any resources that can be recreated.
 }
 
-
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"ChooseVocab"])
+    if ([[segue identifier] isEqualToString:@"chooseVocab"])
     {
         // Get reference to the destination view controller
         DetailVocabViewController *vc = [segue destinationViewController];

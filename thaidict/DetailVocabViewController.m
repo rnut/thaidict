@@ -31,6 +31,7 @@
     [TranslateTable setDataSource:self];
     [TranslateTable reloadData];
     
+
     //keep history
     [History keepHistory:ChooseVocab];
     [ChooseVocab loadSampleENG];
@@ -40,39 +41,17 @@
 #pragma mark tableview
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
-//    NSArray *rowIn = [self countRowInSection];
-////    NSLog(@"section : %ld",section);
-//    for (int i =0; i<[rowIn count]; i++) {
-//        if (section == i) {
-//            NSLog(@"%d",[[rowIn objectAtIndex:i] intValue]);
-//            return [[rowIn objectAtIndex:i] intValue];
-//        }
-//    }
-//    return 0;
+
     for (int i = 0; i<[TranslateInfo count]; i++) {
         if (section == i) {
-//            NSLog(@"numinSec : %lu",(unsigned long)[[TranslateInfo objectAtIndex:i] count]);
-//            NSLog(@"numsec : %lu",(unsigned long)[[TranslateInfo objectAtIndex:i] count]);
             return [[TranslateInfo objectAtIndex:i] count];
         }
     }
     return 0;
-    
-    
-//    int i = 0;
-//    for (NSArray *arr in TranslateInfo) {
-//        if (section == i) {
-//            return [arr count];
-//        }
-//        
-//    }
-//    return 0;
+
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-//    NSLog(@"%lu",(unsigned long)[TranslateInfo count]);
     return  [TranslateInfo count];
-//        return  1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -82,9 +61,6 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         
     }
-    
-//    NSMutableArray *CountRowIn = [self countRowInSection];
-//    NSInteger CountSection = [self countSection];
     for (NSInteger i =0; i< [TranslateInfo count]; i++) {
         
         if (indexPath.section == i) {
@@ -92,26 +68,6 @@
                 cell.textLabel.text = [NSString stringWithFormat:@"cell : %@   section : %ld",[v Entry],(long)i];
             }
     }
-    
-    
-//    int start = 0;
-//    int end = 0;
-//    NSMutableArray *CountRowIn = [self countRowInSection];
-//    for (int i =0; i<[self countSection]; i++) {
-//        end = end + [[CountRowIn objectAtIndex:i] intValue];
-//        if (indexPath.section == i) {
-////            cell.textLabel.text = [NSString stringWithFormat:@"xxx section : %d",i];
-//            for (int j= start; j<end; j++) {
-//                NSLog(@"start:%d",start);
-//                NSLog(@"entry : %@",[[TranslateInfo objectAtIndex:j] Entry]);
-//                cell.textLabel.text = [[TranslateInfo objectAtIndex:j] Entry];
-//            }
-//            start = end;
-//            
-//        }
-//    }
-
-    
     return cell;
 }
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
@@ -263,6 +219,12 @@
     //----
     
 }
+
+
+
+
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
