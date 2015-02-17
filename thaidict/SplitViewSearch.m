@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setDelegate:self];
+    self.extendedLayoutIncludesOpaqueBars = YES;
 }
 
 - (void)didReceiveMemoryWarning {

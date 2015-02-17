@@ -184,6 +184,19 @@
         
         [edv setFavInfo:data];
     }
+    else if ([[segue identifier] isEqualToString:@"chooseVocab"])
+    {
+        // Get reference to the destination view controller
+        
+        DetailVocabViewController *vc = [segue destinationViewController];
+        NSMutableArray *data;
+        if(self.lang == LanguageTHA)
+            data = [self.favWords objectAtIndex:0];
+        else
+            data = [self.favWords objectAtIndex:1];
+        Vocab *choose = [data objectAtIndex:[[Table indexPathForSelectedRow] row]];
+        [vc setChooseVocab:choose];
+    }
 }
 /**/
 

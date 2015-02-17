@@ -11,6 +11,7 @@
 #import "Vocab.h"
 //#import "SWTableViewCell.h"
 #import "Favorite.h"
+#import "DetailVocabViewController.h"
 
 @interface FavoriteViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>//, SWTableViewCellDelegate>
 {

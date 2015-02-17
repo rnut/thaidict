@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Vocab.h"
 #import "APImage.h"
+#import "VocabCell.h"
 
 @interface DetailVocabViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>
 {

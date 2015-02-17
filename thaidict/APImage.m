@@ -22,8 +22,8 @@
     else if (lang == LanguageTHA){
         ln = @"th";
     }
-    
-    NSString *path = [NSString stringWithFormat:@"https://ajax.googleapis.com/ajax/services/search/images?v=1.0&hl=%@&q=%@",ln,search];
+
+    NSString *path = [NSString stringWithFormat:@"https://ajax.googleapis.com/ajax/services/search/images?v=1.0&hl=%@&q=%@",ln,[search stringByReplacingOccurrencesOfString:@" " withString:@"%20"]];
     NSURL *url = [NSURL URLWithString:path];
     NSError *error = nil;
     NSData *data = [NSData dataWithContentsOfURL:url options:0 error:&error];
@@ -34,7 +34,7 @@
     NSArray *result = [[parsedObject objectForKey:@"responseData"] objectForKey:@"results"];
     if ([result count] > 0) {
         for (NSDictionary *obj in result) {
-            NSURL *tempURL = [NSURL URLWithString:[obj objectForKey:@"url"]];
+            NSURL *tempURL = [NSURL URLWithString:[obj objectForKey:@"unescapedUrl"]];
 //            UIImageView *imgV = [[UIImageView alloc] init];
 //            UIImage *placeholder = [UIImage imageNamed:@"photo1.png"];
 //            [imgV setImageWithURL:tempURL placeholderImage:placeholder];
@@ -44,7 +44,6 @@
             [self.Image addObject:img];
         }
     }
-    
     if (localError != nil) {
         error = localError;
         return nil;

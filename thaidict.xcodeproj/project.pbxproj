@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6906AF101A88C30C00087B93 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6906AF0F1A88C30C00087B93 /* HistoryViewController.m */; };
 		693A53771A91E2B80081120C /* SplitViewSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 693A53761A91E2B80081120C /* SplitViewSearch.m */; };
+		6955AD291A9322000017D45F /* VocabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6955AD281A9322000017D45F /* VocabCell.m */; };
 		695981F71A70965D00C2002D /* DetailVocabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 695981F61A70965D00C2002D /* DetailVocabViewController.m */; };
 		697544F61A91956F009ACB65 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 697544F31A91956F009ACB65 /* HTMLNode.m */; };
 		697544F71A91956F009ACB65 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 697544F51A91956F009ACB65 /* HTMLParser.m */; };
@@ -80,6 +81,8 @@
 		6906AF0F1A88C30C00087B93 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		693A53751A91E2B80081120C /* SplitViewSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitViewSearch.h; sourceTree = "<group>"; };
 		693A53761A91E2B80081120C /* SplitViewSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitViewSearch.m; sourceTree = "<group>"; };
+		6955AD271A9322000017D45F /* VocabCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VocabCell.h; sourceTree = "<group>"; };
+		6955AD281A9322000017D45F /* VocabCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VocabCell.m; sourceTree = "<group>"; };
 		695981F51A70965D00C2002D /* DetailVocabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailVocabViewController.h; sourceTree = "<group>"; };
 		695981F61A70965D00C2002D /* DetailVocabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailVocabViewController.m; sourceTree = "<group>"; };
 		697544F21A91956F009ACB65 /* HTMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLNode.h; sourceTree = "<group>"; };
@@ -221,6 +224,8 @@
 				69DF55D81A77513500BBCDEC /* FavoriteViewController.m */,
 				695981F51A70965D00C2002D /* DetailVocabViewController.h */,
 				695981F61A70965D00C2002D /* DetailVocabViewController.m */,
+				6955AD271A9322000017D45F /* VocabCell.h */,
+				6955AD281A9322000017D45F /* VocabCell.m */,
 				697A6B361A6F955B008A893A /* SearchViewController.h */,
 				697A6B371A6F955B008A893A /* SearchViewController.m */,
 				693A53751A91E2B80081120C /* SplitViewSearch.h */,
@@ -542,6 +547,7 @@
 				697A6BEB1A6F98BC008A893A /* AFHTTPRequestOperation.m in Sources */,
 				697A6BFD1A6F98BC008A893A /* UIImageView+AFNetworking.m in Sources */,
 				697A6C171A6FA5C7008A893A /* APImage.m in Sources */,
+				6955AD291A9322000017D45F /* VocabCell.m in Sources */,
 				697A6BFF1A6F98BC008A893A /* UIRefreshControl+AFNetworking.m in Sources */,
 				697544F71A91956F009ACB65 /* HTMLParser.m in Sources */,
 				697544F61A91956F009ACB65 /* HTMLNode.m in Sources */,

@@ -9,7 +9,8 @@
 #import "DetailVocabViewController.h"
 
 @interface DetailVocabViewController ()
-
+{
+}
 @end
 
 @implementation DetailVocabViewController
@@ -22,19 +23,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-
-    SearchLabel.text = ChooseVocab.Search;
-    TranslateInfo = [Vocab translateVocab:ChooseVocab];
-
     [TranslateTable setDataSource:self];
-    [TranslateTable setDataSource:self];
+    [TranslateTable setDelegate:self];
     [TranslateTable reloadData];
+    [TranslateTable setHidden:YES];
     
-
-    //keep history
-
     
+    if (ChooseVocab != nil) {
+        [TranslateTable setHidden:NO];
+        SearchLabel.text = ChooseVocab.Search;
+        TranslateInfo = [Vocab translateVocab:ChooseVocab];
+        [TranslateTable reloadData];
+    }
+
+
     //loadSample phrase
 //    [ChooseVocab loadSampleENG];
 }
@@ -52,30 +54,63 @@
     return 0;
 
 }
+-(CGFloat)tableView: (UITableView*)tableView heightForRowAtIndexPath: (NSIndexPath*) indexPath{
+
+    return 70.0f;
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return  [TranslateInfo count];
 }
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"vocabCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    VocabCell *cell = (VocabCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if(cell == nil){
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[VocabCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         
     }
     for (NSInteger i =0; i< [TranslateInfo count]; i++) {
         
         if (indexPath.section == i) {
+            NSString *total;
             Vocab *v = [[TranslateInfo objectAtIndex:i] objectAtIndex:indexPath.row];
-                cell.textLabel.text = [NSString stringWithFormat:@"cell : %@   section : %ld",[v Entry],(long)i];
+                cell.Entry.text = [NSString stringWithFormat:@"%@",[v Entry]];
+            
+            //entry
+            if ([v Entry] == nil || [[v Entry] isEqualToString:@""]) {
+                [cell.Entry setHidden:YES];
             }
+            else{
+                cell.Entry.text = [NSString stringWithFormat:@"%@",[v Entry]];
+            }
+            
+            //synnonym
+            if ([v Synonym] == nil || [[v Synonym] isEqualToString:@""]) {
+            }
+            else{
+               total = [NSString stringWithFormat:@"Synonym : %@",[v Synonym]];
+            }
+            //antonym
+            if ([v Antonym] != nil && ![[v Antonym] isEqualToString:@""]) {
+                if ([total isEqualToString:@""] || total == nil) {
+                    total =[NSString stringWithFormat:@"Antonym : %@",[v Antonym]];
+                }
+                else{
+                    [total stringByAppendingString:[NSString stringWithFormat:@"   Antonym : %@",[v Antonym]]];
+                }
+                
+            }
+            
+            if (![total isEqualToString:@""]) cell.Syn.text = total;
+            else [cell.Syn setHidden:YES];
+            
+        }
     }
     return cell;
 }
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     for (int i =0; i<[TranslateInfo count]; i++) {
         if (section == i) {
-            return [NSString stringWithFormat:@"section : %@",[[[TranslateInfo objectAtIndex:i] objectAtIndex:0] Cat]];
+            return [NSString stringWithFormat:@"%@",[[[TranslateInfo objectAtIndex:i] objectAtIndex:0] Cat]];
         }
     }
     return @"";
@@ -176,6 +211,27 @@
 }
 
 -(IBAction)speakSpeech:(id)sender{
+    
+    
+    //load image
+    [self.pageControl reloadInputViews];
+    
+    APImage *img = [[APImage alloc] initWithVocabSearch:[ChooseVocab Search] Language:[ChooseVocab Language]];
+    _pageImages = [img Image];
+    NSInteger pageCount = self.pageImages.count;
+    
+    // Set up the page control
+    self.pageControl.currentPage = 0;
+    self.pageControl.numberOfPages = pageCount;
+    
+    // Set up the array to hold the views for each page
+    self.pageViews = [[NSMutableArray alloc] init];
+    for (NSInteger i = 0; i < pageCount; ++i) {
+        [self.pageViews addObject:[NSNull null]];
+    }
+    [self loadVisiblePages];
+    
+    //load sound
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
     [audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
     [audioSession setActive:YES error:nil];
