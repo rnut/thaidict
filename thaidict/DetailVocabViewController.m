@@ -27,7 +27,11 @@
     [TranslateTable setDelegate:self];
     [TranslateTable reloadData];
     [TranslateTable setHidden:YES];
-    
+    [self.CollectionImage setDelegate:self];
+    [self.CollectionImage setDataSource:self];
+    ((UICollectionViewFlowLayout *)self.CollectionImage.collectionViewLayout).minimumLineSpacing = 2.0f;
+    ((UICollectionViewFlowLayout *)self.CollectionImage.collectionViewLayout).scrollDirection = UICollectionViewScrollDirectionHorizontal;
+
     
     if (ChooseVocab != nil) {
         [TranslateTable setHidden:NO];
@@ -117,120 +121,31 @@
 }
 
 
-#pragma mark scrollview
-- (void)loadVisiblePages {
-    // First, determine which page is currently visible
-    CGFloat pageWidth = self.scrollView.frame.size.width;
-    NSInteger page = (NSInteger)floor((self.scrollView.contentOffset.x * 2.0f + pageWidth) / (pageWidth * 2.0f));
-    
-    // Update the page control
-    self.pageControl.currentPage = page;
-    
-    // Work out which pages we want to load
-    NSInteger firstPage = page - 1;
-    NSInteger lastPage = page + 1;
-    
-    // Purge anything before the first page
-    for (NSInteger i=0; i<firstPage; i++) {
-        [self purgePage:i];
-    }
-    for (NSInteger i=firstPage; i<=lastPage; i++) {
-        [self loadPage:i];
-    }
-    for (NSInteger i=lastPage+1; i<self.pageImages.count; i++) {
-        [self purgePage:i];
-    }
-}
-
-- (void)loadPage:(NSInteger)page {
-    if (page < 0 || page >= self.pageImages.count) {
-        // If it's outside the range of what we have to display, then do nothing
-        return;
-    }
-    
-    // Load an individual page, first seeing if we've already loaded it
-    UIView *pageView = [self.pageViews objectAtIndex:page];
-    if ((NSNull*)pageView == [NSNull null]) {
-        CGRect frame = self.scrollView.bounds;
-        frame.origin.x = frame.size.width * page;
-        frame.origin.y = 0.0f;
-        
-        UIImageView *newPageView = [[UIImageView alloc] initWithImage:[self.pageImages objectAtIndex:page]];
-        newPageView.contentMode = UIViewContentModeScaleAspectFit;
-        newPageView.frame = frame;
-        [self.scrollView addSubview:newPageView];
-        [self.pageViews replaceObjectAtIndex:page withObject:newPageView];
-    }
-}
-
-- (void)purgePage:(NSInteger)page {
-    if (page < 0 || page >= self.pageImages.count) {
-        // If it's outside the range of what we have to display, then do nothing
-        return;
-    }
-    
-    // Remove a page from the scroll view and reset the container array
-    UIView *pageView = [self.pageViews objectAtIndex:page];
-    if ((NSNull*)pageView != [NSNull null]) {
-        [pageView removeFromSuperview];
-        [self.pageViews replaceObjectAtIndex:page withObject:[NSNull null]];
-    }
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    // Set up the content size of the scroll view
-    CGSize pagesScrollViewSize = self.scrollView.frame.size;
-    self.scrollView.contentSize = CGSizeMake(pagesScrollViewSize.width * self.pageImages.count, pagesScrollViewSize.height);
-    
-    // Load the initial set of pages that are on screen
-    [self loadVisiblePages];
-}
-
-
 #pragma mark sound
-- (IBAction)otherInformation:(id)sender {
-    
-    [self.pageControl reloadInputViews];
-    
-    APImage *img = [[APImage alloc] initWithVocabSearch:[ChooseVocab Search] Language:[ChooseVocab Language]];
-    _pageImages = [img Image];
-    NSInteger pageCount = self.pageImages.count;
-    
-    // Set up the page control
-    self.pageControl.currentPage = 0;
-    self.pageControl.numberOfPages = pageCount;
-    
-    // Set up the array to hold the views for each page
-    self.pageViews = [[NSMutableArray alloc] init];
-    for (NSInteger i = 0; i < pageCount; ++i) {
-        [self.pageViews addObject:[NSNull null]];
-    }
-    
-}
+//- (IBAction)otherInformation:(id)sender {
+//    
+//    [self.pageControl reloadInputViews];
+//    
+//    APImage *img = [[APImage alloc] initWithVocabSearch:[ChooseVocab Search] Language:[ChooseVocab Language]];
+//    _pageImages = [img Image];
+//    NSInteger pageCount = self.pageImages.count;
+//    
+//    // Set up the page control
+//    self.pageControl.currentPage = 0;
+//    self.pageControl.numberOfPages = pageCount;
+//    
+//    // Set up the array to hold the views for each page
+//    self.pageViews = [[NSMutableArray alloc] init];
+//    for (NSInteger i = 0; i < pageCount; ++i) {
+//        [self.pageViews addObject:[NSNull null]];
+//    }
+//    
+//}
 
 -(IBAction)speakSpeech:(id)sender{
-    
-    
-    //load image
-    [self.pageControl reloadInputViews];
-    
     APImage *img = [[APImage alloc] initWithVocabSearch:[ChooseVocab Search] Language:[ChooseVocab Language]];
     _pageImages = [img Image];
-    NSInteger pageCount = self.pageImages.count;
-    
-    // Set up the page control
-    self.pageControl.currentPage = 0;
-    self.pageControl.numberOfPages = pageCount;
-    
-    // Set up the array to hold the views for each page
-    self.pageViews = [[NSMutableArray alloc] init];
-    for (NSInteger i = 0; i < pageCount; ++i) {
-        [self.pageViews addObject:[NSNull null]];
-    }
-    [self loadVisiblePages];
-    
+    [self.CollectionImage reloadData];
     //load sound
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
     [audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
@@ -268,17 +183,35 @@
         [Player setNumberOfLoops:0];
         [Player play];
     }
-    
-    
     //use when go out from this view
     if ([APSpeech deleteSpeech:[ChooseVocab Search]]) {
         NSLog(@"delete success");
     }
     //----
     
+    
+    //load Sample
+    [ChooseVocab loadSampleENG];
+    self.SampleLabel.text = [ChooseVocab Sample];
 }
 
 
+#pragma mark collectionview
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    if (collectionView == self.CollectionImage)return [self.pageImages count];
+    return 0;
+}
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (collectionView == self.CollectionImage){
+        static NSString *identifier = @"Cell";
+        UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+        UIImageView *IMG = (UIImageView *)[cell viewWithTag:100];
+        IMG.image = [self.pageImages objectAtIndex:indexPath.row];
+        return cell;
+    }
+    return nil;
+}
 
 
 

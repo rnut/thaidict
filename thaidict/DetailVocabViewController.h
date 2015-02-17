@@ -11,13 +11,12 @@
 #import "APImage.h"
 #import "VocabCell.h"
 
-@interface DetailVocabViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>
+@interface DetailVocabViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UIScrollViewDelegate> //
 {
     NSMutableArray *TranslateInfo;
     Vocab *ChooseVocab;
     IBOutlet UILabel *SearchLabel;
     IBOutlet UITableView *TranslateTable;
-    __weak IBOutlet UIBarButtonItem *otherButton;
     
 }
 
@@ -27,10 +26,12 @@
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (nonatomic, strong) NSArray *pageImages;
 @property (nonatomic, strong) NSMutableArray *pageViews;
+@property (strong, nonatomic) IBOutlet UILabel *SampleLabel;
 
 
+@property (strong, nonatomic) IBOutlet UICollectionView *CollectionImage;
 @property(nonatomic,strong)Vocab *ChooseVocab;
-- (IBAction)otherInformation:(id)sender;
+//- (IBAction)otherInformation:(id)sender;
 
 -(IBAction)speakSpeech:(id)sender;
 @end
