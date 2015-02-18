@@ -17,13 +17,12 @@
     Vocab *ChooseVocab;
     IBOutlet UILabel *SearchLabel;
     IBOutlet UITableView *TranslateTable;
+    IBOutlet UIButton *speakBtn;
     
 }
 
 @property(nonatomic,strong)NSMutableArray *ArrayTranslate;
 @property(nonatomic,strong)AVAudioPlayer *Player;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (nonatomic, strong) NSArray *pageImages;
 @property (nonatomic, strong) NSMutableArray *pageViews;
 @property (strong, nonatomic) IBOutlet UILabel *SampleLabel;

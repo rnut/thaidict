@@ -87,6 +87,15 @@
         [TableView reloadData];
     }
 }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (tableView.editing == YES) {
+        NSLog(@"%d",(int)indexPath.row);
+    }
+    else{
+        [self performSegueWithIdentifier:@"chooseVocab" sender:nil];
+    }
+}
+
 
 #pragma mark IBAction
 - (IBAction)editBtn:(id)sender {
@@ -98,15 +107,20 @@
 }
 
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"chooseVocab"])
+    {
+        DetailVocabViewController *vc = [segue destinationViewController];
+
+        History *choose = [hisInfo objectAtIndex:[[TableView indexPathForSelectedRow] row]];
+        [vc setChooseVocab:choose.Voc];
+    }
 }
-*/
+/**/
+
 
 
 @end

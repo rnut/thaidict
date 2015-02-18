@@ -12,6 +12,7 @@
 //#import "SWTableViewCell.h"
 #import "Favorite.h"
 #import "DetailVocabViewController.h"
+#import "History.h"
 
 @interface FavoriteViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>//, SWTableViewCellDelegate>
 {

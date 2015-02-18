@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "History.h"
+#import "DetailVocabViewController.h"
 @interface HistoryViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {
     NSMutableArray *hisInfo;

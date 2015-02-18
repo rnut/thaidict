@@ -114,6 +114,9 @@
     if (tableView.editing == YES) {
         NSLog(@"%d",(int)indexPath.row);
     }
+    else{
+        [self performSegueWithIdentifier:@"chooseVocab" sender:nil];
+    }
 }
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -194,8 +197,9 @@
             data = [self.favWords objectAtIndex:0];
         else
             data = [self.favWords objectAtIndex:1];
-        Vocab *choose = [data objectAtIndex:[[Table indexPathForSelectedRow] row]];
-        [vc setChooseVocab:choose];
+        Favorite *choose = [data objectAtIndex:[[Table indexPathForSelectedRow] row]];
+        [History keepHistory:choose.Fav_vocab];
+        [vc setChooseVocab:choose.Fav_vocab];
     }
 }
 /**/

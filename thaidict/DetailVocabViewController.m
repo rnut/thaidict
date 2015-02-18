@@ -16,35 +16,44 @@
 @implementation DetailVocabViewController
 @synthesize ChooseVocab;
 @synthesize Player;
-@synthesize scrollView = _scrollView;
-@synthesize pageControl = _pageControl;
 @synthesize pageImages = _pageImages;
 @synthesize pageViews = _pageViews;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [TranslateTable setDataSource:self];
-    [TranslateTable setDelegate:self];
-    [TranslateTable reloadData];
-    [TranslateTable setHidden:YES];
-    [self.CollectionImage setDelegate:self];
-    [self.CollectionImage setDataSource:self];
-    ((UICollectionViewFlowLayout *)self.CollectionImage.collectionViewLayout).minimumLineSpacing = 2.0f;
-    ((UICollectionViewFlowLayout *)self.CollectionImage.collectionViewLayout).scrollDirection = UICollectionViewScrollDirectionHorizontal;
-
     
-    if (ChooseVocab != nil) {
-        [TranslateTable setHidden:NO];
+    if (ChooseVocab == nil) {
+        [self setHiddenInterface:YES];
+    }
+    else{
+        [self setHiddenInterface:NO];
+        //set delegate
+        [TranslateTable setDataSource:self];
+        [TranslateTable setDelegate:self];
+        [self.CollectionImage setDelegate:self];
+        [self.CollectionImage setDataSource:self];
+        ((UICollectionViewFlowLayout *)self.CollectionImage.collectionViewLayout).minimumLineSpacing = 2.0f;
+        ((UICollectionViewFlowLayout *)self.CollectionImage.collectionViewLayout).scrollDirection = UICollectionViewScrollDirectionHorizontal;
+        
         SearchLabel.text = ChooseVocab.Search;
         TranslateInfo = [Vocab translateVocab:ChooseVocab];
         [TranslateTable reloadData];
+        if (ChooseVocab.Language == LanguageTHA) {
+            if ([TranslateInfo count] > 0) {
+                self.SampleLabel.text = [[[TranslateInfo objectAtIndex:0] objectAtIndex:0] Sample];
+            }
+        }
     }
-
-
-    //loadSample phrase
-//    [ChooseVocab loadSampleENG];
+    
 }
 
+-(void)setHiddenInterface:(BOOL)boolean{
+    [speakBtn setHidden:boolean];
+    [TranslateTable setHidden:boolean];
+    [SearchLabel setHidden:boolean];
+    [self.SampleLabel setHidden:boolean];
+    [self.CollectionImage setHidden:boolean];
+}
 
 #pragma mark tableview
 

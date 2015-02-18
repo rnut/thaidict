@@ -89,7 +89,7 @@
             }
         }
         
-        [db queryWithString:[NSString stringWithFormat:@"select IFNULL(id, '') as id, IFNULL(tsearch, '') as esearch,IFNULL(eentry, '') as eentry,IFNULL(tcat, '') as cat,IFNULL(tsyn, '') as esyn,IFNULL(tant, '') as eant,IFNULL(tsample, '') as sample, from %@ where esearch = '%@' order by tsearch",tableName,vocab.Search]];
+        [db queryWithString:[NSString stringWithFormat:@"select IFNULL(id, '') as id, IFNULL(tsearch, '') as esearch,IFNULL(eentry, '') as eentry,IFNULL(tcat, '') as cat,IFNULL(tsyn, '') as esyn,IFNULL(tant, '') as eant,IFNULL(tsample, '') as sample from %@ where esearch = '%@' order by tsearch",tableName,vocab.Search]];
         int i =0;
         while([db.ObjResult next]) {
             NSString *cat = [db.ObjResult stringForColumn:@"cat"];
