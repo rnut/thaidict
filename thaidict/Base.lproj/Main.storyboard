@@ -280,7 +280,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="137" height="123"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gVy-Zc-VO9">
@@ -403,6 +403,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="CollectionImage" destination="hVm-lB-5ri" id="fHX-Sl-xLG"/>
+                        <outlet property="ExapmpleView" destination="Xok-u4-fEB" id="jGR-fj-hSk"/>
                         <outlet property="SampleLabel" destination="Lu5-29-3nd" id="eaH-bj-cGr"/>
                         <outlet property="SearchLabel" destination="62u-td-rak" id="QfC-Se-UXS"/>
                         <outlet property="TranslateTable" destination="zzv-18-IFr" id="fua-To-pOP"/>

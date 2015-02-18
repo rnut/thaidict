@@ -48,6 +48,7 @@
 }
 
 -(void)setHiddenInterface:(BOOL)boolean{
+    [self.ExapmpleView setHidden:boolean];
     [speakBtn setHidden:boolean];
     [TranslateTable setHidden:boolean];
     [SearchLabel setHidden:boolean];

@@ -26,6 +26,7 @@
 @property (nonatomic, strong) NSArray *pageImages;
 @property (nonatomic, strong) NSMutableArray *pageViews;
 @property (strong, nonatomic) IBOutlet UILabel *SampleLabel;
+@property (strong, nonatomic) IBOutlet UIView *ExapmpleView;
 
 
 @property (strong, nonatomic) IBOutlet UICollectionView *CollectionImage;
