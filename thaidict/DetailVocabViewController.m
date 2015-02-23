@@ -10,6 +10,8 @@
 
 @interface DetailVocabViewController ()
 {
+    BOOL flagDetail;
+    UIView *overlayView;
 }
 @end
 
@@ -17,11 +19,11 @@
 @synthesize ChooseVocab;
 @synthesize Player;
 @synthesize pageImages = _pageImages;
-@synthesize pageViews = _pageViews;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+//    [self setHiddenExternalInfoInterface:YES];
+    flagDetail = NO;
     if (ChooseVocab == nil) {
         [self setHiddenInterface:YES];
     }
@@ -29,6 +31,7 @@
         SearchLabel.text = ChooseVocab.Search;
         TranslateInfo = [Vocab translateVocab:ChooseVocab];
         if (TranslateInfo.count == 0) {
+            [self setHiddenInterface:YES];
             TranslateInfo = [Vocab translateByExternal:ChooseVocab];
             if (TranslateInfo.count > 0) {
                 [self setHiddenInterface:NO];
@@ -40,6 +43,10 @@
                 ((UICollectionViewFlowLayout *)self.CollectionImage.collectionViewLayout).minimumLineSpacing = 2.0f;
                 ((UICollectionViewFlowLayout *)self.CollectionImage.collectionViewLayout).scrollDirection = UICollectionViewScrollDirectionHorizontal;
                 [TranslateTable reloadData];
+            }
+            else{
+                [SearchLabel setHidden:NO];
+                [SearchLabel setText:@"Word Not Found"];
             }
         }
         else{
@@ -55,30 +62,54 @@
             
 
         }
-        
         if (ChooseVocab.Language == LanguageTHA) {
             if (TranslateInfo.count > 0) {
                self.SampleLabel.text = [[[TranslateInfo objectAtIndex:0] objectAtIndex:0] Sample];
             }
-            
         }
-
-        
-        
-        
     }
+    
+    
+    //add touch gesture
+    UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    [self.ExapmpleView addGestureRecognizer:singleFingerTap];
+}
+
+- (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
+    NSLog(@"tap exampleview");
+    [self addOverlayAndIndicator];
+    [self loadExample];
+//    [self loadImage];
+//    [UIView animateWithDuration:2.0 animations:^{
+//        self.ExapmpleView.layer.backgroundColor = [UIColor greenColor].CGColor;
+//    }completion:^(BOOL finished){}];
     
 }
 
 -(void)setHiddenInterface:(BOOL)boolean{
-    [self.ExapmpleView setHidden:boolean];
     [speakBtn setHidden:boolean];
     [TranslateTable setHidden:boolean];
     [SearchLabel setHidden:boolean];
-    [self.SampleLabel setHidden:boolean];
-    [self.CollectionImage setHidden:boolean];
 }
 
+-(void)setHiddenExternalInfoInterface:(BOOL)boolean{
+    [self.ExapmpleView setHidden:boolean];
+    [self.SampleLabel setHidden:boolean];
+    [self.CollectionImage setHidden:boolean];
+    [self.exmapleIndi setHidden:boolean];
+}
+
+#pragma mark Overlay
+-(void)addOverlayAndIndicator{
+    [self.exmapleIndi startAnimating];
+    overlayView = [[UIView alloc] initWithFrame:[self.ExapmpleView bounds]];
+    overlayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+    [self.ExapmpleView addSubview:overlayView];
+}
+-(void)removeOverlayAndIndicator{
+    [self.exmapleIndi stopAnimating];
+    [overlayView removeFromSuperview];
+}
 #pragma mark tableview
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -154,32 +185,39 @@
 }
 
 
-#pragma mark sound
-//- (IBAction)otherInformation:(id)sender {
-//    
-//    [self.pageControl reloadInputViews];
-//    
-//    APImage *img = [[APImage alloc] initWithVocabSearch:[ChooseVocab Search] Language:[ChooseVocab Language]];
-//    _pageImages = [img Image];
-//    NSInteger pageCount = self.pageImages.count;
-//    
-//    // Set up the page control
-//    self.pageControl.currentPage = 0;
-//    self.pageControl.numberOfPages = pageCount;
-//    
-//    // Set up the array to hold the views for each page
-//    self.pageViews = [[NSMutableArray alloc] init];
-//    for (NSInteger i = 0; i < pageCount; ++i) {
-//        [self.pageViews addObject:[NSNull null]];
-//    }
-//    
-//}
-
+#pragma mark External API
 -(IBAction)speakSpeech:(id)sender{
+    [self setHiddenExternalInfoInterface:NO];
+    [self loadSound];
+}
+-(void)loadImage{
+    
     APImage *img = [[APImage alloc] initWithVocabSearch:[ChooseVocab Search] Language:[ChooseVocab Language]];
     _pageImages = [img Image];
     [self.CollectionImage reloadData];
-    //load sound
+}
+-(void)loadExample{
+    dispatch_queue_t exQueue_ = dispatch_queue_create("exampleque", NULL);
+    dispatch_async(exQueue_, ^{
+
+        [ChooseVocab loadSampleENG];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if ([[ChooseVocab Sample] isEqualToString:@""] || [ChooseVocab Sample] == nil) {
+                self.SampleLabel.text = @"not found example";
+                [self removeOverlayAndIndicator];
+            }
+            else{
+                self.SampleLabel.text = [ChooseVocab Sample];
+                [self removeOverlayAndIndicator];
+            }
+        });
+    });
+    
+    
+//    [ChooseVocab loadSampleENG];
+//    self.SampleLabel.text = [ChooseVocab Sample];
+}
+-(void)loadSound{
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
     [audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
     [audioSession setActive:YES error:nil];
@@ -216,18 +254,13 @@
         [Player setNumberOfLoops:0];
         [Player play];
     }
-    //use when go out from this view
+}
+
+-(void)deleteSound{
     if ([APSpeech deleteSpeech:[ChooseVocab Search]]) {
         NSLog(@"delete success");
     }
-    //----
-    
-    
-    //load Sample
-    [ChooseVocab loadSampleENG];
-    self.SampleLabel.text = [ChooseVocab Sample];
 }
-
 
 #pragma mark collectionview
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
@@ -247,8 +280,11 @@
 }
 
 
-
-
+#pragma mark retrun resource
+-(void)viewWillDisappear:(BOOL)animated{
+    [self deleteSound];
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }

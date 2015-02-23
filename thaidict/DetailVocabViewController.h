@@ -24,10 +24,10 @@
 @property(nonatomic,strong)NSMutableArray *ArrayTranslate;
 @property(nonatomic,strong)AVAudioPlayer *Player;
 @property (nonatomic, strong) NSArray *pageImages;
-@property (nonatomic, strong) NSMutableArray *pageViews;
 @property (strong, nonatomic) IBOutlet UILabel *SampleLabel;
 @property (strong, nonatomic) IBOutlet UIView *ExapmpleView;
 
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *exmapleIndi;
 
 @property (strong, nonatomic) IBOutlet UICollectionView *CollectionImage;
 @property(nonatomic,strong)Vocab *ChooseVocab;

@@ -243,19 +243,24 @@
                                             <rect key="frame" x="8" y="8" width="552" height="490"/>
                                         </variation>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lu5-29-3nd">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="please tap to get information" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lu5-29-3nd">
                                         <rect key="frame" x="8" y="40" width="552" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="0.34338304920000001" green="0.1184381541" blue="0.099352773510000006" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="lcl-47-3zn">
+                                        <rect key="frame" x="245" y="21" width="37" height="37"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.92922979800000005" green="0.92922979800000005" blue="0.92922979800000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="lcl-47-3zn" secondAttribute="centerX" constant="20.5" id="5dt-M2-3AH"/>
                                     <constraint firstItem="Lu5-29-3nd" firstAttribute="leading" secondItem="Xok-u4-fEB" secondAttribute="leading" constant="8" id="MyF-O4-e3s"/>
                                     <constraint firstAttribute="centerX" secondItem="XAi-Q4-QMg" secondAttribute="centerX" id="VvB-g0-F4f"/>
                                     <constraint firstAttribute="trailing" secondItem="Lu5-29-3nd" secondAttribute="trailing" constant="8" id="Wfy-UK-cOd"/>
                                     <constraint firstItem="Lu5-29-3nd" firstAttribute="top" secondItem="XAi-Q4-QMg" secondAttribute="bottom" constant="8" id="XJu-Dw-eFz"/>
+                                    <constraint firstAttribute="centerY" secondItem="lcl-47-3zn" secondAttribute="centerY" constant="0.5" id="ZfM-Oi-DyJ"/>
                                     <constraint firstItem="XAi-Q4-QMg" firstAttribute="leading" secondItem="Xok-u4-fEB" secondAttribute="leading" constant="8" id="cos-cL-igA"/>
                                     <constraint firstItem="XAi-Q4-QMg" firstAttribute="top" secondItem="Xok-u4-fEB" secondAttribute="top" constant="8" id="kwU-hB-lNi"/>
                                     <constraint firstAttribute="centerX" secondItem="Lu5-29-3nd" secondAttribute="centerX" id="mpA-bB-Lv7"/>
@@ -286,7 +291,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="137" height="123"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gVy-Zc-VO9">
+                                                <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gVy-Zc-VO9">
                                                     <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="126" id="2uL-nt-ch0"/>
@@ -410,6 +415,7 @@
                         <outlet property="SampleLabel" destination="Lu5-29-3nd" id="eaH-bj-cGr"/>
                         <outlet property="SearchLabel" destination="62u-td-rak" id="QfC-Se-UXS"/>
                         <outlet property="TranslateTable" destination="zzv-18-IFr" id="fua-To-pOP"/>
+                        <outlet property="exmapleIndi" destination="lcl-47-3zn" id="j7D-tt-PzI"/>
                         <outlet property="speakBtn" destination="Y84-BG-PXN" id="65N-kn-tcp"/>
                     </connections>
                 </viewController>
