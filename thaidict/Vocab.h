@@ -42,7 +42,7 @@
 +(NSMutableArray *)listDictByVocab:(NSString *)vocab;
 
 +(NSMutableArray *)translateVocab:(Vocab *)vocab;
-
++(NSMutableArray *)translateByExternal:(Vocab *)vocab;
 //getData form api server
 -(BOOL)loadSound;
 -(BOOL)loadSampleENG;

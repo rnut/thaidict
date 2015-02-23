@@ -89,7 +89,7 @@
             }
         }
         
-        [db queryWithString:[NSString stringWithFormat:@"select IFNULL(id, '') as id, IFNULL(tsearch, '') as esearch,IFNULL(eentry, '') as eentry,IFNULL(tcat, '') as cat,IFNULL(tsyn, '') as esyn,IFNULL(tant, '') as eant,IFNULL(tsample, '') as sample from %@ where esearch = '%@' order by tsearch",tableName,vocab.Search]];
+        [db queryWithString:[NSString stringWithFormat:@"select IFNULL(id, '') as id, IFNULL(tsearch, '') as esearch,IFNULL(eentry, '') as eentry,IFNULL(tcat, '') as cat,IFNULL(tsyn, '') as esyn,IFNULL(tant, '') as eant,IFNULL(tsample, '') as sample from %@ where esearch like '%@' order by tsearch",tableName,vocab.Search]];
         int i =0;
         while([db.ObjResult next]) {
             NSString *cat = [db.ObjResult stringForColumn:@"cat"];
@@ -116,7 +116,7 @@
     else if(vocab.Language == LanguageENG){
         char first = [[vocab.Search uppercaseString] characterAtIndex:0];
         NSString *tableName = [NSString  stringWithFormat:@"eng2th_%c",first];
-        NSString *querySTR =[NSString stringWithFormat:@"select IFNULL(id, '') as id, IFNULL(esearch, '') as esearch,IFNULL(eentry, '') as eentry,IFNULL(tentry, '') as tentry,IFNULL(ecat, '') as cat,IFNULL(ethai, '') as ethai,IFNULL(esyn, '') as esyn,IFNULL(eant, '') as eant from %@ where esearch = '%@' order by ecat",tableName,vocab.Search];
+        NSString *querySTR =[NSString stringWithFormat:@"select IFNULL(id, '') as id, IFNULL(esearch, '') as esearch,IFNULL(eentry, '') as eentry,IFNULL(tentry, '') as tentry,IFNULL(ecat, '') as cat,IFNULL(ethai, '') as ethai,IFNULL(esyn, '') as esyn,IFNULL(eant, '') as eant from %@ where esearch like '%@' order by ecat",tableName,vocab.Search];
         [db queryWithString:querySTR];
         
         int i = 0;
@@ -184,6 +184,60 @@
         }
     }
     return ret2;
+}
+
++(NSMutableArray *)translateByExternal:(Vocab *)vocab{
+    NSMutableArray *retrival = [[NSMutableArray alloc] init];
+
+    NSError *error = nil;
+    NSString *html = [Connect connectHtmlWithPath:[NSString stringWithFormat:@"http://dict.longdo.com/mobile.php?search=%@",[vocab Search]]];
+    NSRange rang1 = [html rangeOfString:@"ศัพท์บัญญัติราชบัณฑิตยสถาน"];
+    if (rang1.location != NSNotFound) {
+        NSInteger start = rang1.location;
+        NSInteger stop = html.length-start;
+        NSRange finRang = NSMakeRange(start,stop);
+        html = [html substringWithRange:finRang];
+            
+        HTMLParser *parser = [[HTMLParser alloc] initWithString:html error:&error];
+            
+        if (error) {
+            NSLog(@"Error: %@", error);
+        }
+            
+        HTMLNode *bodyNode = [parser body];
+            
+        NSArray *tableNodes = [bodyNode findChildTags:@"table"];
+        HTMLNode *SampleTable = [tableNodes objectAtIndex:0];
+        NSArray *trNodes = [SampleTable findChildTags:@"td"];
+        BOOL flag = NO;
+        NSString *search;
+        NSString *entry;
+        NSMutableArray *retrive = [[NSMutableArray alloc] init];
+            for (HTMLNode *n in trNodes) {
+                if ([[n getAttributeNamed:@"width"] isEqualToString:@"40%"]) {
+                    NSString *tmpSearch =[n.rawContents stripHtml];
+                    search = tmpSearch;
+                }
+                else{
+                    NSString *tmpEntry = [NSString stringWithFormat:@"%@ %@",search,[n.rawContents stripHtml]];
+                    entry = tmpEntry;
+                    flag = YES;
+                }
+                
+                if (flag) {
+                    Vocab *tmp = [[Vocab alloc] init];
+                    [tmp setSearch:search];
+                    [tmp setEntry:entry];
+                    [tmp setLanguage:vocab.Language];
+                    [tmp setCat:@"ศัพท์บัญญัติราชบัณฑิตยสถาน"];
+                    [retrive addObject:tmp];
+                    flag = NO;
+                }
+            }
+        [retrival addObject:retrive];
+    }
+
+    return retrival;
 }
 #pragma mark load data from api server
 -(BOOL)loadSound{

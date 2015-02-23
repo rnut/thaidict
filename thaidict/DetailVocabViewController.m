@@ -1,4 +1,4 @@
-//
+    //
 //  DetailVocabViewController.m
 //  thaidict
 //
@@ -26,23 +26,46 @@
         [self setHiddenInterface:YES];
     }
     else{
-        [self setHiddenInterface:NO];
-        //set delegate
-        [TranslateTable setDataSource:self];
-        [TranslateTable setDelegate:self];
-        [self.CollectionImage setDelegate:self];
-        [self.CollectionImage setDataSource:self];
-        ((UICollectionViewFlowLayout *)self.CollectionImage.collectionViewLayout).minimumLineSpacing = 2.0f;
-        ((UICollectionViewFlowLayout *)self.CollectionImage.collectionViewLayout).scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        
         SearchLabel.text = ChooseVocab.Search;
         TranslateInfo = [Vocab translateVocab:ChooseVocab];
-        [TranslateTable reloadData];
-        if (ChooseVocab.Language == LanguageTHA) {
-            if ([TranslateInfo count] > 0) {
-                self.SampleLabel.text = [[[TranslateInfo objectAtIndex:0] objectAtIndex:0] Sample];
+        if (TranslateInfo.count == 0) {
+            TranslateInfo = [Vocab translateByExternal:ChooseVocab];
+            if (TranslateInfo.count > 0) {
+                [self setHiddenInterface:NO];
+                //set delegate
+                [TranslateTable setDataSource:self];
+                [TranslateTable setDelegate:self];
+                [self.CollectionImage setDelegate:self];
+                [self.CollectionImage setDataSource:self];
+                ((UICollectionViewFlowLayout *)self.CollectionImage.collectionViewLayout).minimumLineSpacing = 2.0f;
+                ((UICollectionViewFlowLayout *)self.CollectionImage.collectionViewLayout).scrollDirection = UICollectionViewScrollDirectionHorizontal;
+                [TranslateTable reloadData];
             }
         }
+        else{
+            [self setHiddenInterface:NO];
+            //set delegate
+            [TranslateTable setDataSource:self];
+            [TranslateTable setDelegate:self];
+            [self.CollectionImage setDelegate:self];
+            [self.CollectionImage setDataSource:self];
+            ((UICollectionViewFlowLayout *)self.CollectionImage.collectionViewLayout).minimumLineSpacing = 2.0f;
+            ((UICollectionViewFlowLayout *)self.CollectionImage.collectionViewLayout).scrollDirection = UICollectionViewScrollDirectionHorizontal;
+            [TranslateTable reloadData];
+            
+
+        }
+        
+        if (ChooseVocab.Language == LanguageTHA) {
+            if (TranslateInfo.count > 0) {
+               self.SampleLabel.text = [[[TranslateInfo objectAtIndex:0] objectAtIndex:0] Sample];
+            }
+            
+        }
+
+        
+        
+        
     }
     
 }

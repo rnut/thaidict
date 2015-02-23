@@ -42,9 +42,6 @@ int idrec = 0;
 }
 
 #pragma mark textfield
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    [[self view] endEditing:TRUE];
-}
 -(void)textFieldDidChange :(UITextField *)theTextField{
     //    NSLog(@"%lu",(unsigned long)[theTextField.text length]);
     //    int x = [theTextField.text characterAtIndex:0];
@@ -75,7 +72,19 @@ int idrec = 0;
     return rightUtilityButtons;
 }
 
-
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    [self performSegueWithIdentifier:@"chooseVocab" sender:@"textfield"];
+    return YES;
+}
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+//    [[self view] endEditing:TRUE];
+    UITouch *touch = [[event allTouches] anyObject];
+    if ([SearchBox isFirstResponder] && [touch view] != SearchBox) {
+        [SearchBox resignFirstResponder];
+    }
+    [super touchesBegan:touches withEvent:event];
+}
 
 #pragma mark tableview
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -104,7 +113,7 @@ int idrec = 0;
     return 3;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self performSegueWithIdentifier:@"chooseVocab" sender:self];
+    [self performSegueWithIdentifier:@"chooseVocab" sender:nil];
 }
 
 #pragma mark swipeable
@@ -160,10 +169,15 @@ int idrec = 0;
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"chooseVocab"])
     {
-        // Get reference to the destination view controller
+        [SearchBox resignFirstResponder];
         
         DetailVocabViewController *vc = [segue destinationViewController];
-        Vocab *choose = [ArrayWords objectAtIndex:[[TableWords indexPathForSelectedRow] row]];
+         Vocab *choose;
+        if (sender  != nil) {
+            choose = [[Vocab alloc] initWithLanguage:[Language checkLanguage:SearchBox.text] IDvocab:0 Search:SearchBox.text Entry:nil Cat:nil Synonym:nil Antonym:nil];
+        }else{
+            choose = [ArrayWords objectAtIndex:[[TableWords indexPathForSelectedRow] row]];
+        }
         
         [History keepHistory:choose];
         [vc setChooseVocab:choose];
