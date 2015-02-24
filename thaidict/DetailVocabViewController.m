@@ -11,6 +11,7 @@
 @interface DetailVocabViewController ()
 {
     BOOL flagDetail;
+    BOOL flagSample;//yes->search , no ->Ignore
     UIView *overlayView;
 }
 @end
@@ -23,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 //    [self setHiddenExternalInfoInterface:YES];
-    flagDetail = NO;
+    flagSample = YES;
     if (ChooseVocab == nil) {
         [self setHiddenInterface:YES];
     }
@@ -32,6 +33,9 @@
         TranslateInfo = [Vocab translateVocab:ChooseVocab];
         if (TranslateInfo.count == 0) {
             [self setHiddenInterface:YES];
+            
+            //ทำ dispatch
+            
             TranslateInfo = [Vocab translateByExternal:ChooseVocab];
             if (TranslateInfo.count > 0) {
                 [self setHiddenInterface:NO];
@@ -64,7 +68,8 @@
         }
         if (ChooseVocab.Language == LanguageTHA) {
             if (TranslateInfo.count > 0) {
-               self.SampleLabel.text = [[[TranslateInfo objectAtIndex:0] objectAtIndex:0] Sample];
+                self.SampleLabel.text = [[[TranslateInfo objectAtIndex:0] objectAtIndex:0] Sample];
+                flagSample = NO;
             }
         }
     }
@@ -77,6 +82,7 @@
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
     NSLog(@"tap exampleview");
+
     [self addOverlayAndIndicator];
     [self loadExample];
 //    [self loadImage];
@@ -205,10 +211,12 @@
             if ([[ChooseVocab Sample] isEqualToString:@""] || [ChooseVocab Sample] == nil) {
                 self.SampleLabel.text = @"not found example";
                 [self removeOverlayAndIndicator];
+                flagSample = NO;
             }
             else{
                 self.SampleLabel.text = [ChooseVocab Sample];
                 [self removeOverlayAndIndicator];
+                flagSample = NO;
             }
         });
     });

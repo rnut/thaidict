@@ -47,8 +47,15 @@ int idrec = 0;
     //    int x = [theTextField.text characterAtIndex:0];
     //    NSLog(@"ascii : %@ is %d",theTextField.text,x);
     if ([theTextField.text length] > 0) {
+        
         ArrayWords = [Vocab listDictByVocab:theTextField.text];
-        [TableWords reloadData];
+        if ([ArrayWords count] == 0) {
+            NSLog(@"search by internet");
+        }
+        else{
+          [TableWords reloadData];
+        }
+        
     }
     
 }

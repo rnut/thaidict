@@ -236,7 +236,103 @@
             }
         [retrival addObject:retrive];
     }
-
+    if (retrival.count == 0) {
+        NSRange rang1 = [html rangeOfString:@"Longdo Unapproved"];
+        if (rang1.location != NSNotFound) {
+            NSInteger start = rang1.location;
+            NSInteger stop = html.length-start;
+            NSRange finRang = NSMakeRange(start,stop);
+            html = [html substringWithRange:finRang];
+            
+            HTMLParser *parser = [[HTMLParser alloc] initWithString:html error:&error];
+            
+            if (error) {
+                NSLog(@"Error: %@", error);
+            }
+            
+            HTMLNode *bodyNode = [parser body];
+            
+            NSArray *tableNodes = [bodyNode findChildTags:@"table"];
+            HTMLNode *SampleTable = [tableNodes objectAtIndex:0];
+            NSArray *trNodes = [SampleTable findChildTags:@"td"];
+            BOOL flag = NO;
+            NSString *search;
+            NSString *entry;
+            NSMutableArray *retrive = [[NSMutableArray alloc] init];
+            for (HTMLNode *n in trNodes) {
+                if ([[n getAttributeNamed:@"width"] isEqualToString:@"40%"]) {
+                    NSString *tmpSearch =[n.rawContents stripHtml];
+                    search = tmpSearch;
+                }
+                else{
+                    NSString *tmpEntry = [NSString stringWithFormat:@"%@ %@",search,[n.rawContents stripHtml]];
+                    entry = tmpEntry;
+                    flag = YES;
+                }
+                
+                if (flag) {
+                    Vocab *tmp = [[Vocab alloc] init];
+                    [tmp setSearch:search];
+                    [tmp setEntry:entry];
+                    [tmp setLanguage:vocab.Language];
+                    [tmp setCat:@"Longdo Unapproved"];
+                    [retrive addObject:tmp];
+                    flag = NO;
+                }
+            }
+            [retrival addObject:retrive];
+        }
+    }
+    if (retrival.count == 0) {
+        NSRange rang1 = [html rangeOfString:@"พจนานุกรม ฉบับราชบัณฑิตยสถาน"];
+        if (rang1.location != NSNotFound) {
+            NSInteger start = rang1.location;
+            NSInteger stop = html.length-start;
+            NSRange finRang = NSMakeRange(start,stop);
+            html = [html substringWithRange:finRang];
+            
+            HTMLParser *parser = [[HTMLParser alloc] initWithString:html error:&error];
+            
+            if (error) {
+                NSLog(@"Error: %@", error);
+            }
+            
+            HTMLNode *bodyNode = [parser body];
+            
+            NSArray *tableNodes = [bodyNode findChildTags:@"table"];
+            HTMLNode *SampleTable = [tableNodes objectAtIndex:0];
+            NSArray *trNodes = [SampleTable findChildTags:@"td"];
+            BOOL flag = NO;
+            NSString *search;
+            NSString *entry;
+            NSMutableArray *retrive = [[NSMutableArray alloc] init];
+            for (HTMLNode *n in trNodes) {
+                if ([[n getAttributeNamed:@"width"] isEqualToString:@"40%"]) {
+                    NSString *tmpSearch =[n.rawContents stripHtml];
+                    search = tmpSearch;
+                }
+                else{
+                    NSString *tmpEntry = [NSString stringWithFormat:@"%@ %@",search,[n.rawContents stripHtml]];
+                    entry = tmpEntry;
+                    flag = YES;
+                }
+                
+                if (flag) {
+                    Vocab *tmp = [[Vocab alloc] init];
+                    [tmp setSearch:search];
+                    [tmp setEntry:entry];
+                    [tmp setLanguage:vocab.Language];
+                    [tmp setCat:@"พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. ๒๕๔๒"];
+                    [retrive addObject:tmp];
+                    flag = NO;
+                }
+            }
+            [retrival addObject:retrive];
+        }
+    }
+    
+    
+    
     return retrival;
 }
 #pragma mark load data from api server
