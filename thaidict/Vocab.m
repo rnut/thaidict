@@ -337,8 +337,14 @@
 }
 #pragma mark load data from api server
 -(BOOL)loadSound{
-//    todo  Asyn get data
-    NSString *path = [APSpeech getSpeechThis:[self Search] inLanguage:APSpeechLanguageENG];
+    NSString *path;
+    if (self.Language == LanguageENG) {
+        path = [APSpeech getSpeechThis:[self Search] inLanguage:APSpeechLanguageENG];
+    }
+    else{
+        path = [APSpeech getSpeechThis:[self Search] inLanguage:APSpeechLanguageTHA];
+    }
+    
     if (![path isEqualToString:@"failed"]) {
         [self setSoundPath:path];
         return YES;

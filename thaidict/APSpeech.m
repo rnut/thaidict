@@ -8,7 +8,7 @@
 #import "APSpeech.h"
 
 
-#define URL @"http://translate.google.com/translate_tts?tl=%@&q=%@"
+#define URL @"http://translate.google.co.th/translate_tts?tl=%@&q=%@"
 #define UA  @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7.5; rv:2.0.1) Gecko/20100101 Firefox/4.1.2"
 
 
