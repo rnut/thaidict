@@ -28,6 +28,7 @@
 @property (strong, nonatomic) IBOutlet UIView *ExapmpleView;
 
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *exmapleIndi;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *IndicatorSpeak;
 
 @property (strong, nonatomic) IBOutlet UICollectionView *CollectionImage;
 @property(nonatomic,strong)Vocab *ChooseVocab;

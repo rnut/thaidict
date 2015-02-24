@@ -103,6 +103,7 @@
     [self.SampleLabel setHidden:boolean];
     [self.CollectionImage setHidden:boolean];
     [self.exmapleIndi setHidden:boolean];
+    [self.IndicatorSpeak setHidden:boolean];
 }
 
 #pragma mark Overlay
@@ -193,7 +194,7 @@
 
 #pragma mark External API
 -(IBAction)speakSpeech:(id)sender{
-    [self setHiddenExternalInfoInterface:NO];
+//    [self setHiddenExternalInfoInterface:NO];
     [self loadSound];
 }
 -(void)loadImage{
@@ -249,18 +250,32 @@
     }
     else{
         // load sound
-        [ChooseVocab loadSound];
-        //
-        if ( Player && [Player isPlaying] ) {
-            [Player stop];
-            Player = nil;
-        }
+        [speakBtn setHidden:YES];
+        [self.IndicatorSpeak setHidden:NO];
+        [self.IndicatorSpeak startAnimating];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0ul), ^{
+            BOOL flag = [ChooseVocab loadSound];
+            
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (flag) {
+                    if ( Player && [Player isPlaying] ) {
+                        [Player stop];
+                        Player = nil;
+                    }
+                    
+                    Player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:path] error:nil];
+                    Player.volume =2.0f;
+                    [Player prepareToPlay];
+                    [Player setNumberOfLoops:0];
+                    [Player play];
+                    [self.IndicatorSpeak stopAnimating];
+                    [speakBtn setHidden:NO];
+                }
+            });
+        });
+
         
-        Player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:path] error:&err];
-        Player.volume =2.0f;
-        [Player prepareToPlay];
-        [Player setNumberOfLoops:0];
-        [Player play];
     }
 }
 

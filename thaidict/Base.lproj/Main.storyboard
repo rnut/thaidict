@@ -120,6 +120,10 @@
                                     <action selector="speakSpeech:" destination="f5b-yJ-VGn" eventType="touchUpInside" id="ibf-KF-ir9"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Kau-Fr-rzI">
+                                <rect key="frame" x="542" y="31" width="37" height="37"/>
+                                <color key="color" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="77" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="zzv-18-IFr">
                                 <rect key="frame" x="0.0" y="78" width="600" height="262"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -356,11 +360,14 @@
                         <constraints>
                             <constraint firstItem="zzv-18-IFr" firstAttribute="top" secondItem="Y84-BG-PXN" secondAttribute="bottom" constant="8" id="2E9-4f-r4b"/>
                             <constraint firstItem="62u-td-rak" firstAttribute="top" secondItem="Cy6-ll-9xr" secondAttribute="topMargin" constant="26" id="35Y-i3-ivJ"/>
+                            <constraint firstItem="Kau-Fr-rzI" firstAttribute="centerX" secondItem="Y84-BG-PXN" secondAttribute="centerX" id="886-2C-er5"/>
                             <constraint firstAttribute="trailing" secondItem="Xok-u4-fEB" secondAttribute="trailing" constant="16" id="8Xb-5T-xpq"/>
                             <constraint firstItem="Xok-u4-fEB" firstAttribute="top" secondItem="zzv-18-IFr" secondAttribute="bottom" constant="6" id="8rU-FF-ZI3"/>
                             <constraint firstItem="zzv-18-IFr" firstAttribute="top" secondItem="62u-td-rak" secondAttribute="bottom" constant="10" id="BfF-TB-glU"/>
+                            <constraint firstItem="Kau-Fr-rzI" firstAttribute="centerY" secondItem="62u-td-rak" secondAttribute="centerY" constant="2" id="BwU-ZG-0HG"/>
                             <constraint firstItem="Xok-u4-fEB" firstAttribute="top" secondItem="zzv-18-IFr" secondAttribute="bottom" constant="8" id="Dqo-L6-MRa"/>
                             <constraint firstItem="zzv-18-IFr" firstAttribute="top" secondItem="Y84-BG-PXN" secondAttribute="bottom" constant="8" id="GGH-lL-TAM"/>
+                            <constraint firstItem="zzv-18-IFr" firstAttribute="top" secondItem="Kau-Fr-rzI" secondAttribute="bottom" constant="19" id="I6p-Bh-SPx"/>
                             <constraint firstItem="hVm-lB-5ri" firstAttribute="top" secondItem="Xok-u4-fEB" secondAttribute="bottom" constant="8" id="KDw-sA-lel"/>
                             <constraint firstItem="zzv-18-IFr" firstAttribute="width" secondItem="Cy6-ll-9xr" secondAttribute="width" id="KXV-Oh-s63"/>
                             <constraint firstItem="Y84-BG-PXN" firstAttribute="trailing" secondItem="Cy6-ll-9xr" secondAttribute="trailingMargin" id="PMq-uc-f4a"/>
@@ -374,6 +381,8 @@
                             <constraint firstItem="zzv-18-IFr" firstAttribute="leading" secondItem="Cy6-ll-9xr" secondAttribute="leading" id="eK3-bh-rYC"/>
                             <constraint firstAttribute="trailing" secondItem="zzv-18-IFr" secondAttribute="trailing" id="f4I-67-aa9"/>
                             <constraint firstItem="Y84-BG-PXN" firstAttribute="centerY" secondItem="62u-td-rak" secondAttribute="centerY" constant="2" id="i0X-0m-MQa"/>
+                            <constraint firstItem="Kau-Fr-rzI" firstAttribute="centerY" secondItem="Y84-BG-PXN" secondAttribute="centerY" id="jAr-v1-TED"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Kau-Fr-rzI" secondAttribute="trailing" constant="14" id="kJR-0I-Gyi"/>
                             <constraint firstItem="62u-td-rak" firstAttribute="top" secondItem="gA9-x7-Guh" secondAttribute="bottom" constant="6" id="q7M-Cz-Eji"/>
                             <constraint firstItem="zzv-18-IFr" firstAttribute="leading" secondItem="Cy6-ll-9xr" secondAttribute="leading" id="wyZ-R2-Chd"/>
                             <constraint firstItem="62u-td-rak" firstAttribute="top" secondItem="gA9-x7-Guh" secondAttribute="bottom" constant="6" id="xEr-Y2-nSA"/>
@@ -385,11 +394,14 @@
                                 <exclude reference="35Y-i3-ivJ"/>
                                 <exclude reference="q7M-Cz-Eji"/>
                                 <exclude reference="GGH-lL-TAM"/>
+                                <exclude reference="I6p-Bh-SPx"/>
                                 <exclude reference="Yai-zp-RRw"/>
                                 <exclude reference="f4I-67-aa9"/>
                                 <exclude reference="wyZ-R2-Chd"/>
                                 <exclude reference="yl1-3Q-tMK"/>
                                 <exclude reference="8rU-FF-ZI3"/>
+                                <exclude reference="BwU-ZG-0HG"/>
+                                <exclude reference="kJR-0I-Gyi"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=regular">
@@ -412,6 +424,7 @@
                     <connections>
                         <outlet property="CollectionImage" destination="hVm-lB-5ri" id="fHX-Sl-xLG"/>
                         <outlet property="ExapmpleView" destination="Xok-u4-fEB" id="jGR-fj-hSk"/>
+                        <outlet property="IndicatorSpeak" destination="Kau-Fr-rzI" id="vI9-cv-c6s"/>
                         <outlet property="SampleLabel" destination="Lu5-29-3nd" id="eaH-bj-cGr"/>
                         <outlet property="SearchLabel" destination="62u-td-rak" id="QfC-Se-UXS"/>
                         <outlet property="TranslateTable" destination="zzv-18-IFr" id="fua-To-pOP"/>
