@@ -31,6 +31,7 @@
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *IndicatorSpeak;
 
 @property (strong, nonatomic) IBOutlet UICollectionView *CollectionImage;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *IndicatorImage;
 @property(nonatomic,strong)Vocab *ChooseVocab;
 //- (IBAction)otherInformation:(id)sender;
 

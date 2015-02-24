@@ -9,7 +9,10 @@
 #import "APImage.h"
 
 @implementation APImage
-
+{
+    NSMutableData *receivedData;
+    NSURLConnection *theConnection;
+}
 @synthesize Image;
 -(id)initWithVocabSearch:(NSString *)search Language:(DictLanguage)lang{
     if (self.Image == nil) {
@@ -23,8 +26,8 @@
         ln = @"th";
     }
 
-    NSString *path = [NSString stringWithFormat:@"https://ajax.googleapis.com/ajax/services/search/images?v=1.0&hl=%@&q=%@",ln,[search stringByReplacingOccurrencesOfString:@" " withString:@"%20"]];
-    NSURL *url = [NSURL URLWithString:path];
+    NSString *path = [NSString stringWithFormat:@"https://ajax.googleapis.com/ajax/services/search/images?v=1.0&hl=%@&q=%@",ln,search];
+    NSURL *url = [NSURL URLWithString:[path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     NSError *error = nil;
     NSData *data = [NSData dataWithContentsOfURL:url options:0 error:&error];
     NSError *localError = nil;
@@ -34,13 +37,18 @@
     NSArray *result = [[parsedObject objectForKey:@"responseData"] objectForKey:@"results"];
     if ([result count] > 0) {
         for (NSDictionary *obj in result) {
-            NSURL *tempURL = [NSURL URLWithString:[obj objectForKey:@"unescapedUrl"]];
-//            UIImageView *imgV = [[UIImageView alloc] init];
-//            UIImage *placeholder = [UIImage imageNamed:@"photo1.png"];
-//            [imgV setImageWithURL:tempURL placeholderImage:placeholder];
-            NSData *dataImg = [NSData dataWithContentsOfURL:tempURL];
-            UIImage *img = [UIImage imageWithData:dataImg];
+            NSURL *tempURL = [NSURL URLWithString:[obj objectForKey:@"tbUrl"]];
+            // Create the request.
+            NSURLRequest *postRequest = [NSURLRequest requestWithURL:tempURL];
+            NSHTTPURLResponse *response = nil;
+            NSError *error = nil;
+            NSData *responseData = [NSURLConnection sendSynchronousRequest:postRequest returningResponse:&response error:&error];
             
+            NSDictionary *dict = [response allHeaderFields];
+            NSLog(@"Status code: %ld",(long)[response statusCode]);
+            NSLog(@"Headers:\n %@",dict.description);
+            NSLog(@"Error: %@",error.description);
+            UIImage *img = [UIImage imageWithData:responseData];
             [self.Image addObject:img];
         }
     }
@@ -52,5 +60,26 @@
     
     
     return self;
+}
+
+#pragma mark delegate urlconnection
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    [receivedData setLength:0];
+}
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+//    [receivedData appendData:data];
+
+}
+- (void)connection:(NSURLConnection *)connection
+  didFailWithError:(NSError *)error
+{
+    
+    theConnection = nil;
+    receivedData = nil;
+    NSLog(@"Connection failed! Error - %@ %@",
+          [error localizedDescription],
+          [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
 }
 @end

@@ -10,7 +10,7 @@
 
 @interface DetailVocabViewController ()
 {
-    BOOL flagDetail;
+    BOOL flagDetail;//yes->search , no ->Ignore
     BOOL flagSample;//yes->search , no ->Ignore
     UIView *overlayView;
 }
@@ -23,7 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self setHiddenExternalInfoInterface:YES];
+    flagDetail = YES;
     flagSample = YES;
     if (ChooseVocab == nil) {
         [self setHiddenInterface:YES];
@@ -68,8 +68,14 @@
         }
         if (ChooseVocab.Language == LanguageTHA) {
             if (TranslateInfo.count > 0) {
-                self.SampleLabel.text = [[[TranslateInfo objectAtIndex:0] objectAtIndex:0] Sample];
-                flagSample = NO;
+                for (int i =0; i<[TranslateInfo count]; i++) {
+                    if ([[[TranslateInfo objectAtIndex:0] objectAtIndex:i] Sample] != nil) {
+                        self.SampleLabel.text = [[[TranslateInfo objectAtIndex:0] objectAtIndex:i] Sample];
+                        flagSample = NO;
+                        break;
+                    }
+                }
+                
             }
         }
     }
@@ -82,9 +88,26 @@
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
     NSLog(@"tap exampleview");
-
-    [self addOverlayAndIndicator];
-    [self loadExample];
+    if (flagDetail) {
+        [self addOverlayAndIndicator];
+        [self.IndicatorImage setHidden:NO];
+        [self.IndicatorImage startAnimating];
+        dispatch_queue_t externalque = dispatch_queue_create("getInformation", nil);
+        
+        dispatch_async(externalque, ^{
+            [self loadExample];
+            APImage *img = [[APImage alloc] initWithVocabSearch:[ChooseVocab Search] Language:[ChooseVocab Language]];
+            _pageImages = [img Image];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.CollectionImage reloadData];
+                [self.IndicatorImage stopAnimating];
+            });
+        });
+        flagDetail= NO;
+    }
+    
+    
+    
 //    [self loadImage];
 //    [UIView animateWithDuration:2.0 animations:^{
 //        self.ExapmpleView.layer.backgroundColor = [UIColor greenColor].CGColor;
@@ -104,6 +127,7 @@
     [self.CollectionImage setHidden:boolean];
     [self.exmapleIndi setHidden:boolean];
     [self.IndicatorSpeak setHidden:boolean];
+    [self.IndicatorImage setHidden:boolean];
 }
 
 #pragma mark Overlay
@@ -194,16 +218,29 @@
 
 #pragma mark External API
 -(IBAction)speakSpeech:(id)sender{
-//    [self setHiddenExternalInfoInterface:NO];
     [self loadSound];
 }
 -(void)loadImage{
-    
-    APImage *img = [[APImage alloc] initWithVocabSearch:[ChooseVocab Search] Language:[ChooseVocab Language]];
+     APImage *img = [[APImage alloc] initWithVocabSearch:[ChooseVocab Search] Language:[ChooseVocab Language]];
     _pageImages = [img Image];
     [self.CollectionImage reloadData];
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul), ^{
+//       
+//       
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            if (img.Image.count > 0) {
+//                
+//            }
+//            
+//            
+//        });
+//    });
+    
+    
+    
 }
 -(void)loadExample{
+
     dispatch_queue_t exQueue_ = dispatch_queue_create("exampleque", NULL);
     dispatch_async(exQueue_, ^{
 
