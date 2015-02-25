@@ -31,7 +31,7 @@
     NSMutableArray *retrieval = [[NSMutableArray alloc] init];
     DB *db = [[DB alloc ]init];
     
-    NSString *strQueryEn = [NSString stringWithFormat:@"SELECT IFNULL(id_his,'') as id_his,IFNULL(search,'')as search FROM history "];
+    NSString *strQueryEn = [NSString stringWithFormat:@"SELECT IFNULL(id_his,'') as id_his,IFNULL(search,'')as search FROM history  order by id_his desc"];
     
     [db queryWithString:strQueryEn];
     while([db.ObjResult next]) {

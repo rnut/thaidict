@@ -13,6 +13,7 @@
     BOOL flagDetail;//yes->search , no ->Ignore
     BOOL flagSample;//yes->search , no ->Ignore
     UIView *overlayView;
+    WYPopoverController* popoverController;
 }
 @end
 
@@ -224,20 +225,6 @@
      APImage *img = [[APImage alloc] initWithVocabSearch:[ChooseVocab Search] Language:[ChooseVocab Language]];
     _pageImages = [img Image];
     [self.CollectionImage reloadData];
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul), ^{
-//       
-//       
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            if (img.Image.count > 0) {
-//                
-//            }
-//            
-//            
-//        });
-//    });
-    
-    
-    
 }
 -(void)loadExample{
 
@@ -258,10 +245,6 @@
             }
         });
     });
-    
-    
-//    [ChooseVocab loadSampleENG];
-//    self.SampleLabel.text = [ChooseVocab Sample];
 }
 -(void)loadSound{
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
@@ -337,6 +320,73 @@
         return cell;
     }
     return nil;
+}
+#pragma mark - WYPopoverControllerDelegate
+- (BOOL)popoverControllerShouldDismissPopover:(WYPopoverController *)controller
+{
+    return YES;
+}
+
+- (void)popoverControllerDidDismissPopover:(WYPopoverController *)controller
+{
+    popoverController.delegate = nil;
+    popoverController = nil;
+}
+#pragma mark IBAction
+- (IBAction)showPopover:(id)sender
+{
+    PopOverDetail *settingsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PopOver"];
+    
+    
+    settingsViewController.preferredContentSize = CGSizeMake(320, 280);
+    
+    settingsViewController.title = @"Settings";
+    
+    [settingsViewController.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"change" style:UIBarButtonItemStylePlain target:self action:nil]];
+    
+    [settingsViewController.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:nil]];
+    
+    settingsViewController.modalInPopover = NO;
+    
+    //popovertheme
+     UIColor *Color = [UIColor grayColor];
+
+     
+     WYPopoverTheme *popoverAppearance = [[WYPopoverTheme alloc] init];
+     [popoverAppearance setOuterCornerRadius:4];
+     [popoverAppearance setOuterShadowBlurRadius:0];
+     [popoverAppearance setOuterShadowColor:[UIColor clearColor]];
+     [popoverAppearance setOuterShadowOffset:CGSizeMake(0, 0)];
+     
+     [popoverAppearance setGlossShadowColor:[UIColor clearColor]];
+     [popoverAppearance setGlossShadowOffset:CGSizeMake(0, 0)];
+     
+     [popoverAppearance setBorderWidth:8];
+     [popoverAppearance setArrowHeight:10];
+     [popoverAppearance setArrowBase:20];
+     
+     [popoverAppearance setInnerCornerRadius:4];
+     [popoverAppearance setInnerShadowBlurRadius:0];
+     [popoverAppearance setInnerShadowColor:[UIColor clearColor]];
+     [popoverAppearance setInnerShadowOffset:CGSizeMake(0, 0)];
+     
+     [popoverAppearance setFillTopColor:Color];
+     [popoverAppearance setFillBottomColor:Color];
+     [popoverAppearance setOuterStrokeColor:Color];
+     [popoverAppearance setInnerStrokeColor:Color];
+     //----
+    
+    
+    popoverController = [[WYPopoverController alloc] initWithContentViewController:settingsViewController];
+    [WYPopoverController setDefaultTheme:[WYPopoverTheme theme]];
+    popoverController.delegate = self;
+    popoverController.popoverLayoutMargins = UIEdgeInsetsMake(10, 10, 10, 10);
+    [popoverController setTheme:popoverAppearance];
+    
+    
+    
+    [popoverController presentPopoverFromBarButtonItem:shareBtn permittedArrowDirections:WYPopoverArrowDirectionAny animated:YES options:WYPopoverAnimationOptionFadeWithScale];
+    
 }
 
 

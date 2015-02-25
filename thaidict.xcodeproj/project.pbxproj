@@ -17,6 +17,11 @@
 		697544FD1A919812009ACB65 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 697544FC1A919812009ACB65 /* libxml2.dylib */; };
 		697545001A919A51009ACB65 /* Connect.m in Sources */ = {isa = PBXBuildFile; fileRef = 697544FF1A919A51009ACB65 /* Connect.m */; };
 		697545031A91B20C009ACB65 /* NSString_stripHtml.m in Sources */ = {isa = PBXBuildFile; fileRef = 697545021A91B20C009ACB65 /* NSString_stripHtml.m */; };
+		69784C9D1A9D8FB9000E6B73 /* WYPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69784C9A1A9D8FB9000E6B73 /* WYPopoverController.m */; };
+		69784C9E1A9D8FB9000E6B73 /* WYStoryboardPopoverSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 69784C9C1A9D8FB9000E6B73 /* WYStoryboardPopoverSegue.m */; };
+		69784CA01A9D96A0000E6B73 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69784C9F1A9D96A0000E6B73 /* QuartzCore.framework */; };
+		69784CA21A9D96A9000E6B73 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69784CA11A9D96A9000E6B73 /* CoreGraphics.framework */; };
+		69784CA51A9D980A000E6B73 /* PopOverDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 69784CA41A9D980A000E6B73 /* PopOverDetail.m */; };
 		697A6AD81A6F8D6A008A893A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 697A6AD71A6F8D6A008A893A /* main.m */; };
 		697A6ADB1A6F8D6A008A893A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 697A6ADA1A6F8D6A008A893A /* AppDelegate.m */; };
 		697A6ADE1A6F8D6B008A893A /* thaidict.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 697A6ADC1A6F8D6A008A893A /* thaidict.xcdatamodeld */; };
@@ -97,6 +102,14 @@
 		697544FF1A919A51009ACB65 /* Connect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Connect.m; sourceTree = "<group>"; };
 		697545011A91B20C009ACB65 /* NSString_stripHtml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSString_stripHtml.h; sourceTree = "<group>"; };
 		697545021A91B20C009ACB65 /* NSString_stripHtml.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSString_stripHtml.m; sourceTree = "<group>"; };
+		69784C991A9D8FB9000E6B73 /* WYPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYPopoverController.h; sourceTree = "<group>"; };
+		69784C9A1A9D8FB9000E6B73 /* WYPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYPopoverController.m; sourceTree = "<group>"; };
+		69784C9B1A9D8FB9000E6B73 /* WYStoryboardPopoverSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYStoryboardPopoverSegue.h; sourceTree = "<group>"; };
+		69784C9C1A9D8FB9000E6B73 /* WYStoryboardPopoverSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYStoryboardPopoverSegue.m; sourceTree = "<group>"; };
+		69784C9F1A9D96A0000E6B73 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		69784CA11A9D96A9000E6B73 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		69784CA31A9D980A000E6B73 /* PopOverDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopOverDetail.h; sourceTree = "<group>"; };
+		69784CA41A9D980A000E6B73 /* PopOverDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopOverDetail.m; sourceTree = "<group>"; };
 		697A6AD21A6F8D6A008A893A /* thaidict.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = thaidict.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		697A6AD61A6F8D6A008A893A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		697A6AD71A6F8D6A008A893A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -200,6 +213,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69784CA21A9D96A9000E6B73 /* CoreGraphics.framework in Frameworks */,
+				69784CA01A9D96A0000E6B73 /* QuartzCore.framework in Frameworks */,
 				697544FD1A919812009ACB65 /* libxml2.dylib in Frameworks */,
 				697A6C031A6F991C008A893A /* libsqlite3.0.dylib in Frameworks */,
 			);
@@ -218,6 +233,8 @@
 		695981F81A70966A00C2002D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				69784CA31A9D980A000E6B73 /* PopOverDetail.h */,
+				69784CA41A9D980A000E6B73 /* PopOverDetail.m */,
 				6906AF0E1A88C30C00087B93 /* HistoryViewController.h */,
 				6906AF0F1A88C30C00087B93 /* HistoryViewController.m */,
 				69BC97761A8361250019F71B /* Edit_Fav_ViewController.h */,
@@ -245,6 +262,17 @@
 				697544F51A91956F009ACB65 /* HTMLParser.m */,
 			);
 			name = HTMLParser;
+			sourceTree = "<group>";
+		};
+		69784C981A9D8FB9000E6B73 /* WYPopoverController */ = {
+			isa = PBXGroup;
+			children = (
+				69784C991A9D8FB9000E6B73 /* WYPopoverController.h */,
+				69784C9A1A9D8FB9000E6B73 /* WYPopoverController.m */,
+				69784C9B1A9D8FB9000E6B73 /* WYStoryboardPopoverSegue.h */,
+				69784C9C1A9D8FB9000E6B73 /* WYStoryboardPopoverSegue.m */,
+			);
+			path = WYPopoverController;
 			sourceTree = "<group>";
 		};
 		697A6AC91A6F8D6A008A893A = {
@@ -402,6 +430,9 @@
 		697A6C011A6F98C6008A893A /* thirdparty */ = {
 			isa = PBXGroup;
 			children = (
+				69784CA11A9D96A9000E6B73 /* CoreGraphics.framework */,
+				69784C9F1A9D96A0000E6B73 /* QuartzCore.framework */,
+				69784C981A9D8FB9000E6B73 /* WYPopoverController */,
 				697544F81A919574009ACB65 /* HTMLParser */,
 				697A6C191A6FB310008A893A /* lexitron2.sqlite */,
 				697A6BB91A6F98BC008A893A /* fmdb */,
@@ -558,12 +589,14 @@
 				697544F61A91956F009ACB65 /* HTMLNode.m in Sources */,
 				697A6ADB1A6F8D6A008A893A /* AppDelegate.m in Sources */,
 				6906AF101A88C30C00087B93 /* HistoryViewController.m in Sources */,
+				69784C9D1A9D8FB9000E6B73 /* WYPopoverController.m in Sources */,
 				697A6AD81A6F8D6A008A893A /* main.m in Sources */,
 				697A6C001A6F98BC008A893A /* UIWebView+AFNetworking.m in Sources */,
 				697A6BF61A6F98BC008A893A /* FMDatabasePool.m in Sources */,
 				69BC97781A8361250019F71B /* Edit_Fav_ViewController.m in Sources */,
 				697544FB1A919650009ACB65 /* APSample.m in Sources */,
 				697A6BF41A6F98BC008A893A /* FMDatabase.m in Sources */,
+				69784CA51A9D980A000E6B73 /* PopOverDetail.m in Sources */,
 				697A6BB61A6F989E008A893A /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				69DF55D91A77513500BBCDEC /* FavoriteViewController.m in Sources */,
 				695981F71A70965D00C2002D /* DetailVocabViewController.m in Sources */,
@@ -574,6 +607,7 @@
 				697A6BF51A6F98BC008A893A /* FMDatabaseAdditions.m in Sources */,
 				697A6BED1A6F98BC008A893A /* AFHTTPSessionManager.m in Sources */,
 				697A6BFE1A6F98BC008A893A /* UIProgressView+AFNetworking.m in Sources */,
+				69784C9E1A9D8FB9000E6B73 /* WYStoryboardPopoverSegue.m in Sources */,
 				697A6C181A6FA5C7008A893A /* APSpeech.m in Sources */,
 				697A6BB21A6F989E008A893A /* NSMutableArray+SWUtilityButtons.m in Sources */,
 				697A6BFC1A6F98BC008A893A /* UIButton+AFNetworking.m in Sources */,

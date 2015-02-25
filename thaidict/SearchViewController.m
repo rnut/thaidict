@@ -28,7 +28,7 @@ int idrec = 0;
     
 //    [TableWords setRowHeight:44];
     
-    ArrayWords = [Vocab listDictByVocab:@"test"];
+    ArrayWords = [Vocab listDictByVocab:@"a"];
     [TableWords reloadData];
 }
 -(void)setInterface{

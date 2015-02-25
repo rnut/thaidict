@@ -10,15 +10,16 @@
 #import "Vocab.h"
 #import "APImage.h"
 #import "VocabCell.h"
-
-@interface DetailVocabViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UIScrollViewDelegate> //
+#import "PopOverDetail.h"
+#import "WYPopoverController.h"
+@interface DetailVocabViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UIScrollViewDelegate,WYPopoverControllerDelegate>
 {
     NSMutableArray *TranslateInfo;
     Vocab *ChooseVocab;
     IBOutlet UILabel *SearchLabel;
     IBOutlet UITableView *TranslateTable;
     IBOutlet UIButton *speakBtn;
-    
+    IBOutlet UIBarButtonItem *shareBtn;
 }
 
 @property(nonatomic,strong)NSMutableArray *ArrayTranslate;
