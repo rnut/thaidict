@@ -48,20 +48,25 @@
     static NSString *CellIdentifier;
     UITableViewCell *cell;
     switch (indexPath.section) {
-        case 0:
+        case 0:{
             CellIdentifier = @"Definition";
-            cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-            break;
-        case 1:
+            DefinitionCell *cell = (DefinitionCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                Vocab *test = [[Vocab alloc] initWithLanguage:LanguageENG IDvocab:0 Search:@"test" Entry:nil Cat:nil Synonym:nil Antonym:nil];
+            return cell;
+        break;}
+        case 1:{
             CellIdentifier = @"Sample";
+//            DefinitionCell *cell = (DefinitionCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             break;
+        }
         case 2:
             CellIdentifier = @"Image";
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             break;
             
         default:
+            return cell;
             break;
     }
     

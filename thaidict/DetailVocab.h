@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "Vocab.h"
 #import "APImage.h"
-#import "VocabCell.h"
+#import "DefinitionCell.h"
+#import "SampleCell.h"
+#import "ImageCell.h"
 #import "PopOverDetail.h"
 #import "WYPopoverController.h"
 @interface DetailVocab : UIViewController<UITableViewDataSource,UITableViewDelegate>
