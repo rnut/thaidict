@@ -115,7 +115,7 @@
         NSLog(@"%d",(int)indexPath.row);
     }
     else{
-        [self performSegueWithIdentifier:@"chooseVocab" sender:nil];
+//        [self performSegueWithIdentifier:@"chooseVocab" sender:nil];
     }
 }
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
