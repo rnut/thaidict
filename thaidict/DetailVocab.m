@@ -31,16 +31,16 @@
     return 1;
 
 }
-//-(CGFloat)tableView: (UITableView*)tableView heightForRowAtIndexPath: (NSIndexPath*) indexPath{
-//    if (indexPath.row==0) {
-//        return 343.0f;
-//    }
-//    else if (indexPath.row ==1){
-//        return 106.0f;
-//    }
-//    else
-//        return 160.0f;
-//}
+-(CGFloat)tableView: (UITableView*)tableView heightForRowAtIndexPath: (NSIndexPath*) indexPath{
+    if (indexPath.row==0) {
+        return 343.0f;
+    }
+    else if (indexPath.row ==1){
+        return 106.0f;
+    }
+    else
+        return 160.0f;
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return  3;
 }
@@ -52,6 +52,7 @@
             CellIdentifier = @"Definition";
             DefinitionCell *cell = (DefinitionCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                 Vocab *test = [[Vocab alloc] initWithLanguage:LanguageENG IDvocab:0 Search:@"test" Entry:nil Cat:nil Synonym:nil Antonym:nil];
+            cell.chooseVocab = test;
             return cell;
         break;}
         case 1:{

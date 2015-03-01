@@ -10,15 +10,24 @@
 
 @implementation DefinitionCell
 @synthesize TableDefinition,chooseVocab;
+
+-(void)layoutSubviews
+{
+//    NSLog(@"test");
+//    TranslateInfo = [Vocab translateVocab:chooseVocab];
+//    [self.TableDefinition reloadData];
+}
 - (void)awakeFromNib {
     UITableView *tb =TableDefinition;
     tb.scrollEnabled=YES;
 //    Vocab *test = [[Vocab alloc] initWithLanguage:LanguageENG IDvocab:0 Search:@"test" Entry:nil Cat:nil Synonym:nil Antonym:nil];
-    TranslateInfo = [Vocab translateVocab:chooseVocab];
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
+    TranslateInfo = [Vocab translateVocab:chooseVocab];
+    [TableDefinition reloadData];
 
     // Configure the view for the selected state
 }
