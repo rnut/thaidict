@@ -16,6 +16,8 @@
 #import "ImageCell.h"
 #import "PopOverDetail.h"
 #import "WYPopoverController.h"
+#import <Social/Social.h>
+#import "Favorite.h"
 @interface DetailVocab : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {
 
@@ -37,5 +39,7 @@
 
 
 
+- (IBAction)favorite:(id)sender;
+- (IBAction)share:(id)sender;
 -(IBAction)speakSpeech:(id)sender;
 @end

@@ -23,7 +23,8 @@
 -(BOOL)keepFavorite:(Vocab*)fav_vocab;
 -(BOOL)checkExistanceOfFavWord;
 
-
++(Favorite *)favoriteVocab:(Vocab*)vocab;
 +(BOOL)favoriteVocabForReorder:(Vocab*)vocab;
 +(BOOL)reOrderFav:(NSMutableArray *)arrayFav;
++(BOOL)checkFavoriteConcurrent:(Vocab *)vocab;
 @end

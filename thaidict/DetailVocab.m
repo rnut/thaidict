@@ -10,8 +10,8 @@
 
 @interface DetailVocab ()
 {
-    BOOL flagDetail;//yes->search , no ->Ignore
-    BOOL flagSample;//yes->search , no ->Ignore
+    BOOL flagFav; //yes = not exist , no = exist
+    Favorite *objFav;
     UIView *overlayView;
     WYPopoverController* popoverController;
 }
@@ -20,6 +20,9 @@
 @implementation DetailVocab
 @synthesize ChooseVocab,Player,speakBtn;
 
+-(void)viewWillAppear:(BOOL)animated{
+    [self stateFavoriteButton];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.IndicatorSpeak setHidden:YES];
@@ -30,6 +33,19 @@
         self.SearchLabel.text = [ChooseVocab Search];
         [self setHiddenInterface:NO];
     }
+}
+
+-(void)stateFavoriteButton{
+            //check concurrnt fav
+    if ([Favorite checkFavoriteConcurrent:ChooseVocab]) {
+        flagFav = YES;
+        [self.FavBtn setImage:[UIImage imageNamed:@"fav_off.png"] forState:UIControlStateNormal];
+    }else
+    {
+        flagFav = NO;
+        [self.FavBtn setImage:[UIImage imageNamed:@"fav_on.png"] forState:UIControlStateNormal];
+    }
+
 }
 
 -(void)setHiddenInterface:(BOOL)boolean{
@@ -116,8 +132,44 @@
 //        [self loadExample];
     }
 }
+#pragma mark Favorite
+- (IBAction)favorite:(id)sender {
+    //check concurrnt fav
+    if ([Favorite checkFavoriteConcurrent:ChooseVocab]) {
+        
+        objFav = [Favorite favoriteVocab:ChooseVocab];
+        flagFav = NO;
+        [self.FavBtn setImage:[UIImage imageNamed:@"fav_on.png"] forState:UIControlStateNormal];
+    }else
+    {
+        if (objFav == nil) {
+            objFav = [[Favorite alloc] initWithVocab:ChooseVocab FAVID:0];
+        }
+        [Favorite deleteFavorite:objFav];
+        flagFav = NO;
+        [self.FavBtn setImage:[UIImage imageNamed:@"fav_off.png"] forState:UIControlStateNormal];
+    }
+}
+
+
 
 #pragma mark External API
+
+- (IBAction)share:(id)sender {
+    if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
+        SLComposeViewController * fbSheetOBJ = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+        
+        [fbSheetOBJ setInitialText:@"Post from my iOS application"];
+        [fbSheetOBJ addURL:[NSURL URLWithString:@"http://www.weblineindia.com"]];
+        [fbSheetOBJ addImage:[UIImage imageNamed:@"my_image_to_share.png"]];
+        [self presentViewController:fbSheetOBJ animated:YES completion:Nil];
+    }
+    else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warningb" message:@"please login facebook in your device" delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles: nil];
+        [alert show];
+    }
+}
+
 -(IBAction)speakSpeech:(id)sender{
     [self loadSound];
 }
@@ -179,6 +231,9 @@
         NSLog(@"delete success");
     }
 }
+
+
+
 #pragma mark retrun resource
 -(void)viewWillDisappear:(BOOL)animated{
     [self deleteSound];

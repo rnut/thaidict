@@ -15,6 +15,9 @@
 		694B496C1AA079910015A546 /* ImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 694B496B1AA079910015A546 /* ImageCell.m */; };
 		6955AD291A9322000017D45F /* VocabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6955AD281A9322000017D45F /* VocabCell.m */; };
 		695981F71A70965D00C2002D /* DetailVocabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 695981F61A70965D00C2002D /* DetailVocabViewController.m */; };
+		696343FF1AA4359D0099BCF9 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 696343FE1AA4359D0099BCF9 /* Social.framework */; };
+		696344021AA4422B0099BCF9 /* fav_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 696344001AA4422B0099BCF9 /* fav_off.png */; };
+		696344031AA4422B0099BCF9 /* fav_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 696344011AA4422B0099BCF9 /* fav_on.png */; };
 		697544F61A91956F009ACB65 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 697544F31A91956F009ACB65 /* HTMLNode.m */; };
 		697544F71A91956F009ACB65 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 697544F51A91956F009ACB65 /* HTMLParser.m */; };
 		697544FB1A919650009ACB65 /* APSample.m in Sources */ = {isa = PBXBuildFile; fileRef = 697544FA1A919650009ACB65 /* APSample.m */; };
@@ -103,6 +106,9 @@
 		6955AD281A9322000017D45F /* VocabCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VocabCell.m; sourceTree = "<group>"; };
 		695981F51A70965D00C2002D /* DetailVocabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailVocabViewController.h; sourceTree = "<group>"; };
 		695981F61A70965D00C2002D /* DetailVocabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailVocabViewController.m; sourceTree = "<group>"; };
+		696343FE1AA4359D0099BCF9 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		696344001AA4422B0099BCF9 /* fav_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fav_off.png; sourceTree = "<group>"; };
+		696344011AA4422B0099BCF9 /* fav_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fav_on.png; sourceTree = "<group>"; };
 		697544F21A91956F009ACB65 /* HTMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLNode.h; sourceTree = "<group>"; };
 		697544F31A91956F009ACB65 /* HTMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLNode.m; sourceTree = "<group>"; };
 		697544F41A91956F009ACB65 /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLParser.h; sourceTree = "<group>"; };
@@ -225,6 +231,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				696343FF1AA4359D0099BCF9 /* Social.framework in Frameworks */,
 				69784CA21A9D96A9000E6B73 /* CoreGraphics.framework in Frameworks */,
 				69784CA01A9D96A0000E6B73 /* QuartzCore.framework in Frameworks */,
 				697544FD1A919812009ACB65 /* libxml2.dylib in Frameworks */,
@@ -320,6 +327,8 @@
 				697A6AD91A6F8D6A008A893A /* AppDelegate.h */,
 				697A6ADA1A6F8D6A008A893A /* AppDelegate.m */,
 				697A6AE21A6F8D6B008A893A /* Main.storyboard */,
+				696344001AA4422B0099BCF9 /* fav_off.png */,
+				696344011AA4422B0099BCF9 /* fav_on.png */,
 				697A6C081A6F9B09008A893A /* Model */,
 				695981F81A70966A00C2002D /* ViewController */,
 				697A6AE51A6F8D6B008A893A /* Images.xcassets */,
@@ -450,6 +459,7 @@
 		697A6C011A6F98C6008A893A /* thirdparty */ = {
 			isa = PBXGroup;
 			children = (
+				696343FE1AA4359D0099BCF9 /* Social.framework */,
 				69784CA11A9D96A9000E6B73 /* CoreGraphics.framework */,
 				69784C9F1A9D96A0000E6B73 /* QuartzCore.framework */,
 				69784C981A9D8FB9000E6B73 /* WYPopoverController */,
@@ -579,8 +589,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				69C5AABF1A9B12CF0024546F /* no.png in Resources */,
+				696344031AA4422B0099BCF9 /* fav_on.png in Resources */,
 				697A6AE41A6F8D6B008A893A /* Main.storyboard in Resources */,
 				697A6AE91A6F8D6B008A893A /* LaunchScreen.xib in Resources */,
+				696344021AA4422B0099BCF9 /* fav_off.png in Resources */,
 				697A6AE61A6F8D6B008A893A /* Images.xcassets in Resources */,
 				697A6C1A1A6FB310008A893A /* lexitron2.sqlite in Resources */,
 			);

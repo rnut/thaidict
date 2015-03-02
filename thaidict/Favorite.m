@@ -202,4 +202,42 @@
     }
     return NO;
 }
++(Favorite *)favoriteVocab:(Vocab*)vocab{
+    Favorite *fav = [[Favorite alloc] init];
+    if ([fav keepFavorite:vocab]) {
+        return fav;
+    }
+    return nil;
+}
++(BOOL)checkFavoriteConcurrent:(Vocab *)vocab;
+{
+    DB *db = [[DB alloc ]init];
+    NSString *strQuery;
+    if ([vocab Language]==LanguageENG) {
+        strQuery = [NSString stringWithFormat:@"SELECT count(*) as num FROM fav_en WHERE search = '%@'", [vocab Search]];
+    }
+    else{
+        strQuery = [NSString stringWithFormat:@"SELECT count(*) as num FROM fav_th WHERE search = '%@'", [vocab Search]];
+    }
+    
+    [db queryWithString:strQuery];
+    
+    while ([db.ObjResult next]) {
+        int num = [db.ObjResult intForColumn:@"num"];
+        NSLog(@"%d",num);
+        if (num ==0) {
+            [db closeDB];
+            return YES;
+        }
+        else
+        {
+            [db closeDB];
+            return NO;
+        }
+    }
+    return NO;
+}
+
+
+
 @end
