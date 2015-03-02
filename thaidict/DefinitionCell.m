@@ -45,7 +45,20 @@
     
 }
 -(CGFloat)tableView: (UITableView*)tableView heightForRowAtIndexPath: (NSIndexPath*) indexPath{
-    return 70.0f;
+    Vocab *vTemp = [[TranslateInfo objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    NSString *temp =[vTemp Search];
+    CGSize size = [temp sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:16.0f ]}];
+//    CGRect rect = [temp boundingRectWithSize:CGSizeMake(size.width, CGFLOAT_MAX)
+//                                              options:NSStringDrawingUsesLineFragmentOrigin
+//                                           attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:16.0f ]} context:nil];
+//    NSLog(@"width : %f",rect.size.width);
+//    NSLog(@"height : %f",rect.size.height);
+//    NSLog(@"retun : %f",rect.size.height + 20);
+    if ([vTemp.Synonym isEqualToString:@""] && [vTemp.Antonym isEqualToString:@""] ) {
+        return size.height+40;
+    }
+    else return size.height + 80;
+    
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return  [TranslateInfo count];
@@ -63,7 +76,7 @@
             NSString *total;
             Vocab *v = [[TranslateInfo objectAtIndex:i] objectAtIndex:indexPath.row];
             cell.Entry.text = [NSString stringWithFormat:@"%@",[v Entry]];
-            
+
             //entry
             if ([v Entry] == nil || [[v Entry] isEqualToString:@""]) {
                 [cell.Entry setHidden:YES];
