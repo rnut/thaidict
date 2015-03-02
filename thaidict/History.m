@@ -57,6 +57,7 @@
 }
 +(BOOL)keepHistory:(Vocab*)voc{
     History *retHis = [[History alloc] init];
+    [retHis checkConcurrentHistory:voc];
     if ([retHis insertVocab:voc]) {
         return YES;
     }
@@ -129,6 +130,22 @@
     [db closeDB];
     return NO;
 
+}
+-(void)checkConcurrentHistory : (Vocab *)concurrentVocab{
+    DB *db = [[DB alloc] init];
+    NSString *str = [NSString stringWithFormat:@"select count(*) as count from history where search = '%@'",[concurrentVocab Search]];
+    [db queryWithString:str];
+    int count = 0;
+    while([db.ObjResult next]) {
+        count = [db.ObjResult intForColumn:@"count"];
+    }
+    if (count > 0) {
+        NSString *delQuery = [NSString stringWithFormat:@"delete from history where search = '%@'",[concurrentVocab Search]];
+        if ([db.ObjDb executeUpdate:delQuery]) {
+            [db closeDB];
+        }
+    }
+    [db closeDB];
 }
 -(int)getLastID{
     DB *db = [[DB alloc] init];

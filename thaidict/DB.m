@@ -53,7 +53,7 @@
     return idrec;
 }
 -(int)getLastRecordIDWithTable:(NSString*)table Column:(NSString*)col{
-    NSString *strQuery = [NSString stringWithFormat:@"select %@ as lastID from %@ order by %@ limit 1",col,table,col];
+    NSString *strQuery = [NSString stringWithFormat:@"select %@ as lastID from %@ order by %@ desc limit 1",col,table,col];
     [self queryWithString:strQuery];
     while ([ObjResult next]) {
         return [ObjResult intForColumn:@"lastID"];

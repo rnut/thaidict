@@ -24,12 +24,10 @@
     self.lang = LanguageENG;
 
     [self setInterface];
-    self.favWords = [Favorite listFavorite]; //default: get fav first (array of array)
+    self.favWords = [Favorite listFavorite];
+    [segment setSelectedSegmentIndex:0];
     [Table reloadData];
-    //self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    //[self.favList setEditing:YES animated:YES];
-    //[self.editmode setHidden:YES];
-    
+
 }
 
 -(void)setInterface{
@@ -108,7 +106,31 @@
 }
 -(UITableViewCellEditingStyle)tableView:(UITableView*)tableView editingStyleForRowAtIndexPath:(NSIndexPath*)indexPath {
     
-    return UITableViewCellEditingStyleInsert;
+    return UITableViewCellEditingStyleDelete;
+}
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSMutableArray *temp;
+        if (self.lang == LanguageENG) {
+            [Favorite deleteFavorite:[[self.favWords objectAtIndex:1] objectAtIndex:indexPath.row]];
+            temp = [self.favWords objectAtIndex:1];
+            [temp removeObjectAtIndex:indexPath.row];
+            [self.favWords replaceObjectAtIndex:1 withObject:temp];
+
+
+        }
+        if (self.lang == LanguageTHA) {
+            [Favorite deleteFavorite:[[self.favWords objectAtIndex:0] objectAtIndex:indexPath.row]];
+            temp = [self.favWords objectAtIndex:0];
+            [temp removeObjectAtIndex:indexPath.row];
+            [self.favWords replaceObjectAtIndex:0 withObject:temp];
+        }
+        
+        [Table reloadData];
+    }
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (tableView.editing == YES) {
@@ -118,11 +140,10 @@
         [self performSegueWithIdentifier:@"chooseVocab" sender:nil];
     }
 }
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return YES;
-}
-
+//- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return YES;
+//}
 
 #pragma mark swipeable
 //- (BOOL)swipeableTableViewCellShouldHideUtilityButtonsOnSwipe:(SWTableViewCell *)cell
