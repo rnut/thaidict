@@ -25,6 +25,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.BaseTableview setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self.IndicatorSpeak setHidden:YES];
     if (ChooseVocab == nil) {
         [self setHiddenInterface:YES];

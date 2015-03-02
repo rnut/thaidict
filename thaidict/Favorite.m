@@ -84,8 +84,8 @@
     NSMutableArray *retrievalThai = [[NSMutableArray alloc] init];
     DB *db = [[DB alloc ]init];
 
-    NSString *strQueryEn = [NSString stringWithFormat:@"SELECT IFNULL(id_fav_en,'') as id_fav,IFNULL(search,'')as search FROM fav_en"];
-    NSString *strQueryTh = [NSString stringWithFormat:@"SELECT IFNULL(id_fav_th,'') as id_fav,IFNULL(search,'')as search  FROM fav_th "];
+    NSString *strQueryEn = [NSString stringWithFormat:@"SELECT IFNULL(id_fav_en,'') as id_fav,IFNULL(search,'')as search FROM fav_en order by id_fav desc"];
+    NSString *strQueryTh = [NSString stringWithFormat:@"SELECT IFNULL(id_fav_th,'') as id_fav,IFNULL(search,'')as search  FROM fav_th order by id_fav desc"];
     
     [db queryWithString:strQueryEn];
     while([db.ObjResult next]) {
