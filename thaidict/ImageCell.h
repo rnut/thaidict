@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "APImage.h"
+#import "Vocab.h"
+@interface ImageCell : UITableViewCell<UICollectionViewDataSource,UICollectionViewDelegate>
 
-@interface ImageCell : UITableViewCell
 
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *IndicatorImage;
+@property(nonatomic,strong)Vocab *ChooseVocab;
+@property (strong, nonatomic) IBOutlet UIView *ViewImage;
+@property (strong, nonatomic) IBOutlet UICollectionView *Collectionview;
+@property (nonatomic, strong) NSArray *pageImages;
 @end

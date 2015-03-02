@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "Vocab.h"
 #import "APImage.h"
+#import "APSpeech.h"
+#import "APSample.h"
 #import "DefinitionCell.h"
 #import "SampleCell.h"
 #import "ImageCell.h"
@@ -19,10 +21,21 @@
 
 }
 
-@property (strong, nonatomic) IBOutlet UITableView *BaseTableview;
+
+@property(nonatomic,strong)AVAudioPlayer *Player;
+
 
 @property(nonatomic,strong)Vocab *ChooseVocab;
-//- (IBAction)otherInformation:(id)sender;
+
+
+@property (strong, nonatomic) IBOutlet UITableView *BaseTableview;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *IndicatorSpeak;
+@property (strong, nonatomic) IBOutlet UIButton *speakBtn;
+@property (strong, nonatomic) IBOutlet UILabel *SearchLabel;
+@property (strong, nonatomic) IBOutlet UIButton *FavBtn;
+@property (strong, nonatomic) IBOutlet UIButton *ShareBtn;
+
+
 
 -(IBAction)speakSpeech:(id)sender;
 @end

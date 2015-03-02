@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "VocabCell.h"
+#import "Vocab.h"
+#import "APSample.h"
 @interface SampleCell : UITableViewCell
 {
+    BOOL flagSample;
+    UIView *overlayView;
 }
-
+@property (strong, nonatomic) IBOutlet UILabel *Example;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *IndicatorExample;
+@property (strong, nonatomic) IBOutlet UIView *ExampleView;
+@property(nonatomic,strong)Vocab *ChooseVocab;
 @end
