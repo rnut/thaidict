@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="57" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="9on-uo-j6M">
-                                <rect key="frame" x="0.0" y="60" width="600" height="427"/>
+                                <rect key="frame" x="0.0" y="55" width="600" height="432"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="57" id="4WW-kj-Ey1" customClass="SWTableViewCell">
@@ -36,16 +36,23 @@
                                 </prototypes>
                             </tableView>
                             <view opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oiv-DS-Yoh">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="55"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search Here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DVP-Kg-PpO">
-                                        <rect key="frame" x="8" y="15" width="584" height="30"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="  Search Here" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="DVP-Kg-PpO">
+                                        <rect key="frame" x="8" y="8" width="584" height="37"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="vqE-uP-ayW"/>
+                                            <constraint firstAttribute="height" constant="37" id="BzC-ut-WB6"/>
+                                            <constraint firstAttribute="height" constant="37" id="vqE-uP-ayW"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="vqE-uP-ayW"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="CrM-Tu-gii"/>
                                         </connections>
@@ -55,13 +62,23 @@
                                 <color key="tintColor" red="0.99607849120000003" green="0.99215692280000001" blue="0.99215692280000001" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="93c-gD-7Xt"/>
-                                    <constraint firstItem="DVP-Kg-PpO" firstAttribute="top" secondItem="Oiv-DS-Yoh" secondAttribute="top" constant="15" id="O5S-ab-H8x"/>
+                                    <constraint firstItem="DVP-Kg-PpO" firstAttribute="top" secondItem="Oiv-DS-Yoh" secondAttribute="top" id="O5S-ab-H8x"/>
+                                    <constraint firstItem="DVP-Kg-PpO" firstAttribute="top" secondItem="Oiv-DS-Yoh" secondAttribute="top" constant="8" id="Yp8-eH-kaM"/>
                                     <constraint firstAttribute="centerX" secondItem="DVP-Kg-PpO" secondAttribute="centerX" id="fZ9-kt-ZuQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="DVP-Kg-PpO" secondAttribute="bottom" constant="10" id="g5U-kO-owa"/>
                                     <constraint firstItem="DVP-Kg-PpO" firstAttribute="leading" secondItem="Oiv-DS-Yoh" secondAttribute="leading" constant="8" id="jeU-Fl-9JJ"/>
-                                    <constraint firstAttribute="bottom" secondItem="DVP-Kg-PpO" secondAttribute="bottom" constant="15" id="lKJ-mP-k2p"/>
+                                    <constraint firstAttribute="bottom" secondItem="DVP-Kg-PpO" secondAttribute="bottom" constant="8" id="lKJ-mP-k2p"/>
                                     <constraint firstAttribute="centerY" secondItem="DVP-Kg-PpO" secondAttribute="centerY" id="oaD-S4-NsY"/>
                                     <constraint firstAttribute="trailing" secondItem="DVP-Kg-PpO" secondAttribute="trailing" constant="8" id="zvT-Yl-hhS"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="93c-gD-7Xt"/>
+                                        <exclude reference="O5S-ab-H8x"/>
+                                        <exclude reference="lKJ-mP-k2p"/>
+                                        <exclude reference="oaD-S4-NsY"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -78,6 +95,7 @@
                     <navigationItem key="navigationItem" title="Thai Dict" id="NHx-3n-oBf"/>
                     <connections>
                         <outlet property="SearchBox" destination="DVP-Kg-PpO" id="7Fy-2z-Mgc"/>
+                        <outlet property="SearchView" destination="Oiv-DS-Yoh" id="57K-7G-dnU"/>
                         <outlet property="TableWords" destination="9on-uo-j6M" id="BM6-Oz-awc"/>
                     </connections>
                 </viewController>

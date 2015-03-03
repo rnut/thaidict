@@ -17,7 +17,7 @@ NSInteger lastclickrow;
 int idrec = 0;
 
 @implementation SearchViewController
-@synthesize ArrayWords,SelectedCellText;
+@synthesize ArrayWords,SelectedCellText,SearchView;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setInterface];
@@ -36,18 +36,61 @@ int idrec = 0;
 //    return UIStatusBarStyleLightContent;
 //}
 -(void)setInterface{
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
     UIColor *red = [UIColor colorWithRed:(228/255.0) green:3/255.0 blue:21/255.0 alpha:1.0f];
+    [self.view.layer setBackgroundColor:[red CGColor]];
     [self.SearchView.layer setBorderWidth:0.0f];
     [self.SearchView.layer setBorderColor:[red CGColor]];
     [self.SearchView setBackgroundColor:red];
     [self.SearchView setClipsToBounds:YES];
 }
-
+-(void)dismissKeyboard {
+    [SearchBox resignFirstResponder];
+}
 #pragma mark textfield
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    [UIView animateWithDuration:0.3
+                          delay:0
+                        options: UIViewAnimationOptionLayoutSubviews
+                     animations:^
+     {
+         [[self navigationController] setNavigationBarHidden:YES animated:YES];
+         CGRect frame = self.SearchView.frame;
+         frame.origin.y = 0;
+         frame.origin.x = 0;
+         self.SearchView.frame = frame;
+     }
+                     completion:^(BOOL finished)
+     {
+//         NSLog(@"Completed");
+         
+     }];
+}
+//- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+//    [UIView animateWithDuration:0.3
+//                          delay:0
+//                        options: UIViewAnimationOptionLayoutSubviews
+//                     animations:^
+//     {
+//         [[self navigationController] setNavigationBarHidden:NO animated:YES];
+//         CGRect frame = self.SearchView.frame;
+//         frame.origin.y = 0;
+//         frame.origin.x = 0;
+//         self.SearchView.frame = frame;
+//     }
+//                     completion:^(BOOL finished)
+//     {
+////         NSLog(@"Completed");
+//         
+//     }];
+//    return YES;
+//}
 -(void)textFieldDidChange :(UITextField *)theTextField{
-    //    NSLog(@"%lu",(unsigned long)[theTextField.text length]);
-    //    int x = [theTextField.text characterAtIndex:0];
-    //    NSLog(@"ascii : %@ is %d",theTextField.text,x);
+    
     if ([theTextField.text length] > 0) {
         SearchText = theTextField.text;
         ArrayWords = [Vocab listDictByVocab:SearchText];
@@ -87,7 +130,7 @@ int idrec = 0;
     return YES;
 }
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-//    [[self view] endEditing:TRUE];
+
     UITouch *touch = [[event allTouches] anyObject];
     if ([SearchBox isFirstResponder] && [touch view] != SearchBox) {
         [SearchBox resignFirstResponder];
@@ -130,7 +173,10 @@ int idrec = 0;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self performSegueWithIdentifier:@"chooseVocab" sender:nil];
 }
-
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [SearchBox resignFirstResponder];
+}
 #pragma mark swipeable
 
 - (BOOL)swipeableTableViewCellShouldHideUtilityButtonsOnSwipe:(SWTableViewCell *)cell
@@ -173,7 +219,10 @@ int idrec = 0;
     
 }
 
-
+#pragma mark view Disappear
+-(void)viewWillDisappear:(BOOL)animated{
+    [[self navigationController] setNavigationBarHidden:NO animated:YES];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
