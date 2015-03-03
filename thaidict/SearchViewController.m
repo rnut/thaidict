@@ -30,15 +30,17 @@ int idrec = 0;
     SearchText = @"a";
     ArrayWords = [Vocab listDictByVocab:SearchText];
     [TableWords reloadData];
+//    [self setNeedsStatusBarAppearanceUpdate];
 }
+//-(UIStatusBarStyle)preferredStatusBarStyle{
+//    return UIStatusBarStyleLightContent;
+//}
 -(void)setInterface{
-    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:(228/255.0) green:3/255.0 blue:21/255.0 alpha:1.0f]];
-    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
-    [self.tabBarController.tabBar setBarTintColor:[UIColor colorWithRed:(228/255.0) green:3/255.0 blue:21/255.0 alpha:1.0f]];
-    [self.tabBarController.tabBar setTintColor:[UIColor whiteColor]];
-    self.navigationController.navigationBar.translucent = NO;
-    self.tabBarController.tabBar.translucent = NO;
+    UIColor *red = [UIColor colorWithRed:(228/255.0) green:3/255.0 blue:21/255.0 alpha:1.0f];
+    [self.SearchView.layer setBorderWidth:0.0f];
+    [self.SearchView.layer setBorderColor:[red CGColor]];
+    [self.SearchView setBackgroundColor:red];
+    [self.SearchView setClipsToBounds:YES];
 }
 
 #pragma mark textfield

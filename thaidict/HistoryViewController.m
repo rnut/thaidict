@@ -9,15 +9,15 @@
 #import "HistoryViewController.h"
 
 @interface HistoryViewController ()
-
+{
+    UIRefreshControl *refresh;
+}
 @end
 
 @implementation HistoryViewController
 @synthesize hisInfo;
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [TableView setDataSource:self];
-    [TableView setDelegate:self];
     hisInfo = [History listHistory];
     [self setInterface];
     
@@ -31,15 +31,10 @@
     [TableView reloadData];
 }
 -(void)setInterface{
-    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:(228/255.0) green:3/255.0 blue:21/255.0 alpha:1.0f]];
-    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
-    [self.tabBarController.tabBar setBarTintColor:[UIColor colorWithRed:(228/255.0) green:3/255.0 blue:21/255.0 alpha:1.0f]];
-    [self.tabBarController.tabBar setTintColor:[UIColor whiteColor]];
-    self.navigationController.navigationBar.translucent = NO;
-    self.tabBarController.tabBar.translucent = NO;
-    
-    UIRefreshControl *refresh = [[UIRefreshControl alloc]init];
+    if (refresh == nil) {
+        refresh = [[UIRefreshControl alloc]init];
+
+    }
     [refresh addTarget:self
                 action:@selector(refreshData:)
       forControlEvents:UIControlEventValueChanged];
@@ -50,6 +45,7 @@
     hisInfo = [History listHistory];
     [TableView reloadData];
     [refreshControl endRefreshing];
+    [refresh removeFromSuperview];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

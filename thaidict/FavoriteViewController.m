@@ -9,7 +9,9 @@
 #import "FavoriteViewController.h"
 #import "Edit_Fav_ViewController.h"
 @interface FavoriteViewController ()
-
+{
+    UIRefreshControl *refresh;
+}
 @end
 
 @implementation FavoriteViewController
@@ -31,15 +33,8 @@
 }
 
 -(void)setInterface{
-    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:(228/255.0) green:3/255.0 blue:21/255.0 alpha:1.0f]];
-    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
-    [self.tabBarController.tabBar setBarTintColor:[UIColor colorWithRed:(228/255.0) green:3/255.0 blue:21/255.0 alpha:1.0f]];
-    [self.tabBarController.tabBar setTintColor:[UIColor whiteColor]];
-    self.navigationController.navigationBar.translucent = NO;
-    self.tabBarController.tabBar.translucent = NO;
     
-    UIRefreshControl *refresh = [[UIRefreshControl alloc]init];
+    refresh = [[UIRefreshControl alloc]init];
     [refresh addTarget:self
                 action:@selector(refreshData:)
       forControlEvents:UIControlEventValueChanged];
@@ -50,6 +45,7 @@
     self.favWords = [Favorite listFavorite];
     [Table reloadData];
     [refreshControl endRefreshing];
+    
 }
 
 -(IBAction)editMode:(id)sender{

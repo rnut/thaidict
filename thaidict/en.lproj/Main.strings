@@ -1,0 +1,99 @@
+
+/* Class = "IBUILabel"; text = "ความหมาย........................"; ObjectID = "4Fk-Sd-gab"; */
+"4Fk-Sd-gab.text" = "ความหมาย........................";
+
+/* Class = "IBUILabel"; text = "Search"; ObjectID = "62u-td-rak"; */
+"62u-td-rak.text" = "Search";
+
+/* Class = "IBUISegmentedControl"; 6PH-jL-DQX.segmentTitles[0] = "English"; ObjectID = "6PH-jL-DQX"; */
+"6PH-jL-DQX.segmentTitles[0]" = "English";
+
+/* Class = "IBUISegmentedControl"; 6PH-jL-DQX.segmentTitles[1] = "Thai"; ObjectID = "6PH-jL-DQX"; */
+"6PH-jL-DQX.segmentTitles[1]" = "Thai";
+
+/* Class = "IBUIBarButtonItem"; title = "Close"; ObjectID = "9kL-w5-V1Q"; */
+"9kL-w5-V1Q.title" = "Close";
+
+/* Class = "IBUINavigationItem"; title = "Choose vocab"; ObjectID = "Az2-FA-wyn"; */
+"Az2-FA-wyn.title" = "Choose vocab";
+
+/* Class = "IBUINavigationItem"; title = "Favorites"; ObjectID = "CLu-jz-Nch"; */
+"CLu-jz-Nch.title" = "Favorites";
+
+/* Class = "IBUITextField"; placeholder = "Search Here"; ObjectID = "DVP-Kg-PpO"; */
+"DVP-Kg-PpO.placeholder" = "Search Here";
+
+/* Class = "IBUILabel"; text = "please tap to get information"; ObjectID = "G0z-uO-vCU"; */
+"G0z-uO-vCU.text" = "please tap to get information";
+
+/* Class = "IBUIButton"; normalTitle = "share"; ObjectID = "HpX-9h-jKF"; */
+"HpX-9h-jKF.normalTitle" = "share";
+
+/* Class = "IBUIButton"; normalTitle = "...."; ObjectID = "KBy-eV-0d0"; */
+"KBy-eV-0d0.normalTitle" = "....";
+
+/* Class = "IBUILabel"; text = "please tap to get information"; ObjectID = "Lu5-29-3nd"; */
+"Lu5-29-3nd.text" = "please tap to get information";
+
+/* Class = "IBUINavigationItem"; title = "Thai Dict"; ObjectID = "NHx-3n-oBf"; */
+"NHx-3n-oBf.title" = "Thai Dict";
+
+/* Class = "IBUIButton"; normalTitle = "Speak!"; ObjectID = "NS8-6V-RCM"; */
+"NS8-6V-RCM.normalTitle" = "Speak!";
+
+/* Class = "IBUIBarButtonItem"; title = "clear all"; ObjectID = "PZJ-mn-glh"; */
+"PZJ-mn-glh.title" = "clear all";
+
+/* Class = "IBUIButton"; normalTitle = "share"; ObjectID = "RD0-r4-Klz"; */
+"RD0-r4-Klz.normalTitle" = "share";
+
+/* Class = "IBUIBarButtonItem"; title = "Check All"; ObjectID = "U8g-Pj-0aG"; */
+"U8g-Pj-0aG.title" = "Check All";
+
+/* Class = "IBUIButton"; normalTitle = "Delete"; ObjectID = "V7g-j1-ps1"; */
+"V7g-j1-ps1.normalTitle" = "Delete";
+
+/* Class = "IBUILabel"; text = "Example"; ObjectID = "XAi-Q4-QMg"; */
+"XAi-Q4-QMg.text" = "Example";
+
+/* Class = "IBUINavigationItem"; title = "sss"; ObjectID = "XCy-tu-dzL"; */
+"XCy-tu-dzL.title" = "sss";
+
+/* Class = "IBUIButton"; normalTitle = "Speak!"; ObjectID = "Y84-BG-PXN"; */
+"Y84-BG-PXN.normalTitle" = "Speak!";
+
+/* Class = "IBUILabel"; text = "Synonym"; ObjectID = "Z4A-sS-Gbb"; */
+"Z4A-sS-Gbb.text" = "Synonym";
+
+/* Class = "IBUILabel"; text = "Synonym"; ObjectID = "fY7-KR-V6g"; */
+"fY7-KR-V6g.text" = "Synonym";
+
+/* Class = "IBUIButton"; normalTitle = "favorite"; ObjectID = "ff6-8Z-wNm"; */
+"ff6-8Z-wNm.normalTitle" = "favorite";
+
+/* Class = "IBUILabel"; text = "please tap to get information"; ObjectID = "ga1-1e-1xF"; */
+"ga1-1e-1xF.text" = "please tap to get information";
+
+/* Class = "IBUINavigationItem"; title = "History"; ObjectID = "l5o-xp-O4p"; */
+"l5o-xp-O4p.title" = "History";
+
+/* Class = "IBUILabel"; text = "Search"; ObjectID = "mM9-HJ-FRH"; */
+"mM9-HJ-FRH.text" = "Search";
+
+/* Class = "IBUILabel"; text = "ความหมาย........................"; ObjectID = "ml2-jw-t0G"; */
+"ml2-jw-t0G.text" = "ความหมาย........................";
+
+/* Class = "IBUILabel"; text = "Search"; ObjectID = "nLz-I4-kCN"; */
+"nLz-I4-kCN.text" = "Search";
+
+/* Class = "IBUILabel"; text = "Synonym"; ObjectID = "sGG-aJ-43a"; */
+"sGG-aJ-43a.text" = "Synonym";
+
+/* Class = "IBUINavigationItem"; title = "Thai Dict"; ObjectID = "sZJ-PZ-Bzx"; */
+"sZJ-PZ-Bzx.title" = "Thai Dict";
+
+/* Class = "IBUIButton"; normalTitle = "Speak!"; ObjectID = "uDL-Eh-4Xo"; */
+"uDL-Eh-4Xo.normalTitle" = "Speak!";
+
+/* Class = "IBUILabel"; text = "ความหมาย........................"; ObjectID = "uaT-yO-Sui"; */
+"uaT-yO-Sui.text" = "ความหมาย........................";

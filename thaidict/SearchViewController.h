@@ -22,6 +22,7 @@
 }
 @property (nonatomic, retain) NSMutableArray *ArrayWords;
 @property (nonatomic, copy) NSString *SelectedCellText;
+@property (strong, nonatomic) IBOutlet UIView *SearchView;
 //- (NSMutableArray *)findWordInfos: (NSString *) str;
 
 

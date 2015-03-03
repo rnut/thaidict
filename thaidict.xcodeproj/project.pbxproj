@@ -252,6 +252,8 @@
 		695981F81A70966A00C2002D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				697A6B361A6F955B008A893A /* SearchViewController.h */,
+				697A6B371A6F955B008A893A /* SearchViewController.m */,
 				69784CA31A9D980A000E6B73 /* PopOverDetail.h */,
 				69784CA41A9D980A000E6B73 /* PopOverDetail.m */,
 				6906AF0E1A88C30C00087B93 /* HistoryViewController.h */,
@@ -272,8 +274,6 @@
 				694B496B1AA079910015A546 /* ImageCell.m */,
 				6955AD271A9322000017D45F /* VocabCell.h */,
 				6955AD281A9322000017D45F /* VocabCell.m */,
-				697A6B361A6F955B008A893A /* SearchViewController.h */,
-				697A6B371A6F955B008A893A /* SearchViewController.m */,
 				693A53751A91E2B80081120C /* SplitViewSearch.h */,
 				693A53761A91E2B80081120C /* SplitViewSearch.m */,
 			);

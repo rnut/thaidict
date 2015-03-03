@@ -18,7 +18,18 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [self performSelector:@selector(createCopyOfDatabaseIfNeeded) withObject:nil];
+    
+    //set interface
+    UIColor *red = [UIColor colorWithRed:(228/255.0) green:3/255.0 blue:21/255.0 alpha:1.0f];
+    [[UINavigationBar appearance] setShadowImage:[UIImage new]];
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setBarTintColor:red];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    
+    [[UITabBar appearance] setBarTintColor:red];
+    [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
     return YES;
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
