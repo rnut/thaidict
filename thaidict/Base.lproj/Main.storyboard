@@ -796,8 +796,9 @@
                                 </constraints>
                                 <segments>
                                     <segment title="English"/>
-                                    <segment title="Thai"/>
+                                    <segment title="ไทย"/>
                                 </segments>
+                                <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="cjX-a9-f7Y"/>
@@ -808,7 +809,7 @@
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="67" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="qSx-Jf-bhe">
-                                <rect key="frame" x="0.0" y="74" width="600" height="413"/>
+                                <rect key="frame" x="0.0" y="61" width="600" height="426"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" editingAccessoryType="checkmark" rowHeight="67" id="UWM-RC-tms">
@@ -843,13 +844,14 @@
                             <constraint firstAttribute="trailing" secondItem="qSx-Jf-bhe" secondAttribute="trailing" id="8DL-If-xz7"/>
                             <constraint firstItem="6PH-jL-DQX" firstAttribute="top" secondItem="v3Y-cc-6Ny" secondAttribute="bottom" constant="23" id="A7e-Qb-g1x"/>
                             <constraint firstItem="qSx-Jf-bhe" firstAttribute="leading" secondItem="ETu-4Z-6Cl" secondAttribute="leading" id="AqK-UG-yQB"/>
-                            <constraint firstItem="qSx-Jf-bhe" firstAttribute="top" secondItem="6PH-jL-DQX" secondAttribute="bottom" constant="23" id="Obq-Ed-6rF"/>
+                            <constraint firstItem="qSx-Jf-bhe" firstAttribute="top" secondItem="6PH-jL-DQX" secondAttribute="bottom" constant="10" id="Obq-Ed-6rF"/>
                             <constraint firstItem="sGG-ar-hJA" firstAttribute="top" secondItem="qSx-Jf-bhe" secondAttribute="bottom" id="oQo-ap-FuR"/>
                             <constraint firstItem="qSx-Jf-bhe" firstAttribute="top" secondItem="6PH-jL-DQX" secondAttribute="bottom" constant="23" id="q4T-Dh-4TR"/>
                             <constraint firstAttribute="centerX" secondItem="6PH-jL-DQX" secondAttribute="centerX" id="rrv-mW-99L"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="q4T-Dh-4TR"/>
                                 <exclude reference="61S-3v-ysx"/>
                             </mask>
                         </variation>
@@ -1862,7 +1864,7 @@
                                     <constraint firstAttribute="height" constant="40" id="R9A-q5-lGZ"/>
                                     <constraint firstAttribute="width" constant="40" id="gbz-J4-4ZX"/>
                                 </constraints>
-                                <state key="normal" title="....">
+                                <state key="normal" image="fav_off.png">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1870,9 +1872,8 @@
                                     <action selector="favorite:" destination="s2S-pr-ILJ" eventType="touchUpInside" id="iBB-51-UAK"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NS8-6V-RCM">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NS8-6V-RCM">
                                 <rect key="frame" x="544" y="17" width="40" height="40"/>
-                                <color key="backgroundColor" red="0.082126248560000004" green="0.64754510779999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="g1M-bE-kQo"/>
                                     <constraint firstAttribute="width" constant="40" id="guA-aS-nkx"/>
@@ -1881,7 +1882,7 @@
                                     <constraint firstAttribute="height" constant="42" id="rxc-Os-cDu"/>
                                     <constraint firstAttribute="height" constant="40" id="sRQ-Dr-YwQ"/>
                                 </constraints>
-                                <state key="normal" title="Speak!">
+                                <state key="normal" image="speak-icon(flat).png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="default">
@@ -1904,15 +1905,14 @@
                                     <action selector="speakSpeech:" destination="s2S-pr-ILJ" eventType="touchDown" id="zW3-La-LtT"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RD0-r4-Klz">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RD0-r4-Klz">
                                 <rect key="frame" x="502" y="17" width="40" height="40"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="EDD-Sf-iTL"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="mNz-Ys-1Cn"/>
                                     <constraint firstAttribute="height" constant="40" id="t5K-3p-T72"/>
                                 </constraints>
-                                <state key="normal" title="share">
+                                <state key="normal" image="share-icon.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="default">
@@ -2542,6 +2542,11 @@
             <point key="canvasLocation" x="2709" y="-790"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="fav_off.png" width="40" height="40"/>
+        <image name="share-icon.png" width="40" height="40"/>
+        <image name="speak-icon(flat).png" width="40" height="40"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Did-aK-nq3"/>
         <segue reference="jWR-Lp-nnG"/>
