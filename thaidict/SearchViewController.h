@@ -20,7 +20,7 @@
     IBOutlet UITextField *SearchBox;
     IBOutlet UITableView *TableWords;
 }
-@property (nonatomic, retain) NSArray *ArrayWords;
+@property (nonatomic, retain) NSMutableArray *ArrayWords;
 @property (nonatomic, copy) NSString *SelectedCellText;
 //- (NSMutableArray *)findWordInfos: (NSString *) str;
 

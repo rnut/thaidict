@@ -10,7 +10,7 @@
 
 @interface SearchViewController ()
 {
-    
+    NSString *SearchText;
 }
 @end
 NSInteger lastclickrow;
@@ -27,8 +27,8 @@ int idrec = 0;
     [SearchBox setDelegate:self];
     
 //    [TableWords setRowHeight:44];
-    
-    ArrayWords = [Vocab listDictByVocab:@"a"];
+    SearchText = @"a";
+    ArrayWords = [Vocab listDictByVocab:SearchText];
     [TableWords reloadData];
 }
 -(void)setInterface{
@@ -47,8 +47,8 @@ int idrec = 0;
     //    int x = [theTextField.text characterAtIndex:0];
     //    NSLog(@"ascii : %@ is %d",theTextField.text,x);
     if ([theTextField.text length] > 0) {
-        
-        ArrayWords = [Vocab listDictByVocab:theTextField.text];
+        SearchText = theTextField.text;
+        ArrayWords = [Vocab listDictByVocab:SearchText];
         if ([ArrayWords count] == 0) {
             NSLog(@"search by internet");
         }
@@ -109,7 +109,13 @@ int idrec = 0;
         cell.rightUtilityButtons = [self rightButtons];
         cell.delegate = self;
     }
-    
+    if (indexPath.row == [ArrayWords count] -1) {
+        NSArray *temp = [Vocab listDictByVocab:SearchText ByIndex:indexPath.row+1];
+        for (Vocab *v in temp) {
+            [ArrayWords addObject:v];
+            [tableView reloadData];
+        }
+    }
     Vocab *info = [ArrayWords objectAtIndex:indexPath.row];
     cell.textLabel.text = info.Search;
     return cell;

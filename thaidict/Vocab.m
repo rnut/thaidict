@@ -66,6 +66,49 @@
     [db closeDB];
     return ret;
 }
++(NSMutableArray *)listDictByVocab:(NSString *)vocab ByIndex:(int)index{
+    DB *db = [[DB alloc ]init];
+    NSMutableArray *ret = [[NSMutableArray alloc] init];
+    DictLanguage lang;
+    lang = [Language checkLanguage:vocab];
+    if (lang == LanguageTHA) {
+        NSString *tableName;
+        //  ก-ฮ  :  3585 - 3630  , สระ 3632-3676
+        int ascii = [vocab characterAtIndex:0];
+        if (ascii > 3584 && ascii < 3631) {
+            tableName = [NSString  stringWithFormat:@"th2eng_%@",[vocab substringWithRange:NSMakeRange(0, 1)]];
+        }
+        else if(ascii > 3647 && ascii <3653){
+            if ([vocab length]>1) {
+                int asciix = [vocab characterAtIndex:1];
+                if (asciix > 3584 && asciix < 3631) {
+                    tableName = [NSString  stringWithFormat:@"th2eng_%@",[vocab substringWithRange:NSMakeRange(1, 1)]];
+                }
+            }
+        }
+        
+        if (tableName != nil) {
+            [db queryWithString:[NSString stringWithFormat:@"select IFNULL(id, '') as id, IFNULL(tsearch, '') as esearch,IFNULL(eentry, '') as eentry,IFNULL(tcat, '') as ecat,IFNULL(tsyn, '') as esyn,IFNULL(tant, '') as eant from %@ where esearch LIKE '%@%%' group by tsearch order by tsearch limit %d,%d",tableName,vocab,index,index+50]];
+            while([db.ObjResult next]) {
+                Vocab *temp = [[Vocab alloc] initWithLanguage:lang IDvocab:[db.ObjResult intForColumn:@"id"] Search:[db.ObjResult stringForColumn:@"esearch"] Entry:[db.ObjResult stringForColumn:@"eentry"] Cat:[db.ObjResult stringForColumn:@"ecat"] Synonym:[db.ObjResult stringForColumn:@"esyn"] Antonym:[db.ObjResult stringForColumn:@"eant"]];
+                [ret addObject:temp];
+            }
+        }
+        
+    }
+    else if(lang == LanguageENG){
+        char first = [[vocab uppercaseString] characterAtIndex:0];
+        NSString *tableName = [NSString  stringWithFormat:@"eng2th_%c",first];
+        [db queryWithString:[NSString stringWithFormat:@"select IFNULL(id, '') as id, IFNULL(esearch, '') as esearch,IFNULL(eentry, '') as eentry,IFNULL(tentry, '') as tentry,IFNULL(ecat, '') as ecat,IFNULL(ethai, '') as ethai,IFNULL(esyn, '') as esyn,IFNULL(eant, '') as eant from %@ where esearch LIKE '%@%%' group by esearch order by id limit %d,%d",tableName,vocab,index,index+50]];
+        while([db.ObjResult next]) {
+            Vocab *temp = [[Vocab alloc] initWithLanguage:lang IDvocab:[db.ObjResult intForColumn:@"id"] Search:[db.ObjResult stringForColumn:@"esearch"] Entry:[db.ObjResult stringForColumn:@"tentry"] Cat:[db.ObjResult stringForColumn:@"ecat"] Synonym:[db.ObjResult stringForColumn:@"esyn"] Antonym:[db.ObjResult stringForColumn:@"eant"]];
+            [ret addObject:temp];
+        }
+    }
+    [db closeDB];
+    return ret;
+}
+
 
 +(NSMutableArray *)translateVocab:(Vocab *)vocab{
     DB *db = [[DB alloc ]init];
