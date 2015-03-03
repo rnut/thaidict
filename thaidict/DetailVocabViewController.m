@@ -106,16 +106,10 @@
         });
         flagDetail= NO;
     }
-    
-    
-    
-//    [self loadImage];
-//    [UIView animateWithDuration:2.0 animations:^{
-//        self.ExapmpleView.layer.backgroundColor = [UIColor greenColor].CGColor;
-//    }completion:^(BOOL finished){}];
-    
 }
-
+- (UIStatusBarStyle) preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
 -(void)setHiddenInterface:(BOOL)boolean{
     [speakBtn setHidden:boolean];
     [TranslateTable setHidden:boolean];

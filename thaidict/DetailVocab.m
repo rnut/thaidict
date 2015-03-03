@@ -22,6 +22,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [self stateFavoriteButton];
+    [self setNeedsStatusBarAppearanceUpdate];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -33,6 +34,9 @@
     else{
         self.SearchLabel.text = [ChooseVocab Search];
         [self setHiddenInterface:NO];
+        UIView *lineView2 = [[UIView alloc] initWithFrame:CGRectMake(0, self.BaseTableview.frame.origin.y, self.view.bounds.size.width, 3)];
+        lineView2.backgroundColor = [UIColor blackColor];
+        [self.view addSubview:lineView2];
     }
 }
 
@@ -48,7 +52,9 @@
     }
 
 }
-
+- (UIStatusBarStyle) preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
 -(void)setHiddenInterface:(BOOL)boolean{
 
     [self.BaseTableview setHidden:boolean];
@@ -63,16 +69,7 @@
     return 1;
 
 }
--(CGFloat)tableView: (UITableView*)tableView heightForRowAtIndexPath: (NSIndexPath*) indexPath{
-    if (indexPath.section==0) {
-        return 343.0f;
-    }
-    else if (indexPath.section ==1){
-        return 106.0f;
-    }
-    else
-        return 160.0f;
-}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return  3;
 }
@@ -133,6 +130,74 @@
 //        [self loadExample];
     }
 }
+
+-(CGFloat)tableView: (UITableView*)tableView heightForRowAtIndexPath: (NSIndexPath*) indexPath{
+    if (indexPath.section==0) {
+        return 343.0f;
+    }
+    else if (indexPath.section ==1){
+        return 106.0f;
+    }
+    else
+        return 160.0f;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 16;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section== 0) {
+        return 40;
+    }
+    return 30 ;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 18)];
+    [view setBackgroundColor:[UIColor colorWithRed:0.906 green:0.906 blue:0.906 alpha:1]]; //your background color...
+    return view;
+}
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    NSString *title;
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 30)];
+    UILabel *label;
+    UIView *lineView;
+    lineView = [[UIView alloc] initWithFrame:CGRectMake(10, view.frame.origin.y+30, self.view.bounds.size.width, 1)];
+    label = [[UILabel alloc] initWithFrame:CGRectMake(15,10 , tableView.frame.size.width, 17)];
+    
+    switch (section) {
+            
+        case 0:
+        {
+            title =   [NSString stringWithFormat:@"Definition   (source : %s)","lexitron or internet"];
+            label = [[UILabel alloc] initWithFrame:CGRectMake(15,20 , tableView.frame.size.width, 17)];
+            lineView = [[UIView alloc] initWithFrame:CGRectMake(10, 40, self.view.bounds.size.width, 1)];
+            break;
+        }
+        case 1:
+            title =    @"Sample";
+            break;
+        case 2:
+            title =    @"Image";
+            break;
+            
+        default:
+            title =    @"";
+            break;
+    }
+    [label setFont:[UIFont fontWithName:@"Helvetica neue" size:14]];
+    [label setText:title];
+    [label setTextColor:[UIColor colorWithRed:0.345 green:0.345 blue:0.345 alpha:1]];
+    [view addSubview:label];
+    [view setBackgroundColor:[UIColor whiteColor]];
+    //line view
+    lineView.backgroundColor = [UIColor grayColor];
+    [view addSubview:lineView];
+    return view;
+}
+
+
 #pragma mark Favorite
 - (IBAction)favorite:(id)sender {
     //check concurrnt fav

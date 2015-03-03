@@ -25,9 +25,11 @@
     [[UINavigationBar appearance] setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setBarTintColor:red];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-    
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     [[UITabBar appearance] setBarTintColor:red];
     [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    [self.window setBackgroundColor:[UIColor whiteColor]];
     return YES;
     
 }

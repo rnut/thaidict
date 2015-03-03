@@ -25,22 +25,20 @@ int idrec = 0;
     [TableWords setDelegate:self];
     [TableWords setDataSource:self];
     [SearchBox setDelegate:self];
-    
-//    [TableWords setRowHeight:44];
     SearchText = @"a";
     ArrayWords = [Vocab listDictByVocab:SearchText];
     [TableWords reloadData];
-//    [self setNeedsStatusBarAppearanceUpdate];
+    [self setNeedsStatusBarAppearanceUpdate];
 }
-//-(UIStatusBarStyle)preferredStatusBarStyle{
-//    return UIStatusBarStyleLightContent;
-//}
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
 -(void)setInterface{
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
-                                   initWithTarget:self
-                                   action:@selector(dismissKeyboard)];
-    
-    [self.view addGestureRecognizer:tap];
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+//                                   initWithTarget:self
+//                                   action:@selector(dismissKeyboard)];
+//    
+//    [self.view addGestureRecognizer:tap];
     UIColor *red = [UIColor colorWithRed:(228/255.0) green:3/255.0 blue:21/255.0 alpha:1.0f];
     [self.view.layer setBackgroundColor:[red CGColor]];
     [self.SearchView.layer setBorderWidth:0.0f];
@@ -70,25 +68,7 @@ int idrec = 0;
          
      }];
 }
-//- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
-//    [UIView animateWithDuration:0.3
-//                          delay:0
-//                        options: UIViewAnimationOptionLayoutSubviews
-//                     animations:^
-//     {
-//         [[self navigationController] setNavigationBarHidden:NO animated:YES];
-//         CGRect frame = self.SearchView.frame;
-//         frame.origin.y = 0;
-//         frame.origin.x = 0;
-//         self.SearchView.frame = frame;
-//     }
-//                     completion:^(BOOL finished)
-//     {
-////         NSLog(@"Completed");
-//         
-//     }];
-//    return YES;
-//}
+
 -(void)textFieldDidChange :(UITextField *)theTextField{
     
     if ([theTextField.text length] > 0) {
