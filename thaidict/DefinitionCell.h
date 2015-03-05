@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "VocabCell.h"
 #import "Vocab.h"
-@interface DefinitionCell : UITableViewCell<UITableViewDataSource,UITableViewDelegate>
+@interface DefinitionCell : UITableViewCell//<UITableViewDataSource,UITableViewDelegate>
 {
    
 }
 @property(nonatomic,strong)IBOutlet UITableView *TableDefinition;
 @property(strong,nonatomic)Vocab *chooseVocab;
+@property (strong, nonatomic) IBOutlet UIWebView *Webview;
 @property(nonatomic,strong)NSMutableArray *TranslateInfo;
 @end

@@ -33,23 +33,23 @@
 //        [self.view setHidden:YES];
     }
     else{
-        TranslateInfo = [Vocab translateVocab:ChooseVocab];
-        if ([TranslateInfo count]== 0) [self setHiddenInterface:YES];
-        else{
+//        TranslateInfo = [Vocab translateVocab:ChooseVocab];
+//        if ([TranslateInfo count]== 0) [self setHiddenInterface:YES];
+//        else{
             [History keepHistory:[[TranslateInfo objectAtIndex:0] objectAtIndex:0]];
             self.SearchLabel.text = [ChooseVocab Search];
             [self setHiddenInterface:NO];
             UIView *lineView2 = [[UIView alloc] initWithFrame:CGRectMake(0, self.BaseTableview.frame.origin.y, self.view.bounds.size.width, 3)];
             lineView2.backgroundColor = [UIColor blackColor];
             [self.view addSubview:lineView2];
-        }
+//        }
         
     }
 }
--(BOOL)translateVocab{
-    TranslateInfo = [Vocab translateVocab:ChooseVocab];
-    return NO;
-}
+//-(BOOL)translateVocab{
+//    TranslateInfo = [Vocab translateVocab:ChooseVocab];
+//    return NO;
+//}
 -(void)stateFavoriteButton{
             //check concurrnt fav
     if ([Favorite checkFavoriteConcurrent:ChooseVocab]) {
@@ -91,7 +91,7 @@
             CellIdentifier = @"Definition";
             DefinitionCell *cell = (DefinitionCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             cell.chooseVocab = ChooseVocab;
-            cell.TranslateInfo = TranslateInfo;
+//            cell.TranslateInfo = TranslateInfo;
             return cell;
         break;}
         case 1:{
