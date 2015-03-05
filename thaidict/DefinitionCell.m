@@ -34,7 +34,7 @@
 //        ret = @"<html><table><tr><td>TESTTTTTT HTML </td></tr></table></html>";
 //    }
 //    NSError *error;line-height:100px
-    ret = @"<html><head><style>body{width:100%; margin : 0 ; padding : 0;} table{width : 100%; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;} .entry{width:100%;color:#000;font-size:17px;} .category{font-size:11px; color:#006600; padding: 15px 0 10px 0 ;}.circle{width:15px;height:15px;border-radius:50px;font-size:11px;color:#fff;;text-align:center;background:#FF6666}</style></head><body><table border='0'>";
+    ret = @"<html><head><style>body{width:100%; margin : 0 ; padding : 0;} table{width : 100%; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;} .entry{width:100%;color:#000;font-size:17px;} .category{font-size:11px; color:#006600; padding: 15px 0 10px 0 ;}.circle{width:15px;height:15px;border-radius:50px;font-size:11px;color:#fff;;text-align:center;background:#FF6666} .synnonym{width:70px;height:15px;border-radius:50px;font-size:11px;color:#fff;;text-align:center;background:#339900} .antonym{width:70px;height:15px;border-radius:50px;font-size:11px;color:#fff;;text-align:center;background:#CC0000}</style></head><body><table border='0'>";
 //    for (int i = 0; i<[self.TranslateInfo count]; i++) {
     for (int i = 0; i<[TranslateInfo count]; i++) {
         ret = [ret stringByAppendingString:[NSString stringWithFormat:@"<tr><td colspan='' class='category'>%@</td></tr>",[[[TranslateInfo objectAtIndex:i] objectAtIndex:0] Cat]]];
@@ -45,10 +45,10 @@
             ret = [ret stringByAppendingString:[NSString stringWithFormat:@"<td class='entry'>%@</td>",v.Entry]];
             ret = [ret stringByAppendingString:@"</tr>"];
             if (![v.Synonym isEqualToString:@""] && v.Synonym != nil) {
-                    ret = [ret stringByAppendingString:[NSString stringWithFormat:@"<tr><td>synnonym</td><td>%@</td></tr>",v.Synonym]];
+                    ret = [ret stringByAppendingString:[NSString stringWithFormat:@"<tr><td><div class='synnonym'>synnonym</div></td><td>%@</td></tr>",v.Synonym]];
             }
             if (![v.Antonym isEqualToString:@""] && v.Antonym != nil) {
-                ret = [ret stringByAppendingString:[NSString stringWithFormat:@"<tr><td>Antonym</td><td>%@</td></tr>",v.Antonym]];
+                ret = [ret stringByAppendingString:[NSString stringWithFormat:@"<tr><td><div class='antonym'>antonym</div></td><td>%@</td></tr>",v.Antonym]];
             }
         }
     
