@@ -18,7 +18,7 @@
 @end
 
 @implementation DetailVocab
-@synthesize ChooseVocab,Player,speakBtn;
+@synthesize ChooseVocab,Player,speakBtn,TranslateInfo;
 
 -(void)viewWillAppear:(BOOL)animated{
     [self stateFavoriteButton];
@@ -30,16 +30,26 @@
     [self.IndicatorSpeak setHidden:YES];
     if (ChooseVocab == nil) {
         [self setHiddenInterface:YES];
+//        [self.view setHidden:YES];
     }
     else{
-        self.SearchLabel.text = [ChooseVocab Search];
-        [self setHiddenInterface:NO];
-        UIView *lineView2 = [[UIView alloc] initWithFrame:CGRectMake(0, self.BaseTableview.frame.origin.y, self.view.bounds.size.width, 3)];
-        lineView2.backgroundColor = [UIColor blackColor];
-        [self.view addSubview:lineView2];
+        TranslateInfo = [Vocab translateVocab:ChooseVocab];
+        if ([TranslateInfo count]== 0) [self setHiddenInterface:YES];
+        else{
+            [History keepHistory:[[TranslateInfo objectAtIndex:0] objectAtIndex:0]];
+            self.SearchLabel.text = [ChooseVocab Search];
+            [self setHiddenInterface:NO];
+            UIView *lineView2 = [[UIView alloc] initWithFrame:CGRectMake(0, self.BaseTableview.frame.origin.y, self.view.bounds.size.width, 3)];
+            lineView2.backgroundColor = [UIColor blackColor];
+            [self.view addSubview:lineView2];
+        }
+        
     }
 }
-
+-(BOOL)translateVocab{
+    TranslateInfo = [Vocab translateVocab:ChooseVocab];
+    return NO;
+}
 -(void)stateFavoriteButton{
             //check concurrnt fav
     if ([Favorite checkFavoriteConcurrent:ChooseVocab]) {
@@ -80,14 +90,26 @@
         case 0:{
             CellIdentifier = @"Definition";
             DefinitionCell *cell = (DefinitionCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-            
             cell.chooseVocab = ChooseVocab;
+            cell.TranslateInfo = TranslateInfo;
             return cell;
         break;}
         case 1:{
             CellIdentifier = @"Sample";
             SampleCell *cell = (SampleCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             cell.ChooseVocab = ChooseVocab;
+            
+            if (ChooseVocab.Language == LanguageTHA) {
+                if (TranslateInfo.count > 0) {
+                    for (int i =0; i<[TranslateInfo count]; i++) {
+                        if ([[[TranslateInfo objectAtIndex:0] objectAtIndex:i] Sample] != nil) {
+                            cell.Example.text = [[[TranslateInfo objectAtIndex:0] objectAtIndex:i] Sample];
+                            break;
+                        }
+                    }
+                    
+                }
+            }
             return cell;
             break;
         }

@@ -9,7 +9,7 @@
 #import "DefinitionCell.h"
 
 @implementation DefinitionCell
-@synthesize TableDefinition,chooseVocab;
+@synthesize TableDefinition,chooseVocab,TranslateInfo;
 
 -(void)layoutSubviews
 {
@@ -26,7 +26,7 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-    TranslateInfo = [Vocab translateVocab:chooseVocab];
+
     [TableDefinition reloadData];
 
     // Configure the view for the selected state

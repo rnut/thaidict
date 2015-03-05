@@ -18,6 +18,7 @@
 #import "WYPopoverController.h"
 #import <Social/Social.h>
 #import "Favorite.h"
+#import "History.h"
 @interface DetailVocab : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {
 
@@ -36,6 +37,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *SearchLabel;
 @property (strong, nonatomic) IBOutlet UIButton *FavBtn;
 @property (strong, nonatomic) IBOutlet UIButton *ShareBtn;
+@property(nonatomic,strong)NSMutableArray *TranslateInfo;
 
 
 

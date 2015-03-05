@@ -19,4 +19,5 @@
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *IndicatorExample;
 @property (strong, nonatomic) IBOutlet UIView *ExampleView;
 @property(nonatomic,strong)Vocab *ChooseVocab;
+
 @end

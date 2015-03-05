@@ -109,14 +109,14 @@ int idrec = 0;
     [self performSegueWithIdentifier:@"chooseVocab" sender:@"textfield"];
     return YES;
 }
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-
-    UITouch *touch = [[event allTouches] anyObject];
-    if ([SearchBox isFirstResponder] && [touch view] != SearchBox) {
-        [SearchBox resignFirstResponder];
-    }
-    [super touchesBegan:touches withEvent:event];
-}
+//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+//
+//    UITouch *touch = [[event allTouches] anyObject];
+//    if ([SearchBox isFirstResponder] && [touch view] != SearchBox) {
+//        [SearchBox resignFirstResponder];
+//    }
+//    [super touchesBegan:touches withEvent:event];
+//}
 
 #pragma mark tableview
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -135,7 +135,7 @@ int idrec = 0;
         cell.delegate = self;
     }
     if (indexPath.row == [ArrayWords count] -1) {
-        NSArray *temp = [Vocab listDictByVocab:SearchText ByIndex:indexPath.row+1];
+        NSArray *temp = [Vocab listDictByVocab:SearchText ByIndex:(int)indexPath.row+1];
         for (Vocab *v in temp) {
             [ArrayWords addObject:v];
             [tableView reloadData];
@@ -222,8 +222,6 @@ int idrec = 0;
         }else{
             choose = [ArrayWords objectAtIndex:[[TableWords indexPathForSelectedRow] row]];
         }
-        
-        [History keepHistory:choose];
         [vc setChooseVocab:choose];
     }
 }

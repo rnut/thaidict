@@ -46,24 +46,25 @@
     [super setSelected:selected animated:animated];
 }
 -(void)loadExample{
-    
-    dispatch_queue_t exQueue_ = dispatch_queue_create("exampleque", NULL);
-    dispatch_async(exQueue_, ^{
-        
-        [ChooseVocab loadSampleENG];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if ([[ChooseVocab Sample] isEqualToString:@""] || [ChooseVocab Sample] == nil) {
-                self.Example.text = @"not found example";
-                [self removeOverlayAndIndicator];
-                flagSample = NO;
-            }
-            else{
-                self.Example.text = [ChooseVocab Sample];
-                [self removeOverlayAndIndicator];
-                flagSample = NO;
-            }
+    if(ChooseVocab.Language == LanguageENG){
+        dispatch_queue_t exQueue_ = dispatch_queue_create("exampleque", NULL);
+        dispatch_async(exQueue_, ^{
+            
+            [ChooseVocab loadSampleENG];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([[ChooseVocab Sample] isEqualToString:@""] || [ChooseVocab Sample] == nil) {
+                    self.Example.text = @"not found example";
+                    [self removeOverlayAndIndicator];
+                    flagSample = NO;
+                }
+                else{
+                    self.Example.text = [ChooseVocab Sample];
+                    [self removeOverlayAndIndicator];
+                    flagSample = NO;
+                }
+            });
         });
-    });
+    }
 }
 
 #pragma mark Overlay

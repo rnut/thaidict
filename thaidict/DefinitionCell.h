@@ -11,8 +11,9 @@
 #import "Vocab.h"
 @interface DefinitionCell : UITableViewCell<UITableViewDataSource,UITableViewDelegate>
 {
-   NSMutableArray *TranslateInfo;
+   
 }
 @property(nonatomic,strong)IBOutlet UITableView *TableDefinition;
 @property(strong,nonatomic)Vocab *chooseVocab;
+@property(nonatomic,strong)NSMutableArray *TranslateInfo;
 @end
