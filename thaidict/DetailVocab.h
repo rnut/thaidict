@@ -18,7 +18,7 @@
 #import "WYPopoverController.h"
 #import <Social/Social.h>
 #import "Favorite.h"
-#import "History.h"
+
 @interface DetailVocab : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {
 

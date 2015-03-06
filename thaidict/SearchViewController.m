@@ -71,8 +71,8 @@ int idrec = 0;
 
 -(void)textFieldDidChange :(UITextField *)theTextField{
     
-    if ([theTextField.text length] > 0) {
-        SearchText = theTextField.text;
+    if ([[theTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length]  > 0) {
+        SearchText = [theTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         ArrayWords = [Vocab listDictByVocab:SearchText];
         if ([ArrayWords count] == 0) {
             NSLog(@"search by internet");

@@ -24,20 +24,23 @@
 
 +(DictLanguage)checkLanguage:(NSString*)search{
     DictLanguage lang;
-    int ascii = [search characterAtIndex:0];
-//    NSLog(@"search : %@ ;ascii : %d",search,ascii);
-//    int xx = 3660;
-//    NSString *string = [NSString stringWithFormat:@"%c", xx];
-//    NSLog(@"int %d  : ascii : %@",xx,string);
-//    ascii > 3584 && ascii < 3631
-//    ก-ฮ  :  3585 - 3630  , สระ 3632-3676
-    if ((ascii > 3584 && ascii <3631)||(ascii > 3631 && ascii < 3676)) {
-        lang = LanguageTHA;
+    if (search.length > 0) {
+        int ascii = [[search stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] characterAtIndex:0];
+        //    NSLog(@"search : %@ ;ascii : %d",search,ascii);
+        //    int xx = 3660;
+        //    NSString *string = [NSString stringWithFormat:@"%c", xx];
+        //    NSLog(@"int %d  : ascii : %@",xx,string);
+        //    ascii > 3584 && ascii < 3631
+        //    ก-ฮ  :  3585 - 3630  , สระ 3632-3676
+        if ((ascii > 3584 && ascii <3631)||(ascii > 3631 && ascii < 3676)) {
+            lang = LanguageTHA;
+        }
+        else if ((ascii > 64 && ascii < 91 ) || (ascii >96 && ascii < 123)){
+            lang = LanguageENG;
+            
+        }
     }
-    else if ((ascii > 64 && ascii < 91 ) || (ascii >96 && ascii < 123)){
-        lang = LanguageENG;
-        
-    }
+
     return lang;
 }
 @end

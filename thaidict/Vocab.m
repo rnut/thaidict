@@ -28,11 +28,11 @@
     DB *db = [[DB alloc ]init];
     NSMutableArray *ret = [[NSMutableArray alloc] init];
     DictLanguage lang;
-    lang = [Language checkLanguage:vocab];
+    lang = [Language checkLanguage:[vocab stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
     if (lang == LanguageTHA) {
         NSString *tableName;
         //  ก-ฮ  :  3585 - 3630  , สระ 3632-3676
-        int ascii = [vocab characterAtIndex:0];
+        int ascii = [[vocab stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] characterAtIndex:0];
         if (ascii > 3584 && ascii < 3631) {
             tableName = [NSString  stringWithFormat:@"th2eng_%@",[vocab substringWithRange:NSMakeRange(0, 1)]];
         }
@@ -46,7 +46,7 @@
         }
         
         if (tableName != nil) {
-            [db queryWithString:[NSString stringWithFormat:@"select IFNULL(id, '') as id, IFNULL(tsearch, '') as esearch,IFNULL(eentry, '') as eentry,IFNULL(tcat, '') as ecat,IFNULL(tsyn, '') as esyn,IFNULL(tant, '') as eant from %@ where esearch LIKE '%@%%' group by tsearch order by tsearch",tableName,vocab]];
+            [db queryWithString:[NSString stringWithFormat:@"select IFNULL(id, '') as id, IFNULL(tsearch, '') as esearch,IFNULL(eentry, '') as eentry,IFNULL(tcat, '') as ecat,IFNULL(tsyn, '') as esyn,IFNULL(tant, '') as eant from %@ where esearch LIKE '%@%%' group by tsearch order by tsearch",tableName,[vocab stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]]];
             while([db.ObjResult next]) {
                 Vocab *temp = [[Vocab alloc] initWithLanguage:lang IDvocab:[db.ObjResult intForColumn:@"id"] Search:[db.ObjResult stringForColumn:@"esearch"] Entry:[db.ObjResult stringForColumn:@"eentry"] Cat:[db.ObjResult stringForColumn:@"ecat"] Synonym:[db.ObjResult stringForColumn:@"esyn"] Antonym:[db.ObjResult stringForColumn:@"eant"]];
                 [ret addObject:temp];
@@ -55,7 +55,7 @@
 
     }
     else if(lang == LanguageENG){
-        char first = [[vocab uppercaseString] characterAtIndex:0];
+        char first = [[[vocab uppercaseString] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] characterAtIndex:0];
         NSString *tableName = [NSString  stringWithFormat:@"eng2th_%c",first];
         [db queryWithString:[NSString stringWithFormat:@"select IFNULL(id, '') as id, IFNULL(esearch, '') as esearch,IFNULL(eentry, '') as eentry,IFNULL(tentry, '') as tentry,IFNULL(ecat, '') as ecat,IFNULL(ethai, '') as ethai,IFNULL(esyn, '') as esyn,IFNULL(eant, '') as eant from %@ where esearch LIKE '%@%%' group by esearch order by id limit 50",tableName,vocab]];
         while([db.ObjResult next]) {
@@ -134,7 +134,7 @@
             }
         }
         
-        [db queryWithString:[NSString stringWithFormat:@"select IFNULL(id, '') as id, IFNULL(tsearch, '') as esearch,IFNULL(eentry, '') as eentry,IFNULL(tcat, '') as cat,IFNULL(tsyn, '') as esyn,IFNULL(tant, '') as eant,IFNULL(tsample, '') as sample from %@ where esearch like '%@' group by eentry order by tsearch",tableName,vocab.Search]];
+        [db queryWithString:[NSString stringWithFormat:@"select IFNULL(id, '') as id, IFNULL(tsearch, '') as esearch,IFNULL(eentry, '') as eentry,IFNULL(tcat, '') as cat,IFNULL(tsyn, '') as esyn,IFNULL(tant, '') as eant,IFNULL(tsample, '') as sample from %@ where esearch like '%@' group by eentry order by tsearch",tableName,[vocab.Search stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]]];
         int i =0;
         while([db.ObjResult next]) {
             NSString *cat = [db.ObjResult stringForColumn:@"cat"];
@@ -161,7 +161,7 @@
     else if(vocab.Language == LanguageENG){
         char first = [[vocab.Search uppercaseString] characterAtIndex:0];
         NSString *tableName = [NSString  stringWithFormat:@"eng2th_%c",first];
-        NSString *querySTR =[NSString stringWithFormat:@"select IFNULL(id, '') as id, IFNULL(esearch, '') as esearch,IFNULL(eentry, '') as eentry,IFNULL(tentry, '') as tentry,IFNULL(ecat, '') as cat,IFNULL(ethai, '') as ethai,IFNULL(esyn, '') as esyn,IFNULL(eant, '') as eant from %@ where esearch like '%@' group by tentry order by ecat",tableName,vocab.Search];
+        NSString *querySTR =[NSString stringWithFormat:@"select IFNULL(id, '') as id, IFNULL(esearch, '') as esearch,IFNULL(eentry, '') as eentry,IFNULL(tentry, '') as tentry,IFNULL(ecat, '') as cat,IFNULL(ethai, '') as ethai,IFNULL(esyn, '') as esyn,IFNULL(eant, '') as eant from %@ where esearch like '%@' group by tentry order by ecat",tableName,[vocab.Search stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
         [db queryWithString:querySTR];
         
         while([db.ObjResult next]) {
@@ -219,7 +219,7 @@
     NSMutableArray *retrival = [[NSMutableArray alloc] init];
 
     NSError *error = nil;
-    NSString *html = [Connect connectHtmlWithPath:[NSString stringWithFormat:@"http://dict.longdo.com/mobile.php?search=%@",[vocab Search]]];
+    NSString *html = [Connect connectHtmlWithPath:[NSString stringWithFormat:@"http://dict.longdo.com/mobile.php?search=%@",[[vocab Search] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]]];
     NSRange rang1 = [html rangeOfString:@"ศัพท์บัญญัติราชบัณฑิตยสถาน"];
     if (rang1.location != NSNotFound) {
         NSInteger start = rang1.location;

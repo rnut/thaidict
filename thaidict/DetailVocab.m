@@ -14,6 +14,8 @@
     Favorite *objFav;
     UIView *overlayView;
     WYPopoverController* popoverController;
+    BOOL flagtranslate;
+    CGFloat definitionHeight;
 }
 @end
 
@@ -21,8 +23,10 @@
 @synthesize ChooseVocab,Player,speakBtn,TranslateInfo;
 
 -(void)viewWillAppear:(BOOL)animated{
-    [self stateFavoriteButton];
     [self setNeedsStatusBarAppearanceUpdate];
+    flagtranslate = [self translateVocab];
+    [self stateFavoriteButton];
+    definitionHeight = [self checklengthOfcharecter];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -30,36 +34,47 @@
     [self.IndicatorSpeak setHidden:YES];
     if (ChooseVocab == nil) {
         [self setHiddenInterface:YES];
-//        [self.view setHidden:YES];
+
     }
     else{
-//        TranslateInfo = [Vocab translateVocab:ChooseVocab];
-//        if ([TranslateInfo count]== 0) [self setHiddenInterface:YES];
-//        else{
-            [History keepHistory:[[TranslateInfo objectAtIndex:0] objectAtIndex:0]];
-            self.SearchLabel.text = [ChooseVocab Search];
-            [self setHiddenInterface:NO];
-            UIView *lineView2 = [[UIView alloc] initWithFrame:CGRectMake(0, self.BaseTableview.frame.origin.y, self.view.bounds.size.width, 3)];
-            lineView2.backgroundColor = [UIColor blackColor];
-            [self.view addSubview:lineView2];
-//        }
-        
+        self.SearchLabel.text = [ChooseVocab Search];
+        [self setHiddenInterface:NO];
+        UIView *lineView2 = [[UIView alloc] initWithFrame:CGRectMake(0, self.BaseTableview.frame.origin.y, self.view.bounds.size.width, 3)];
+        lineView2.backgroundColor = [UIColor blackColor];
+        [self.view addSubview:lineView2];
     }
 }
-//-(BOOL)translateVocab{
-//    TranslateInfo = [Vocab translateVocab:ChooseVocab];
-//    return NO;
-//}
+-(BOOL)translateVocab{
+    if (ChooseVocab != nil && ![ChooseVocab.Search isEqualToString:@""]) {
+        TranslateInfo = [Vocab translateVocab:ChooseVocab];
+        if (TranslateInfo.count > 0) {
+            return YES;
+        }
+        else{
+            TranslateInfo = [Vocab translateByExternal:ChooseVocab];
+            return  NO;
+        }
+    }
+    
+    return nil;
+}
+
 -(void)stateFavoriteButton{
             //check concurrnt fav
-    if ([Favorite checkFavoriteConcurrent:ChooseVocab]) {
-        flagFav = YES;
-        [self.FavBtn setImage:[UIImage imageNamed:@"fav_off.png"] forState:UIControlStateNormal];
-    }else
-    {
-        flagFav = NO;
-        [self.FavBtn setImage:[UIImage imageNamed:@"fav_on.png"] forState:UIControlStateNormal];
+    if (TranslateInfo.count > 0) {
+        Vocab * v = [[TranslateInfo objectAtIndex:0] objectAtIndex:0];
+        if (v!= nil) {
+            if ([Favorite checkFavoriteConcurrent:v]) {
+                flagFav = YES;
+                [self.FavBtn setImage:[UIImage imageNamed:@"fav_off.png"] forState:UIControlStateNormal];
+            }else
+            {
+                flagFav = NO;
+                [self.FavBtn setImage:[UIImage imageNamed:@"fav_on.png"] forState:UIControlStateNormal];
+            }
+        }
     }
+    
 
 }
 - (UIStatusBarStyle) preferredStatusBarStyle {
@@ -91,7 +106,7 @@
             CellIdentifier = @"Definition";
             DefinitionCell *cell = (DefinitionCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             cell.chooseVocab = ChooseVocab;
-//            cell.TranslateInfo = TranslateInfo;
+            cell.TranslateInfo = TranslateInfo;
             return cell;
         break;}
         case 1:{
@@ -153,9 +168,75 @@
     }
 }
 
+-(CGFloat)checklengthOfcharecter{
+    unsigned long length = 0;
+    int line = 0;
+    for (NSArray *arr in TranslateInfo) {
+        line++;
+        for (Vocab *v in arr) {
+            if (![v.Antonym isEqualToString:@""] || ![v.Synonym isEqualToString:@""]){
+                if (v.Entry.length > 28) {
+                    line++;
+                }
+                if (![v.Synonym isEqualToString:@""]) {
+                    line++;
+                    if (v.Synonym.length > 34) {
+                        line++;
+                    }
+                }
+                if (![v.Antonym isEqualToString:@""]) {
+                    line++;
+                    if (v.Antonym.length > 34) {
+                        line++;
+                    }
+                }
+                
+            }
+            else{
+                if (v.Entry.length > 110) {
+                    line = line+2;
+                }
+                else if (v.Entry.length > 45) {
+                    line++;
+                }
+                if (![v.Synonym isEqualToString:@""]) {
+                    line++;
+                    if (v.Synonym.length > 44) {
+                        line++;
+                    }
+                }
+                if (![v.Antonym isEqualToString:@""]) {
+                    line++;
+                    if (v.Antonym.length > 44) {
+                        line++;
+                    }
+                }
+                
+            }
+            line++;
+
+        }
+    }
+    NSLog(@"line : %d",line);
+    NSLog(@"check : %lu",length);
+    
+    if (line >= 9  )return 343.0f;
+    else if(line >=8)return 316.0f;
+    else if ( line>=7)return 289.0f;
+    else if(line >=6)return 252.0f;
+    else if (line >=5) return 210.0f;
+    else if(line >=4)return 180.0f;
+    else if(line >=3)return 150.0f;
+    else if(line >=2)return 120.0f;
+    else if(line >=1)return 100.0f;
+    else return 100.0f;
+}
+
+
 -(CGFloat)tableView: (UITableView*)tableView heightForRowAtIndexPath: (NSIndexPath*) indexPath{
     if (indexPath.section==0) {
-        return 343.0f;
+        if (definitionHeight != 0) return definitionHeight;
+        else return 100.0f;
     }
     else if (indexPath.section ==1){
         return 106.0f;
@@ -223,19 +304,24 @@
 #pragma mark Favorite
 - (IBAction)favorite:(id)sender {
     //check concurrnt fav
-    if ([Favorite checkFavoriteConcurrent:ChooseVocab]) {
-        
-        objFav = [Favorite favoriteVocab:ChooseVocab];
-        flagFav = NO;
-        [self.FavBtn setImage:[UIImage imageNamed:@"fav_on.png"] forState:UIControlStateNormal];
-    }else
-    {
-        if (objFav == nil) {
-            objFav = [[Favorite alloc] initWithVocab:ChooseVocab FAVID:0];
+    if (TranslateInfo.count > 0) {
+        Vocab * v = [[TranslateInfo objectAtIndex:0] objectAtIndex:0];
+        if (v!= nil) {
+            if ([Favorite checkFavoriteConcurrent:v]) {
+                
+                objFav = [Favorite favoriteVocab:v];
+                flagFav = NO;
+                [self.FavBtn setImage:[UIImage imageNamed:@"fav_on.png"] forState:UIControlStateNormal];
+            }else
+            {
+                if (objFav == nil) {
+                    objFav = [[Favorite alloc] initWithVocab:v FAVID:0];
+                }
+                [Favorite deleteFavorite:objFav];
+                flagFav = NO;
+                [self.FavBtn setImage:[UIImage imageNamed:@"fav_off.png"] forState:UIControlStateNormal];
+            }
         }
-        [Favorite deleteFavorite:objFav];
-        flagFav = NO;
-        [self.FavBtn setImage:[UIImage imageNamed:@"fav_off.png"] forState:UIControlStateNormal];
     }
 }
 
@@ -278,7 +364,7 @@
         }
         
         Player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:path] error:&err];
-        Player.volume =2.0f;
+        Player.volume =1.0f;
         [Player prepareToPlay];
         [Player setNumberOfLoops:0];
         [Player play];

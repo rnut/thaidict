@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "VocabCell.h"
 #import "Vocab.h"
+#import "History.h"
+
 @interface DefinitionCell : UITableViewCell//<UITableViewDataSource,UITableViewDelegate>
 {
-   
+    
 }
+@property(nonatomic,assign)BOOL Source;
 @property(nonatomic,strong)IBOutlet UITableView *TableDefinition;
 @property(strong,nonatomic)Vocab *chooseVocab;
 @property (strong, nonatomic) IBOutlet UIWebView *Webview;

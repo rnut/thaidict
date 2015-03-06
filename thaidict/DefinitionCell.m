@@ -21,46 +21,50 @@
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    _Source = YES;
     [super setSelected:selected animated:animated];
     [self.Webview loadHTMLString:[self genHtmlString] baseURL:nil];
-//    [TableDefinition reloadData];
-
 }
 -(NSString *)genHtmlString{
-    [self translateVocab];
-    
     NSString *ret;
-//    if ([self.TranslateInfo count] > 0) {
-//        ret = @"<html><table><tr><td>TESTTTTTT HTML </td></tr></table></html>";
-//    }
-//    NSError *error;line-height:100px
-    ret = @"<html><head><style>body{width:100%; margin : 0 ; padding : 0;} table{width : 100%; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;} .entry{width:100%;color:#000;font-size:17px;} .category{font-size:11px; color:#006600; padding: 15px 0 10px 0 ;}.circle{width:15px;height:15px;border-radius:50px;font-size:11px;color:#fff;;text-align:center;background:#FF6666} .synnonym{width:70px;height:15px;border-radius:50px;font-size:11px;color:#fff;;text-align:center;background:#339900} .antonym{width:70px;height:15px;border-radius:50px;font-size:11px;color:#fff;;text-align:center;background:#CC0000}</style></head><body><table border='0'>";
-//    for (int i = 0; i<[self.TranslateInfo count]; i++) {
-    for (int i = 0; i<[TranslateInfo count]; i++) {
-        ret = [ret stringByAppendingString:[NSString stringWithFormat:@"<tr><td colspan='' class='category'>%@</td></tr>",[[[TranslateInfo objectAtIndex:i] objectAtIndex:0] Cat]]];
-        for (int j=0; j<[[TranslateInfo objectAtIndex:i] count]; j++) {
-            Vocab *v = [[TranslateInfo objectAtIndex:i] objectAtIndex:j];
-            ret = [ret stringByAppendingString:@"<tr>"];
-            ret = [ret stringByAppendingString:[NSString stringWithFormat:@"<td align='right'><div class='circle'>%d</div></td>",j+1]];
-            ret = [ret stringByAppendingString:[NSString stringWithFormat:@"<td class='entry'>%@</td>",v.Entry]];
-            ret = [ret stringByAppendingString:@"</tr>"];
-            if (![v.Synonym isEqualToString:@""] && v.Synonym != nil) {
+    if (TranslateInfo.count > 0) {
+        [History keepHistory:[[TranslateInfo objectAtIndex:0] objectAtIndex:0]];
+        ret = @"<html><head><style>body{width:100%; margin : 0 ; padding : 0;} table{width : 100%; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;} .entry{width:100%;color:#000;font-size:17px;} .category{font-size:11px; color:#006600; padding: 15px 0 10px 10px ;}.circle{width:15px;height:15px;border-radius:50px;font-size:11px;color:#fff;;text-align:center;background:#FF6666} .synnonym{width:70px;height:15px;border-radius:50px;font-size:11px;color:#fff;;text-align:center;background:#339900} .antonym{width:70px;height:15px;border-radius:50px;font-size:11px;color:#fff;;text-align:center;background:#CC0000} .credit{float:right; font-size:9px; color:#AAAAAA;}</style></head><body><table border='0'>";
+        for (int i = 0; i<[TranslateInfo count]; i++) {
+            ret = [ret stringByAppendingString:[NSString stringWithFormat:@"<tr><td colspan='3' class='category'>%@</td></tr>",[[[TranslateInfo objectAtIndex:i] objectAtIndex:0] Cat]]];
+            for (int j=0; j<[[TranslateInfo objectAtIndex:i] count]; j++) {
+                Vocab *v = [[TranslateInfo objectAtIndex:i] objectAtIndex:j];
+                ret = [ret stringByAppendingString:@"<tr>"];
+                ret = [ret stringByAppendingString:[NSString stringWithFormat:@"<td align='right' valign='center'><div class='circle'>%d</div></td>",j+1]];
+                ret = [ret stringByAppendingString:[NSString stringWithFormat:@"<td class='entry'>%@</td>",v.Entry]];
+                ret = [ret stringByAppendingString:@"</tr>"];
+                if (![v.Synonym isEqualToString:@""] && v.Synonym != nil) {
                     ret = [ret stringByAppendingString:[NSString stringWithFormat:@"<tr><td><div class='synnonym'>synnonym</div></td><td>%@</td></tr>",v.Synonym]];
-            }
-            if (![v.Antonym isEqualToString:@""] && v.Antonym != nil) {
-                ret = [ret stringByAppendingString:[NSString stringWithFormat:@"<tr><td><div class='antonym'>antonym</div></td><td>%@</td></tr>",v.Antonym]];
+                }
+                if (![v.Antonym isEqualToString:@""] && v.Antonym != nil) {
+                    ret = [ret stringByAppendingString:[NSString stringWithFormat:@"<tr><td><div class='antonym'>antonym</div></td><td>%@</td></tr>",v.Antonym]];
+                }
             }
         }
-    
+        if (_Source) {
+            //search offline
+            ret = [ret stringByAppendingString:[NSString stringWithFormat:@"<tr><td colspan='3'><div class='credit'>created by adaptation of LEXiTRON developed by NECTEC</div></td></tr>"]];
+        }
+        else{
+            //search online
+            ret = [ret stringByAppendingString:[NSString stringWithFormat:@"<tr><td colspan='3'><div class='credit'>created by adaptation of Longdo Dictionary API</div></td></tr>"]];
+            
+        }
+        ret = [ret stringByAppendingString:@"</table></body></html>"];
     }
-    //<tr><td></td></tr><tr><td>ทดสอบความหมาย</td></tr><tr><td>synnonym</td></tr><tr><td>antonym</td></tr>
-    ret = [ret stringByAppendingString:@"</table></body></html>"];
+    else{
+        //print no result
+    }
+    
+    
     return ret;
 }
--(BOOL)translateVocab{
-    TranslateInfo = [Vocab translateVocab:chooseVocab];
-    return NO;
-}
+
 #pragma mark tableview
 //
 //- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
