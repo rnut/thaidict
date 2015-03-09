@@ -72,6 +72,12 @@
 		697A6C171A6FA5C7008A893A /* APImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 697A6C141A6FA5C7008A893A /* APImage.m */; };
 		697A6C181A6FA5C7008A893A /* APSpeech.m in Sources */ = {isa = PBXBuildFile; fileRef = 697A6C161A6FA5C7008A893A /* APSpeech.m */; };
 		697A6C1A1A6FB310008A893A /* lexitron2.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 697A6C191A6FB310008A893A /* lexitron2.sqlite */; };
+		6984DAD51AAD9ADB003F800C /* AAMFeedbackTopicsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6984DAC81AAD9ADB003F800C /* AAMFeedbackTopicsViewController.m */; };
+		6984DAD61AAD9ADB003F800C /* AAMFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6984DACA1AAD9ADB003F800C /* AAMFeedbackViewController.m */; };
+		6984DAD71AAD9ADB003F800C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6984DACC1AAD9ADB003F800C /* Localizable.strings */; };
+		6984DAD81AAD9ADB003F800C /* FeedbackService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6984DACF1AAD9ADB003F800C /* FeedbackService.m */; };
+		6984DAD91AAD9ADB003F800C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6984DAD11AAD9ADB003F800C /* Localizable.strings */; };
+		6984DADA1AAD9ADB003F800C /* MyAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 6984DAD41AAD9ADB003F800C /* MyAlert.m */; };
 		69BC97781A8361250019F71B /* Edit_Fav_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BC97771A8361250019F71B /* Edit_Fav_ViewController.m */; };
 		69C230571AA594B6003D8570 /* icon-speak.png in Resources */ = {isa = PBXBuildFile; fileRef = 69C230561AA594B6003D8570 /* icon-speak.png */; };
 		69C2305A1AA59AF3003D8570 /* speak-icon(flat).png in Resources */ = {isa = PBXBuildFile; fileRef = 69C230591AA59AF3003D8570 /* speak-icon(flat).png */; };
@@ -218,6 +224,16 @@
 		697A6C151A6FA5C7008A893A /* APSpeech.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APSpeech.h; sourceTree = "<group>"; };
 		697A6C161A6FA5C7008A893A /* APSpeech.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APSpeech.m; sourceTree = "<group>"; };
 		697A6C191A6FB310008A893A /* lexitron2.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = lexitron2.sqlite; sourceTree = "<group>"; };
+		6984DAC71AAD9ADB003F800C /* AAMFeedbackTopicsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AAMFeedbackTopicsViewController.h; path = AAMFeedback/AAMFeedbackTopicsViewController.h; sourceTree = "<group>"; };
+		6984DAC81AAD9ADB003F800C /* AAMFeedbackTopicsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AAMFeedbackTopicsViewController.m; path = AAMFeedback/AAMFeedbackTopicsViewController.m; sourceTree = "<group>"; };
+		6984DAC91AAD9ADB003F800C /* AAMFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AAMFeedbackViewController.h; path = AAMFeedback/AAMFeedbackViewController.h; sourceTree = "<group>"; };
+		6984DACA1AAD9ADB003F800C /* AAMFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AAMFeedbackViewController.m; path = AAMFeedback/AAMFeedbackViewController.m; sourceTree = "<group>"; };
+		6984DACD1AAD9ADB003F800C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
+		6984DACE1AAD9ADB003F800C /* FeedbackService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedbackService.h; path = AAMFeedback/FeedbackService.h; sourceTree = "<group>"; };
+		6984DACF1AAD9ADB003F800C /* FeedbackService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedbackService.m; path = AAMFeedback/FeedbackService.m; sourceTree = "<group>"; };
+		6984DAD21AAD9ADB003F800C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = Localizable.strings; sourceTree = "<group>"; };
+		6984DAD31AAD9ADB003F800C /* MyAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyAlert.h; path = AAMFeedback/MyAlert.h; sourceTree = "<group>"; };
+		6984DAD41AAD9ADB003F800C /* MyAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyAlert.m; path = AAMFeedback/MyAlert.m; sourceTree = "<group>"; };
 		69BC97761A8361250019F71B /* Edit_Fav_ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Edit_Fav_ViewController.h; sourceTree = "<group>"; };
 		69BC97771A8361250019F71B /* Edit_Fav_ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Edit_Fav_ViewController.m; sourceTree = "<group>"; };
 		69C230561AA594B6003D8570 /* icon-speak.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-speak.png"; sourceTree = "<group>"; };
@@ -281,6 +297,7 @@
 				694B49671AA079850015A546 /* SampleCell.h */,
 				694B49681AA079850015A546 /* SampleCell.m */,
 				694B496A1AA079910015A546 /* ImageCell.h */,
+				6984DAC61AAD9A7F003F800C /* Feedback */,
 				694B496B1AA079910015A546 /* ImageCell.m */,
 				6955AD271A9322000017D45F /* VocabCell.h */,
 				6955AD281A9322000017D45F /* VocabCell.m */,
@@ -516,6 +533,41 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		6984DAC61AAD9A7F003F800C /* Feedback */ = {
+			isa = PBXGroup;
+			children = (
+				6984DAC71AAD9ADB003F800C /* AAMFeedbackTopicsViewController.h */,
+				6984DAC81AAD9ADB003F800C /* AAMFeedbackTopicsViewController.m */,
+				6984DAC91AAD9ADB003F800C /* AAMFeedbackViewController.h */,
+				6984DACA1AAD9ADB003F800C /* AAMFeedbackViewController.m */,
+				6984DACB1AAD9ADB003F800C /* en.lproj */,
+				6984DACE1AAD9ADB003F800C /* FeedbackService.h */,
+				6984DACF1AAD9ADB003F800C /* FeedbackService.m */,
+				6984DAD01AAD9ADB003F800C /* ja.lproj */,
+				6984DAD31AAD9ADB003F800C /* MyAlert.h */,
+				6984DAD41AAD9ADB003F800C /* MyAlert.m */,
+			);
+			name = Feedback;
+			sourceTree = "<group>";
+		};
+		6984DACB1AAD9ADB003F800C /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				6984DACC1AAD9ADB003F800C /* Localizable.strings */,
+			);
+			name = en.lproj;
+			path = AAMFeedback/en.lproj;
+			sourceTree = "<group>";
+		};
+		6984DAD01AAD9ADB003F800C /* ja.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				6984DAD11AAD9ADB003F800C /* Localizable.strings */,
+			);
+			name = ja.lproj;
+			path = AAMFeedback/ja.lproj;
+			sourceTree = "<group>";
+		};
 		69C230581AA594BE003D8570 /* image */ = {
 			isa = PBXGroup;
 			children = (
@@ -594,6 +646,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 697A6AC91A6F8D6A008A893A;
 			productRefGroup = 697A6AD31A6F8D6A008A893A /* Products */;
@@ -614,12 +667,14 @@
 				69C2305F1AA59D37003D8570 /* fav_off.png in Resources */,
 				69C230601AA59D37003D8570 /* fav_on.png in Resources */,
 				69C5AABF1A9B12CF0024546F /* no.png in Resources */,
+				6984DAD91AAD9ADB003F800C /* Localizable.strings in Resources */,
 				696344031AA4422B0099BCF9 /* fav_on1.png in Resources */,
 				69C2305C1AA59AFF003D8570 /* share-icon.png in Resources */,
 				697A6AE41A6F8D6B008A893A /* Main.storyboard in Resources */,
 				69C230571AA594B6003D8570 /* icon-speak.png in Resources */,
 				697A6AE91A6F8D6B008A893A /* LaunchScreen.xib in Resources */,
 				696344021AA4422B0099BCF9 /* fav_off2.png in Resources */,
+				6984DAD71AAD9ADB003F800C /* Localizable.strings in Resources */,
 				697A6AE61A6F8D6B008A893A /* Images.xcassets in Resources */,
 				697A6C1A1A6FB310008A893A /* lexitron2.sqlite in Resources */,
 				69C2305A1AA59AF3003D8570 /* speak-icon(flat).png in Resources */,
@@ -650,6 +705,7 @@
 				697A6ADB1A6F8D6A008A893A /* AppDelegate.m in Sources */,
 				6906AF101A88C30C00087B93 /* HistoryViewController.m in Sources */,
 				694B49691AA079850015A546 /* SampleCell.m in Sources */,
+				6984DAD81AAD9ADB003F800C /* FeedbackService.m in Sources */,
 				69784C9D1A9D8FB9000E6B73 /* WYPopoverController.m in Sources */,
 				697A6AD81A6F8D6A008A893A /* main.m in Sources */,
 				697A6C001A6F98BC008A893A /* UIWebView+AFNetworking.m in Sources */,
@@ -669,6 +725,7 @@
 				69C9FF9C1A7787FA0059BB6B /* Favorite.m in Sources */,
 				697A6BF51A6F98BC008A893A /* FMDatabaseAdditions.m in Sources */,
 				697A6BED1A6F98BC008A893A /* AFHTTPSessionManager.m in Sources */,
+				6984DAD51AAD9ADB003F800C /* AAMFeedbackTopicsViewController.m in Sources */,
 				697A6BFE1A6F98BC008A893A /* UIProgressView+AFNetworking.m in Sources */,
 				69784C9E1A9D8FB9000E6B73 /* WYStoryboardPopoverSegue.m in Sources */,
 				697A6C181A6FA5C7008A893A /* APSpeech.m in Sources */,
@@ -679,6 +736,7 @@
 				697A6B381A6F955B008A893A /* SearchViewController.m in Sources */,
 				69C9FF9F1A7788040059BB6B /* History.m in Sources */,
 				697A6C0F1A6FA0E6008A893A /* Language.m in Sources */,
+				6984DADA1AAD9ADB003F800C /* MyAlert.m in Sources */,
 				697A6BF21A6F98BC008A893A /* AFURLResponseSerialization.m in Sources */,
 				697A6BF11A6F98BC008A893A /* AFURLRequestSerialization.m in Sources */,
 				697A6BF01A6F98BC008A893A /* AFURLConnectionOperation.m in Sources */,
@@ -686,6 +744,7 @@
 				697A6BEC1A6F98BC008A893A /* AFHTTPRequestOperationManager.m in Sources */,
 				697A6BF71A6F98BC008A893A /* FMDatabaseQueue.m in Sources */,
 				697A6BF81A6F98BC008A893A /* FMResultSet.m in Sources */,
+				6984DAD61AAD9ADB003F800C /* AAMFeedbackViewController.m in Sources */,
 				697A6BB31A6F989E008A893A /* SWCellScrollView.m in Sources */,
 				697A6BEF1A6F98BC008A893A /* AFSecurityPolicy.m in Sources */,
 				697A6BF91A6F98BC008A893A /* AFNetworkActivityIndicatorManager.m in Sources */,
@@ -735,6 +794,22 @@
 				69FD82C01A8215D800B82B80 /* th */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		6984DACC1AAD9ADB003F800C /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6984DACD1AAD9ADB003F800C /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		6984DAD11AAD9ADB003F800C /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6984DAD21AAD9ADB003F800C /* ja */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
