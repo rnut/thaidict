@@ -214,7 +214,7 @@
     DB *db = [[DB alloc ]init];
     NSString *strQuery;
     if ([vocab Language]==LanguageENG) {
-        strQuery = [NSString stringWithFormat:@"SELECT count(*) as num FROM fav_en WHERE search = '%@'", [vocab Search]];
+        strQuery = [NSString stringWithFormat:@"SELECT count(*) as num FROM fav_en WHERE search like '%@'", [[vocab Search] uppercaseString]];
     }
     else{
         strQuery = [NSString stringWithFormat:@"SELECT count(*) as num FROM fav_th WHERE search = '%@'", [vocab Search]];
