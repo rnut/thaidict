@@ -11,6 +11,7 @@
 @interface SearchViewController ()
 {
     NSString *SearchText;
+    BOOL flagSearch;
 }
 @end
 NSInteger lastclickrow;
@@ -18,6 +19,9 @@ int idrec = 0;
 
 @implementation SearchViewController
 @synthesize ArrayWords,SelectedCellText,SearchView;
+-(void)viewWillAppear:(BOOL)animated{
+    [TableWords reloadData];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setInterface];
@@ -97,13 +101,30 @@ int idrec = 0;
 {
     //make the button when swipe
     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
-    [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor redColor] title:@"Favorite"];
+    [rightUtilityButtons sw_addUtilityButtonWithColor:[UIColor whiteColor] icon:[UIImage imageNamed:@"fav_off.png"]];
     
     
     return rightUtilityButtons;
 }
 
+- (NSArray *)fav_on
+{
+    //make the button when swipe
+    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
+    [rightUtilityButtons sw_addUtilityButtonWithColor:[UIColor whiteColor] icon:[UIImage imageNamed:@"fav_on.png"]];
+    
+    
+    return rightUtilityButtons;
+}
+- (NSArray *)fav_off
+{
+    //make the button when swipe
+    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
+    [rightUtilityButtons sw_addUtilityButtonWithColor:[UIColor whiteColor] icon:[UIImage imageNamed:@"fav_off.png"]];
+    
+    
+    return rightUtilityButtons;
+}
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
     [self performSegueWithIdentifier:@"chooseVocab" sender:@"textfield"];
@@ -131,8 +152,7 @@ int idrec = 0;
     
     if (cell == nil) {
         cell = [[SWTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-        cell.rightUtilityButtons = [self rightButtons];
-        cell.delegate = self;
+        
     }
     if (indexPath.row == [ArrayWords count] -1) {
         NSArray *temp = [Vocab listDictByVocab:SearchText ByIndex:(int)indexPath.row+1];
@@ -141,8 +161,14 @@ int idrec = 0;
             [tableView reloadData];
         }
     }
+    cell.delegate = self;
     Vocab *info = [ArrayWords objectAtIndex:indexPath.row];
     cell.textLabel.text = info.Search;
+    if ([Favorite checkFavoriteConcurrent:[ArrayWords objectAtIndex:indexPath.row]]) {
+        cell.rightUtilityButtons = [self fav_off];
+    }else cell.rightUtilityButtons = [self fav_on];
+    
+    
     return cell;
     
 }
@@ -166,20 +192,35 @@ int idrec = 0;
 
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
     NSIndexPath *indexPath = [TableWords indexPathForCell:cell];
-    switch (index) {
-        case 0:
-        {
-            //when favorite button is pressed, add to database
-            Vocab *info = [ArrayWords objectAtIndex:indexPath.row];
-            [self insertFavInDatabase:info];
-            [cell hideUtilityButtonsAnimated:YES];
-            [SearchBox resignFirstResponder];
-            
-            break;
-        }
-        default:
-            break;
+    Vocab *info = [ArrayWords objectAtIndex:indexPath.row];
+    if ([Favorite checkFavoriteConcurrent:info]) {
+        [self insertFavInDatabase:info];
+
     }
+    else{
+        Favorite *obf = [[Favorite alloc] init];
+        [obf setFav_vocab:info];
+        [Favorite deleteFavorite:obf];
+    }
+        
+        [cell hideUtilityButtonsAnimated:YES];
+    [TableWords reloadData];
+    [SearchBox resignFirstResponder];
+//    switch (index) {
+//        case 0:
+//        {
+//            //when favorite button is pressed, add to database
+//            Vocab *info = [ArrayWords objectAtIndex:indexPath.row];
+//            [self insertFavInDatabase:info];
+//            [cell hideUtilityButtonsAnimated:YES];
+//            [TableWords reloadData];
+//            [SearchBox resignFirstResponder];
+//            break;
+//        }
+//        default:
+//            break;
+//    }
+
 }
 
 

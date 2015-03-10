@@ -273,7 +273,7 @@
             
         case 0:
         {
-            title =   [NSString stringWithFormat:@"Definition   (source : %s)","lexitron or internet"];
+            title =   [NSString stringWithFormat:@"Definition"];
             label = [[UILabel alloc] initWithFrame:CGRectMake(15,20 , tableView.frame.size.width, 17)];
             lineView = [[UIView alloc] initWithFrame:CGRectMake(10, 40, self.view.bounds.size.width, 1)];
             break;

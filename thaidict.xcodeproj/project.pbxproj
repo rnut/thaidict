@@ -16,7 +16,7 @@
 		6955AD291A9322000017D45F /* VocabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6955AD281A9322000017D45F /* VocabCell.m */; };
 		695981F71A70965D00C2002D /* DetailVocabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 695981F61A70965D00C2002D /* DetailVocabViewController.m */; };
 		696343FF1AA4359D0099BCF9 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 696343FE1AA4359D0099BCF9 /* Social.framework */; };
-		696344021AA4422B0099BCF9 /* fav_off2.png in Resources */ = {isa = PBXBuildFile; fileRef = 696344001AA4422B0099BCF9 /* fav_off2.png */; };
+		696344021AA4422B0099BCF9 /* fav_off1.png in Resources */ = {isa = PBXBuildFile; fileRef = 696344001AA4422B0099BCF9 /* fav_off1.png */; };
 		696344031AA4422B0099BCF9 /* fav_on1.png in Resources */ = {isa = PBXBuildFile; fileRef = 696344011AA4422B0099BCF9 /* fav_on1.png */; };
 		697544F61A91956F009ACB65 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 697544F31A91956F009ACB65 /* HTMLNode.m */; };
 		697544F71A91956F009ACB65 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 697544F51A91956F009ACB65 /* HTMLParser.m */; };
@@ -118,7 +118,7 @@
 		695981F51A70965D00C2002D /* DetailVocabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailVocabViewController.h; sourceTree = "<group>"; };
 		695981F61A70965D00C2002D /* DetailVocabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailVocabViewController.m; sourceTree = "<group>"; };
 		696343FE1AA4359D0099BCF9 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
-		696344001AA4422B0099BCF9 /* fav_off2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fav_off2.png; sourceTree = "<group>"; };
+		696344001AA4422B0099BCF9 /* fav_off1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fav_off1.png; sourceTree = "<group>"; };
 		696344011AA4422B0099BCF9 /* fav_on1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fav_on1.png; sourceTree = "<group>"; };
 		697544F21A91956F009ACB65 /* HTMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLNode.h; sourceTree = "<group>"; };
 		697544F31A91956F009ACB65 /* HTMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLNode.m; sourceTree = "<group>"; };
@@ -575,7 +575,7 @@
 				69C2305E1AA59D37003D8570 /* fav_on.png */,
 				69C2305B1AA59AFF003D8570 /* share-icon.png */,
 				69C230591AA59AF3003D8570 /* speak-icon(flat).png */,
-				696344001AA4422B0099BCF9 /* fav_off2.png */,
+				696344001AA4422B0099BCF9 /* fav_off1.png */,
 				696344011AA4422B0099BCF9 /* fav_on1.png */,
 				69C230561AA594B6003D8570 /* icon-speak.png */,
 			);
@@ -673,8 +673,12 @@
 				697A6AE41A6F8D6B008A893A /* Main.storyboard in Resources */,
 				69C230571AA594B6003D8570 /* icon-speak.png in Resources */,
 				697A6AE91A6F8D6B008A893A /* LaunchScreen.xib in Resources */,
+<<<<<<< HEAD
 				696344021AA4422B0099BCF9 /* fav_off2.png in Resources */,
 				6984DAD71AAD9ADB003F800C /* Localizable.strings in Resources */,
+=======
+				696344021AA4422B0099BCF9 /* fav_off1.png in Resources */,
+>>>>>>> Web-view-Control
 				697A6AE61A6F8D6B008A893A /* Images.xcassets in Resources */,
 				697A6C1A1A6FB310008A893A /* lexitron2.sqlite in Resources */,
 				69C2305A1AA59AF3003D8570 /* speak-icon(flat).png in Resources */,

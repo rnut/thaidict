@@ -21,7 +21,7 @@
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    _Source = YES;
+//    _Source = YES;
     [super setSelected:selected animated:animated];
     [self.Webview loadHTMLString:[self genHtmlString] baseURL:nil];
 }
