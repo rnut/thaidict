@@ -102,12 +102,12 @@
     
     self.title = NSLocalizedString(@"AAMFeedbackTitle", nil);
 
-    UIBarButtonItem *cancelBarBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelAction)];
-    self.navigationItem.leftBarButtonItem = cancelBarBtn;
+//    UIBarButtonItem *cancelBarBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelAction)];
+    
     
     UIBarButtonItem *sendBarBtn =[[UIBarButtonItem alloc]initWithTitle:NSLocalizedString(@"AAMFeedbackButtonMail", nil) style:UIBarButtonItemStylePlain target:self action:@selector(nextDidPress:)];
     
-
+//    self.navigationItem.leftBarButtonItem = cancelBarBtn;
     self.navigationItem.rightBarButtonItem = sendBarBtn;
     
 
@@ -318,14 +318,14 @@
 }
 
 
--(void)cancelAction{
-    [self dismissViewControllerAnimated:YES completion:^{}];
-}
-
-- (void)cancelDidPress1:(id)sender
-{
-    [self dismissViewControllerAnimated:YES completion:^{}];
-}
+//-(void)cancelAction{
+//    [self dismissViewControllerAnimated:YES completion:^{}];
+//}
+//
+//- (void)cancelDidPress1:(id)sender
+//{
+//    [self dismissViewControllerAnimated:YES completion:^{}];
+//}
 
 - (void)nextDidPress:(id)sender
 {
@@ -634,7 +634,8 @@
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations.
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+//    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return NO;
 }
 
 
