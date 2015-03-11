@@ -14,7 +14,7 @@
     Favorite *objFav;
     UIView *overlayView;
     WYPopoverController* popoverController;
-    BOOL flagtranslate;
+    BOOL flagtranslate; //yes = internal , no = external;
     CGFloat definitionHeight;
 }
 @end
@@ -107,24 +107,28 @@
             DefinitionCell *cell = (DefinitionCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             cell.chooseVocab = ChooseVocab;
             cell.TranslateInfo = TranslateInfo;
+            cell.Source = flagtranslate;
             return cell;
         break;}
         case 1:{
             CellIdentifier = @"Sample";
             SampleCell *cell = (SampleCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-            cell.ChooseVocab = ChooseVocab;
+            
             
             if (ChooseVocab.Language == LanguageTHA) {
                 if (TranslateInfo.count > 0) {
                     for (int i =0; i<[TranslateInfo count]; i++) {
                         if ([[[TranslateInfo objectAtIndex:0] objectAtIndex:i] Sample] != nil) {
                             cell.Example.text = [[[TranslateInfo objectAtIndex:0] objectAtIndex:i] Sample];
+                            cell.ChooseVocab =[[TranslateInfo objectAtIndex:0] objectAtIndex:i];
+                            cell.flagSample = NO;
                             break;
                         }
                     }
                     
                 }
             }
+            cell.ChooseVocab = ChooseVocab;
             return cell;
             break;
         }

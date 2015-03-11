@@ -9,7 +9,7 @@
 #import "SampleCell.h"
 
 @implementation SampleCell
-@synthesize ChooseVocab;
+@synthesize ChooseVocab,flagSample;
 - (void)awakeFromNib {
     flagSample = YES;
     
@@ -26,16 +26,11 @@
     NSLog(@"tap exampleview");
     if (flagSample) {
         [self addOverlayAndIndicator];
-//        [self.IndicatorImage startAnimating];
         dispatch_queue_t externalque = dispatch_queue_create("getInformation", nil);
         
         dispatch_async(externalque, ^{
             [self loadExample];
-//            APImage *img = [[APImage alloc] initWithVocabSearch:[ChooseVocab Search] Language:[ChooseVocab Language]];
-//            _pageImages = [img Image];
             dispatch_async(dispatch_get_main_queue(), ^{
-//                [self.CollectionImage reloadData];
-//                [self.IndicatorImage stopAnimating];
             });
         });
         flagSample= NO;

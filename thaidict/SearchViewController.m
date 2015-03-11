@@ -163,7 +163,16 @@ int idrec = 0;
     }
     cell.delegate = self;
     Vocab *info = [ArrayWords objectAtIndex:indexPath.row];
-    cell.textLabel.text = info.Search;
+    
+    //multiple color
+    NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:info.Search];
+    if (text.length < SearchBox.text.length) {
+       [text addAttribute: NSForegroundColorAttributeName value: [UIColor redColor] range: NSMakeRange(0, text.length)];
+    }else [text addAttribute: NSForegroundColorAttributeName value: [UIColor redColor] range: NSMakeRange(0, SearchBox.text.length)];
+
+    
+    [cell.textLabel setAttributedText: text];
+//    cell.textLabel.text = info.Search;
     if ([Favorite checkFavoriteConcurrent:[ArrayWords objectAtIndex:indexPath.row]]) {
         cell.rightUtilityButtons = [self fav_off];
     }else cell.rightUtilityButtons = [self fav_on];

@@ -12,12 +12,13 @@
 #import "APSample.h"
 @interface SampleCell : UITableViewCell
 {
-    BOOL flagSample;
+    
     UIView *overlayView;
 }
 @property (strong, nonatomic) IBOutlet UILabel *Example;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *IndicatorExample;
 @property (strong, nonatomic) IBOutlet UIView *ExampleView;
+@property (assign, nonatomic)BOOL flagSample;
 @property(nonatomic,strong)Vocab *ChooseVocab;
 
 @end

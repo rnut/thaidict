@@ -18,10 +18,11 @@
 - (void)awakeFromNib {
     UITableView *tb =TableDefinition;
     tb.scrollEnabled=YES;
+    _Source = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-//    _Source = YES;
+
     [super setSelected:selected animated:animated];
     [self.Webview loadHTMLString:[self genHtmlString] baseURL:nil];
 }

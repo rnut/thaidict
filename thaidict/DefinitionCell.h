@@ -15,7 +15,7 @@
 {
     
 }
-@property(nonatomic,assign)BOOL Source;
+@property(nonatomic,assign)BOOL Source; //yes = internal , no = external
 @property(nonatomic,strong)IBOutlet UITableView *TableDefinition;
 @property(strong,nonatomic)Vocab *chooseVocab;
 @property (strong, nonatomic) IBOutlet UIWebView *Webview;

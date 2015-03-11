@@ -2600,27 +2600,6 @@
                                     <constraint firstItem="ZXC-uV-wiA" firstAttribute="top" secondItem="GV3-dR-0za" secondAttribute="top" id="v4J-S7-wBz"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lzz-6f-TEX">
-                                <rect key="frame" x="26" y="453" width="548" height="26"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oga-Vs-7HC">
-                                        <rect key="frame" x="142" y="-1" width="264" height="27"/>
-                                        <string key="text">Copyright@True Digital Content and Media Co.,Ltd 
-All right reserved</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Oga-Vs-7HC" secondAttribute="trailing" constant="142" id="Hym-ss-gm5"/>
-                                    <constraint firstItem="Oga-Vs-7HC" firstAttribute="leading" secondItem="Lzz-6f-TEX" secondAttribute="leading" constant="142" id="MAm-rt-ZRj"/>
-                                    <constraint firstAttribute="height" constant="26" id="P0V-QE-z8L"/>
-                                    <constraint firstItem="Oga-Vs-7HC" firstAttribute="top" secondItem="Lzz-6f-TEX" secondAttribute="top" constant="-1" id="RjK-7U-JE1"/>
-                                    <constraint firstAttribute="bottom" secondItem="Oga-Vs-7HC" secondAttribute="bottom" id="SV2-xW-veM"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tt6-nG-8NA">
                                 <rect key="frame" x="26" y="169" width="548" height="1"/>
                                 <color key="backgroundColor" white="0.90021073190000001" alpha="1" colorSpace="calibratedWhite"/>
@@ -2756,6 +2735,39 @@ All right reserved</string>
                                         <exclude reference="mKa-ZM-5hM"/>
                                         <exclude reference="xd6-JV-Nq2"/>
                                         <exclude reference="SFc-0j-Dm9"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lzz-6f-TEX">
+                                <rect key="frame" x="26" y="438" width="548" height="41"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oga-Vs-7HC">
+                                        <rect key="frame" x="142" y="2" width="264" height="38"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="38" id="1bH-Uq-W47"/>
+                                            <constraint firstAttribute="width" constant="264" id="PtZ-Lq-laU"/>
+                                        </constraints>
+                                        <string key="text">Copyright@True Digital Content and Media Co.,Ltd 
+All right reserved</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="Oga-Vs-7HC" secondAttribute="centerY" id="9D6-pF-QeO"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="41" id="BXe-94-Aap"/>
+                                    <constraint firstAttribute="centerX" secondItem="Oga-Vs-7HC" secondAttribute="centerX" id="HDm-LJ-Cuo"/>
+                                    <constraint firstAttribute="trailing" secondItem="Oga-Vs-7HC" secondAttribute="trailing" constant="142" id="Hym-ss-gm5"/>
+                                    <constraint firstItem="Oga-Vs-7HC" firstAttribute="leading" secondItem="Lzz-6f-TEX" secondAttribute="leading" constant="142" id="MAm-rt-ZRj"/>
+                                    <constraint firstAttribute="height" constant="41" id="P0V-QE-z8L"/>
+                                    <constraint firstAttribute="width" constant="548" id="t9b-qb-SdM"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Hym-ss-gm5"/>
+                                        <exclude reference="MAm-rt-ZRj"/>
                                     </mask>
                                 </variation>
                             </view>
