@@ -67,17 +67,17 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 0.0f;
 }
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
-//    if ([cell.textLabel.text isEqualToString:@"feedback"]) {
-//        [self performSegueWithIdentifier:@"feedback" sender:nil];
-//    }
-//    else if ([cell.textLabel.text isEqualToString:@"about"]){
-//        [self performSegueWithIdentifier:@"about" sender:nil];
-//    }
-}
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+////    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+////    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//
+////    if ([cell.textLabel.text isEqualToString:@"feedback"]) {
+////        [self performSegueWithIdentifier:@"feedback" sender:nil];
+////    }
+////    else if ([cell.textLabel.text isEqualToString:@"about"]){
+////        [self performSegueWithIdentifier:@"about" sender:nil];
+////    }
+//}
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     cell.textLabel.textColor = [UIColor blackColor];

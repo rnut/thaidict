@@ -15,8 +15,11 @@
 		694B496C1AA079910015A546 /* ImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 694B496B1AA079910015A546 /* ImageCell.m */; };
 		6955AD291A9322000017D45F /* VocabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6955AD281A9322000017D45F /* VocabCell.m */; };
 		695981F71A70965D00C2002D /* DetailVocabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 695981F61A70965D00C2002D /* DetailVocabViewController.m */; };
+		695F64C41AAFE727008F8F80 /* SplashScreen.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 695F64C31AAFE727008F8F80 /* SplashScreen.bundle */; };
+		695F64C61AAFE7C8008F8F80 /* TrueMoveOnly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 695F64C51AAFE7C8008F8F80 /* TrueMoveOnly.framework */; };
+		695F64C71AB00EAD008F8F80 /* fav_off1.png in Resources */ = {isa = PBXBuildFile; fileRef = 696344001AA4422B0099BCF9 /* fav_off1.png */; };
+		695F64CA1AB00F5F008F8F80 /* TMSplashScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 695F64C91AB00F5F008F8F80 /* TMSplashScreenViewController.m */; };
 		696343FF1AA4359D0099BCF9 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 696343FE1AA4359D0099BCF9 /* Social.framework */; };
-		696344021AA4422B0099BCF9 /* fav_off1.png in Resources */ = {isa = PBXBuildFile; fileRef = 696344001AA4422B0099BCF9 /* fav_off1.png */; };
 		696344031AA4422B0099BCF9 /* fav_on1.png in Resources */ = {isa = PBXBuildFile; fileRef = 696344011AA4422B0099BCF9 /* fav_on1.png */; };
 		697544F61A91956F009ACB65 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 697544F31A91956F009ACB65 /* HTMLNode.m */; };
 		697544F71A91956F009ACB65 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 697544F51A91956F009ACB65 /* HTMLParser.m */; };
@@ -119,6 +122,10 @@
 		6955AD281A9322000017D45F /* VocabCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VocabCell.m; sourceTree = "<group>"; };
 		695981F51A70965D00C2002D /* DetailVocabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailVocabViewController.h; sourceTree = "<group>"; };
 		695981F61A70965D00C2002D /* DetailVocabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailVocabViewController.m; sourceTree = "<group>"; };
+		695F64C31AAFE727008F8F80 /* SplashScreen.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SplashScreen.bundle; sourceTree = "<group>"; };
+		695F64C51AAFE7C8008F8F80 /* TrueMoveOnly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TrueMoveOnly.framework; sourceTree = "<group>"; };
+		695F64C81AB00F5F008F8F80 /* TMSplashScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMSplashScreenViewController.h; sourceTree = "<group>"; };
+		695F64C91AB00F5F008F8F80 /* TMSplashScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMSplashScreenViewController.m; sourceTree = "<group>"; };
 		696343FE1AA4359D0099BCF9 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		696344001AA4422B0099BCF9 /* fav_off1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fav_off1.png; sourceTree = "<group>"; };
 		696344011AA4422B0099BCF9 /* fav_on1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fav_on1.png; sourceTree = "<group>"; };
@@ -264,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				696343FF1AA4359D0099BCF9 /* Social.framework in Frameworks */,
+				695F64C61AAFE7C8008F8F80 /* TrueMoveOnly.framework in Frameworks */,
 				69784CA21A9D96A9000E6B73 /* CoreGraphics.framework in Frameworks */,
 				69784CA01A9D96A0000E6B73 /* QuartzCore.framework in Frameworks */,
 				697544FD1A919812009ACB65 /* libxml2.dylib in Frameworks */,
@@ -364,6 +372,8 @@
 				697A6AD91A6F8D6A008A893A /* AppDelegate.h */,
 				697A6ADA1A6F8D6A008A893A /* AppDelegate.m */,
 				697A6AE21A6F8D6B008A893A /* Main.storyboard */,
+				695F64C81AB00F5F008F8F80 /* TMSplashScreenViewController.h */,
+				695F64C91AB00F5F008F8F80 /* TMSplashScreenViewController.m */,
 				697A6C081A6F9B09008A893A /* Model */,
 				695981F81A70966A00C2002D /* ViewController */,
 				697A6AE51A6F8D6B008A893A /* Images.xcassets */,
@@ -495,6 +505,8 @@
 		697A6C011A6F98C6008A893A /* thirdparty */ = {
 			isa = PBXGroup;
 			children = (
+				695F64C51AAFE7C8008F8F80 /* TrueMoveOnly.framework */,
+				695F64C31AAFE727008F8F80 /* SplashScreen.bundle */,
 				696343FE1AA4359D0099BCF9 /* Social.framework */,
 				69784CA11A9D96A9000E6B73 /* CoreGraphics.framework */,
 				69784C9F1A9D96A0000E6B73 /* QuartzCore.framework */,
@@ -636,7 +648,7 @@
 		697A6ACA1A6F8D6A008A893A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0620;
 				ORGANIZATIONNAME = Rnut;
 				TargetAttributes = {
 					697A6AD11A6F8D6A008A893A = {
@@ -680,12 +692,12 @@
 				6984DAD91AAD9ADB003F800C /* Localizable.strings in Resources */,
 				696344031AA4422B0099BCF9 /* fav_on1.png in Resources */,
 				69C2305C1AA59AFF003D8570 /* share-icon.png in Resources */,
+				695F64C41AAFE727008F8F80 /* SplashScreen.bundle in Resources */,
 				697A6AE41A6F8D6B008A893A /* Main.storyboard in Resources */,
 				69C230571AA594B6003D8570 /* icon-speak.png in Resources */,
 				697A6AE91A6F8D6B008A893A /* LaunchScreen.xib in Resources */,
-				696344021AA4422B0099BCF9 /* fav_off1.png in Resources */,
+				695F64C71AB00EAD008F8F80 /* fav_off1.png in Resources */,
 				6984DAD71AAD9ADB003F800C /* Localizable.strings in Resources */,
-				696344021AA4422B0099BCF9 /* fav_off1.png in Resources */,
 				697A6AE61A6F8D6B008A893A /* Images.xcassets in Resources */,
 				697A6C1A1A6FB310008A893A /* lexitron2.sqlite in Resources */,
 				69C2305A1AA59AF3003D8570 /* speak-icon(flat).png in Resources */,
@@ -742,6 +754,7 @@
 				697A6C181A6FA5C7008A893A /* APSpeech.m in Sources */,
 				697A6BB21A6F989E008A893A /* NSMutableArray+SWUtilityButtons.m in Sources */,
 				697A6BFC1A6F98BC008A893A /* UIButton+AFNetworking.m in Sources */,
+				695F64CA1AB00F5F008F8F80 /* TMSplashScreenViewController.m in Sources */,
 				697A6BEE1A6F98BC008A893A /* AFNetworkReachabilityManager.m in Sources */,
 				697A6C061A6F99EE008A893A /* DB.m in Sources */,
 				697A6B381A6F955B008A893A /* SearchViewController.m in Sources */,
@@ -921,6 +934,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/thaidict",
+				);
 				INFOPLIST_FILE = thaidict/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -934,6 +951,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/thaidict",
+				);
 				INFOPLIST_FILE = thaidict/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
