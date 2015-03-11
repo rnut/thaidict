@@ -97,6 +97,36 @@
             endingLineNumber = "633"
             landmarkName = "@implementation AAMFeedbackViewController"
             landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[AAMFeedbackViewController shouldAutorotateToInterfaceOrientation:]"
+                  moduleName = "hradio"
+                  urlString = "file:///Users/rnut/GitHub/thaidict/thaidict/AAMFeedback/AAMFeedbackViewController.m"
+                  timestampString = "447751577.801127"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "638"
+                  endingLineNumber = "638"
+                  offsetFromSymbolStart = "18">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[AAMFeedbackViewController shouldAutorotateToInterfaceOrientation:]"
+                  moduleName = "thaidict"
+                  urlString = "file:///Users/rnut/GitHub/thaidict/thaidict/AAMFeedback/AAMFeedbackViewController.m"
+                  timestampString = "447751580.289993"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "638"
+                  endingLineNumber = "638"
+                  offsetFromSymbolStart = "18">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -113,6 +143,36 @@
             endingLineNumber = "193"
             landmarkName = "-swipeableTableViewCell:didTriggerRightUtilityButtonWithIndex:"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[SearchViewController swipeableTableViewCell:didTriggerRightUtilityButtonWithIndex:]"
+                  moduleName = "hradio"
+                  urlString = "file:///Users/rnut/GitHub/thaidict/thaidict/SearchViewController.m"
+                  timestampString = "447751577.803629"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "194"
+                  endingLineNumber = "194"
+                  offsetFromSymbolStart = "54">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[SearchViewController swipeableTableViewCell:didTriggerRightUtilityButtonWithIndex:]"
+                  moduleName = "thaidict"
+                  urlString = "file:///Users/rnut/GitHub/thaidict/thaidict/SearchViewController.m"
+                  timestampString = "447751580.2902"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "194"
+                  endingLineNumber = "194"
+                  offsetFromSymbolStart = "54">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -129,6 +189,36 @@
             endingLineNumber = "231"
             landmarkName = "-insertFavInDatabase:"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[SearchViewController insertFavInDatabase:]"
+                  moduleName = "hradio"
+                  urlString = "file:///Users/rnut/GitHub/thaidict/thaidict/SearchViewController.m"
+                  timestampString = "447751577.804882"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "232"
+                  endingLineNumber = "232"
+                  offsetFromSymbolStart = "83">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[SearchViewController insertFavInDatabase:]"
+                  moduleName = "thaidict"
+                  urlString = "file:///Users/rnut/GitHub/thaidict/thaidict/SearchViewController.m"
+                  timestampString = "447751580.290532"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "232"
+                  endingLineNumber = "232"
+                  offsetFromSymbolStart = "83">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -161,6 +251,36 @@
             endingLineNumber = "82"
             landmarkName = "-tableView:didDeselectRowAtIndexPath:"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[MoreViewController tableView:didDeselectRowAtIndexPath:]"
+                  moduleName = "hradio"
+                  urlString = "file:///Users/rnut/GitHub/thaidict/thaidict/MoreViewController.m"
+                  timestampString = "447751577.822774"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "70">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[MoreViewController tableView:didDeselectRowAtIndexPath:]"
+                  moduleName = "thaidict"
+                  urlString = "file:///Users/rnut/GitHub/thaidict/thaidict/MoreViewController.m"
+                  timestampString = "447751580.290781"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "70">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

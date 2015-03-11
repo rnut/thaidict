@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface TMSplashScreenViewController : UIViewController
+#import <TrueMoveOnly/TrueMoveOnly.h>
+@interface ScreenViewController : TMSplashScreen
 
 @end

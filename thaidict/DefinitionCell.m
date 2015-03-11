@@ -59,6 +59,7 @@
     }
     else{
         //print no result
+        ret = @"<html><head><style> .result{ width : 100%; height: 200px; color : red;}</style></head><body><div class='result'>no definition result</div></body></html>";
     }
     
     

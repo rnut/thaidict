@@ -6,23 +6,14 @@
 //  Copyright (c) 2558 Rnut. All rights reserved.
 //
 
-#import "TMSplashScreenViewController.h"
+#import "ScreenViewController.h"
 
-@interface TMSplashScreenViewController ()
+@interface ScreenViewController ()
 
 @end
 
-@implementation TMSplashScreenViewController
+@implementation ScreenViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 /*
 #pragma mark - Navigation

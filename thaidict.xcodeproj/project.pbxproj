@@ -18,7 +18,13 @@
 		695F64C41AAFE727008F8F80 /* SplashScreen.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 695F64C31AAFE727008F8F80 /* SplashScreen.bundle */; };
 		695F64C61AAFE7C8008F8F80 /* TrueMoveOnly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 695F64C51AAFE7C8008F8F80 /* TrueMoveOnly.framework */; };
 		695F64C71AB00EAD008F8F80 /* fav_off1.png in Resources */ = {isa = PBXBuildFile; fileRef = 696344001AA4422B0099BCF9 /* fav_off1.png */; };
-		695F64CA1AB00F5F008F8F80 /* TMSplashScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 695F64C91AB00F5F008F8F80 /* TMSplashScreenViewController.m */; };
+		695F64CA1AB00F5F008F8F80 /* ScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 695F64C91AB00F5F008F8F80 /* ScreenViewController.m */; };
+		695F64CC1AB0141A008F8F80 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 695F64CB1AB0141A008F8F80 /* SystemConfiguration.framework */; };
+		695F64CE1AB0142A008F8F80 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 695F64CD1AB0142A008F8F80 /* CFNetwork.framework */; };
+		695F64D01AB01456008F8F80 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 695F64CF1AB01456008F8F80 /* CoreTelephony.framework */; };
+		695F64D21AB01473008F8F80 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 695F64D11AB01473008F8F80 /* Security.framework */; };
+		695F64D41AB0147E008F8F80 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 695F64D31AB0147E008F8F80 /* MobileCoreServices.framework */; };
+		695F64D61AB0148B008F8F80 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 695F64D51AB0148B008F8F80 /* libz.1.2.5.dylib */; };
 		696343FF1AA4359D0099BCF9 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 696343FE1AA4359D0099BCF9 /* Social.framework */; };
 		696344031AA4422B0099BCF9 /* fav_on1.png in Resources */ = {isa = PBXBuildFile; fileRef = 696344011AA4422B0099BCF9 /* fav_on1.png */; };
 		697544F61A91956F009ACB65 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 697544F31A91956F009ACB65 /* HTMLNode.m */; };
@@ -124,8 +130,14 @@
 		695981F61A70965D00C2002D /* DetailVocabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailVocabViewController.m; sourceTree = "<group>"; };
 		695F64C31AAFE727008F8F80 /* SplashScreen.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SplashScreen.bundle; sourceTree = "<group>"; };
 		695F64C51AAFE7C8008F8F80 /* TrueMoveOnly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TrueMoveOnly.framework; sourceTree = "<group>"; };
-		695F64C81AB00F5F008F8F80 /* TMSplashScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMSplashScreenViewController.h; sourceTree = "<group>"; };
-		695F64C91AB00F5F008F8F80 /* TMSplashScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMSplashScreenViewController.m; sourceTree = "<group>"; };
+		695F64C81AB00F5F008F8F80 /* ScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenViewController.h; sourceTree = "<group>"; };
+		695F64C91AB00F5F008F8F80 /* ScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenViewController.m; sourceTree = "<group>"; };
+		695F64CB1AB0141A008F8F80 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		695F64CD1AB0142A008F8F80 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		695F64CF1AB01456008F8F80 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		695F64D11AB01473008F8F80 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		695F64D31AB0147E008F8F80 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		695F64D51AB0148B008F8F80 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		696343FE1AA4359D0099BCF9 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		696344001AA4422B0099BCF9 /* fav_off1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fav_off1.png; sourceTree = "<group>"; };
 		696344011AA4422B0099BCF9 /* fav_on1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fav_on1.png; sourceTree = "<group>"; };
@@ -148,7 +160,7 @@
 		69784CA11A9D96A9000E6B73 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		69784CA31A9D980A000E6B73 /* PopOverDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopOverDetail.h; sourceTree = "<group>"; };
 		69784CA41A9D980A000E6B73 /* PopOverDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopOverDetail.m; sourceTree = "<group>"; };
-		697A6AD21A6F8D6A008A893A /* thaidict.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = thaidict.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		697A6AD21A6F8D6A008A893A /* hradio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hradio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		697A6AD61A6F8D6A008A893A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		697A6AD71A6F8D6A008A893A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		697A6AD91A6F8D6A008A893A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -270,6 +282,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				695F64D61AB0148B008F8F80 /* libz.1.2.5.dylib in Frameworks */,
+				695F64D41AB0147E008F8F80 /* MobileCoreServices.framework in Frameworks */,
+				695F64D21AB01473008F8F80 /* Security.framework in Frameworks */,
+				695F64D01AB01456008F8F80 /* CoreTelephony.framework in Frameworks */,
+				695F64CE1AB0142A008F8F80 /* CFNetwork.framework in Frameworks */,
+				695F64CC1AB0141A008F8F80 /* SystemConfiguration.framework in Frameworks */,
 				696343FF1AA4359D0099BCF9 /* Social.framework in Frameworks */,
 				695F64C61AAFE7C8008F8F80 /* TrueMoveOnly.framework in Frameworks */,
 				69784CA21A9D96A9000E6B73 /* CoreGraphics.framework in Frameworks */,
@@ -292,6 +310,8 @@
 		695981F81A70966A00C2002D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				695F64C81AB00F5F008F8F80 /* ScreenViewController.h */,
+				695F64C91AB00F5F008F8F80 /* ScreenViewController.m */,
 				69F8E6D01AAEA2C8001AEAA6 /* MoreViewController.h */,
 				69F8E6D11AAEA2C8001AEAA6 /* MoreViewController.m */,
 				69F8E6D31AAEF461001AEAA6 /* NavigationController_More.h */,
@@ -315,12 +335,12 @@
 				694B49671AA079850015A546 /* SampleCell.h */,
 				694B49681AA079850015A546 /* SampleCell.m */,
 				694B496A1AA079910015A546 /* ImageCell.h */,
-				6984DAC61AAD9A7F003F800C /* Feedback */,
 				694B496B1AA079910015A546 /* ImageCell.m */,
 				6955AD271A9322000017D45F /* VocabCell.h */,
 				6955AD281A9322000017D45F /* VocabCell.m */,
 				693A53751A91E2B80081120C /* SplitViewSearch.h */,
 				693A53761A91E2B80081120C /* SplitViewSearch.m */,
+				6984DAC61AAD9A7F003F800C /* Feedback */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -359,7 +379,7 @@
 		697A6AD31A6F8D6A008A893A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				697A6AD21A6F8D6A008A893A /* thaidict.app */,
+				697A6AD21A6F8D6A008A893A /* hradio.app */,
 				697A6AEE1A6F8D6B008A893A /* thaidictTests.xctest */,
 			);
 			name = Products;
@@ -372,8 +392,6 @@
 				697A6AD91A6F8D6A008A893A /* AppDelegate.h */,
 				697A6ADA1A6F8D6A008A893A /* AppDelegate.m */,
 				697A6AE21A6F8D6B008A893A /* Main.storyboard */,
-				695F64C81AB00F5F008F8F80 /* TMSplashScreenViewController.h */,
-				695F64C91AB00F5F008F8F80 /* TMSplashScreenViewController.m */,
 				697A6C081A6F9B09008A893A /* Model */,
 				695981F81A70966A00C2002D /* ViewController */,
 				697A6AE51A6F8D6B008A893A /* Images.xcassets */,
@@ -505,6 +523,12 @@
 		697A6C011A6F98C6008A893A /* thirdparty */ = {
 			isa = PBXGroup;
 			children = (
+				695F64D51AB0148B008F8F80 /* libz.1.2.5.dylib */,
+				695F64D31AB0147E008F8F80 /* MobileCoreServices.framework */,
+				695F64D11AB01473008F8F80 /* Security.framework */,
+				695F64CF1AB01456008F8F80 /* CoreTelephony.framework */,
+				695F64CD1AB0142A008F8F80 /* CFNetwork.framework */,
+				695F64CB1AB0141A008F8F80 /* SystemConfiguration.framework */,
 				695F64C51AAFE7C8008F8F80 /* TrueMoveOnly.framework */,
 				695F64C31AAFE727008F8F80 /* SplashScreen.bundle */,
 				696343FE1AA4359D0099BCF9 /* Social.framework */,
@@ -621,7 +645,7 @@
 			);
 			name = thaidict;
 			productName = thaidict;
-			productReference = 697A6AD21A6F8D6A008A893A /* thaidict.app */;
+			productReference = 697A6AD21A6F8D6A008A893A /* hradio.app */;
 			productType = "com.apple.product-type.application";
 		};
 		697A6AED1A6F8D6B008A893A /* thaidictTests */ = {
@@ -754,7 +778,7 @@
 				697A6C181A6FA5C7008A893A /* APSpeech.m in Sources */,
 				697A6BB21A6F989E008A893A /* NSMutableArray+SWUtilityButtons.m in Sources */,
 				697A6BFC1A6F98BC008A893A /* UIButton+AFNetworking.m in Sources */,
-				695F64CA1AB00F5F008F8F80 /* TMSplashScreenViewController.m in Sources */,
+				695F64CA1AB00F5F008F8F80 /* ScreenViewController.m in Sources */,
 				697A6BEE1A6F98BC008A893A /* AFNetworkReachabilityManager.m in Sources */,
 				697A6C061A6F99EE008A893A /* DB.m in Sources */,
 				697A6B381A6F955B008A893A /* SearchViewController.m in Sources */,
@@ -933,6 +957,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -941,7 +966,8 @@
 				INFOPLIST_FILE = thaidict/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_NAME = hradio;
 				PROVISIONING_PROFILE = "30850e4f-73de-41b1-9377-1b455807f853";
 			};
 			name = Debug;
@@ -950,6 +976,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -958,7 +985,8 @@
 				INFOPLIST_FILE = thaidict/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_NAME = hradio;
 				PROVISIONING_PROFILE = "30850e4f-73de-41b1-9377-1b455807f853";
 			};
 			name = Release;
