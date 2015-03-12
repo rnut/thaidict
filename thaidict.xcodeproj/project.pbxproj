@@ -160,7 +160,7 @@
 		69784CA11A9D96A9000E6B73 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		69784CA31A9D980A000E6B73 /* PopOverDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopOverDetail.h; sourceTree = "<group>"; };
 		69784CA41A9D980A000E6B73 /* PopOverDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopOverDetail.m; sourceTree = "<group>"; };
-		697A6AD21A6F8D6A008A893A /* hradio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hradio.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		697A6AD21A6F8D6A008A893A /* ThaiDict.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThaiDict.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		697A6AD61A6F8D6A008A893A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		697A6AD71A6F8D6A008A893A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		697A6AD91A6F8D6A008A893A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -379,7 +379,7 @@
 		697A6AD31A6F8D6A008A893A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				697A6AD21A6F8D6A008A893A /* hradio.app */,
+				697A6AD21A6F8D6A008A893A /* ThaiDict.app */,
 				697A6AEE1A6F8D6B008A893A /* thaidictTests.xctest */,
 			);
 			name = Products;
@@ -645,7 +645,7 @@
 			);
 			name = thaidict;
 			productName = thaidict;
-			productReference = 697A6AD21A6F8D6A008A893A /* hradio.app */;
+			productReference = 697A6AD21A6F8D6A008A893A /* ThaiDict.app */;
 			productType = "com.apple.product-type.application";
 		};
 		697A6AED1A6F8D6B008A893A /* thaidictTests */ = {
@@ -677,7 +677,12 @@
 				TargetAttributes = {
 					697A6AD11A6F8D6A008A893A = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = CHS9UCHMZA;
+						DevelopmentTeam = G97L2YH63L;
+						SystemCapabilities = {
+							com.apple.InterAppAudio = {
+								enabled = 0;
+							};
+						};
 					};
 					697A6AED1A6F8D6B008A893A = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -959,6 +964,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/thaidict",
@@ -967,8 +973,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_NAME = hradio;
-				PROVISIONING_PROFILE = "30850e4f-73de-41b1-9377-1b455807f853";
+				PRODUCT_NAME = ThaiDict;
+				PROVISIONING_PROFILE = "91a8fb71-42d8-44b1-a26a-1623948ff1c2";
 			};
 			name = Debug;
 		};
@@ -978,6 +984,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/thaidict",
@@ -986,8 +993,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_NAME = hradio;
-				PROVISIONING_PROFILE = "30850e4f-73de-41b1-9377-1b455807f853";
+				PRODUCT_NAME = ThaiDict;
+				PROVISIONING_PROFILE = "91a8fb71-42d8-44b1-a26a-1623948ff1c2";
 			};
 			name = Release;
 		};
@@ -995,6 +1002,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: True Move Company Limited";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1006,6 +1014,7 @@
 				INFOPLIST_FILE = thaidictTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "91a8fb71-42d8-44b1-a26a-1623948ff1c2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/thaidict.app/thaidict";
 			};
 			name = Debug;
@@ -1014,6 +1023,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: True Move Company Limited";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1021,6 +1031,7 @@
 				INFOPLIST_FILE = thaidictTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "91a8fb71-42d8-44b1-a26a-1623948ff1c2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/thaidict.app/thaidict";
 			};
 			name = Release;

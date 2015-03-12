@@ -12,6 +12,7 @@
 {
     NSString *SearchText;
     BOOL flagSearch;
+    UIView *searchByGoogleView;
 }
 @end
 NSInteger lastclickrow;
@@ -33,7 +34,35 @@ int idrec = 0;
     ArrayWords = [Vocab listDictByVocab:SearchText];
     [TableWords reloadData];
     [self setNeedsStatusBarAppearanceUpdate];
+    [self setgoogleviewInterface];
 }
+-(void)setgoogleviewInterface{
+    UIVisualEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
+    
+    UIVisualEffectView *visualEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+    
+
+    searchByGoogleView = [[UIView alloc] initWithFrame:CGRectMake(0, 74.0f, TableWords.frame.size.width, 35.0f)];
+    [searchByGoogleView setTag:111];
+        visualEffectView.frame = searchByGoogleView.bounds;
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 30.4, searchByGoogleView.frame.size.width, 1)];
+    line.backgroundColor = [UIColor grayColor];
+    [searchByGoogleView addSubview:line];
+//    [searchByGoogleView setBackgroundColor:[UIColor grayColor]];
+    UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(15, -2, searchByGoogleView.frame.size.width, searchByGoogleView.frame.size.height)];
+    lbl.text = @"search by google";
+    lbl.textColor = [UIColor grayColor];
+    
+    [searchByGoogleView addSubview:visualEffectView];
+    [searchByGoogleView addSubview:lbl];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                       initWithTarget:self
+                                       action:@selector(searchByGoogle)];
+    
+        [searchByGoogleView addGestureRecognizer:tap];
+}
+
 -(UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
 }
@@ -68,23 +97,53 @@ int idrec = 0;
      }
                      completion:^(BOOL finished)
      {
-//         NSLog(@"Completed");
-         
      }];
 }
 
+
+-(void)searchByGoogle{
+    NSLog(@"google search");
+    
+}
 -(void)textFieldDidChange :(UITextField *)theTextField{
     
+    SearchText = [theTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    
     if ([[theTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length]  > 0) {
-        SearchText = [theTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        if ([Language checkLanguage:SearchText] == LanguageTHA && SearchText.length < 2) {
+            int ascii = [[SearchText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] characterAtIndex:0];
+            if (ascii > 3631 && ascii < 3676) {
+                [ArrayWords removeAllObjects];
+                [TableWords reloadData];
+                return;
+            }
+        }
         ArrayWords = [Vocab listDictByVocab:SearchText];
         if ([ArrayWords count] == 0) {
             NSLog(@"search by internet");
+            [UIView animateWithDuration:3.0f delay:0 options:UIViewAnimationOptionLayoutSubviews animations:^{
+                [self.view addSubview:searchByGoogleView];
+            } completion:^(BOOL finished) {
+                
+            }];
+            
         }
         else{
+            [UIView animateWithDuration:3.0f delay:0 options:UIViewAnimationOptionLayoutSubviews animations:^{
+                [self.view addSubview:searchByGoogleView];
+            } completion:^(BOOL finished) {
+                [searchByGoogleView removeFromSuperview];
+            }];
+            
           [TableWords reloadData];
         }
         
+    }
+    else{
+      [searchByGoogleView removeFromSuperview];
+        [ArrayWords removeAllObjects];
+        [TableWords reloadData];
     }
     
 }
@@ -162,20 +221,23 @@ int idrec = 0;
         }
     }
     cell.delegate = self;
-    Vocab *info = [ArrayWords objectAtIndex:indexPath.row];
+    if (ArrayWords.count > 0) {
+        Vocab *info = [ArrayWords objectAtIndex:indexPath.row];
+        
+        //multiple color
+        NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:info.Search];
+        if (text.length < SearchBox.text.length) {
+            [text addAttribute: NSForegroundColorAttributeName value: [UIColor redColor] range: NSMakeRange(0, text.length)];
+        }else [text addAttribute: NSForegroundColorAttributeName value: [UIColor redColor] range: NSMakeRange(0, SearchBox.text.length)];
+        
+        
+        [cell.textLabel setAttributedText: text];
+        //    cell.textLabel.text = info.Search;
+        if ([Favorite checkFavoriteConcurrent:[ArrayWords objectAtIndex:indexPath.row]]) {
+            cell.rightUtilityButtons = [self fav_off];
+        }else cell.rightUtilityButtons = [self fav_on];
+    }
     
-    //multiple color
-    NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:info.Search];
-    if (text.length < SearchBox.text.length) {
-       [text addAttribute: NSForegroundColorAttributeName value: [UIColor redColor] range: NSMakeRange(0, text.length)];
-    }else [text addAttribute: NSForegroundColorAttributeName value: [UIColor redColor] range: NSMakeRange(0, SearchBox.text.length)];
-
-    
-    [cell.textLabel setAttributedText: text];
-//    cell.textLabel.text = info.Search;
-    if ([Favorite checkFavoriteConcurrent:[ArrayWords objectAtIndex:indexPath.row]]) {
-        cell.rightUtilityButtons = [self fav_off];
-    }else cell.rightUtilityButtons = [self fav_on];
     
     
     return cell;
