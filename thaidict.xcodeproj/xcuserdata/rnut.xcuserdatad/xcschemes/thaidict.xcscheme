@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "697A6AD11A6F8D6A008A893A"
-               BuildableName = "hradio.app"
+               BuildableName = "ThaiDict.app"
                BlueprintName = "thaidict"
                ReferencedContainer = "container:thaidict.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "697A6AD11A6F8D6A008A893A"
-            BuildableName = "hradio.app"
+            BuildableName = "ThaiDict.app"
             BlueprintName = "thaidict"
             ReferencedContainer = "container:thaidict.xcodeproj">
          </BuildableReference>
@@ -78,7 +78,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "697A6AD11A6F8D6A008A893A"
-            BuildableName = "hradio.app"
+            BuildableName = "ThaiDict.app"
             BlueprintName = "thaidict"
             ReferencedContainer = "container:thaidict.xcodeproj">
          </BuildableReference>
@@ -97,7 +97,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "697A6AD11A6F8D6A008A893A"
-            BuildableName = "hradio.app"
+            BuildableName = "ThaiDict.app"
             BlueprintName = "thaidict"
             ReferencedContainer = "container:thaidict.xcodeproj">
          </BuildableReference>

@@ -127,7 +127,7 @@ int idrec = 0;
             } completion:^(BOOL finished) {
                 
             }];
-            
+            [TableWords reloadData];
         }
         else{
             [UIView animateWithDuration:3.0f delay:0 options:UIViewAnimationOptionLayoutSubviews animations:^{

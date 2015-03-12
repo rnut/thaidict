@@ -18,14 +18,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIColor *red = [UIColor colorWithRed:(228/255.0) green:3/255.0 blue:21/255.0 alpha:1.0f];
+    [self.view setBackgroundColor:red];
     [self.TableView setDelegate:self];
     [self.TableView setDataSource:self];
     [self.TableView setEditing:YES];
     [self.TableView reloadData];
 
 }
-
-
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
 #pragma mark - Table view data source/delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

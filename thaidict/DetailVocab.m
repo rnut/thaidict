@@ -231,7 +231,7 @@
     else if (line >=5) return 210.0f;
     else if(line >=4)return 180.0f;
     else if(line >=3)return 150.0f;
-    else if(line >=2)return 120.0f;
+    else if(line >=2)return 130.0f;
     else if(line >=1)return 100.0f;
     else return 100.0f;
 }
