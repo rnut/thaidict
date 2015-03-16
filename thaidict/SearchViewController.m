@@ -13,6 +13,7 @@
     NSString *SearchText;
     BOOL flagSearch;
     UIView *searchByGoogleView;
+    DictLanguage flagLang;
 }
 @end
 NSInteger lastclickrow;
@@ -120,6 +121,7 @@ int idrec = 0;
             }
         }
         ArrayWords = [Vocab listDictByVocab:SearchText];
+        flagLang = [Language checkLanguage:SearchText];
         if ([ArrayWords count] == 0) {
             NSLog(@"search by internet");
             [UIView animateWithDuration:3.0f delay:0 options:UIViewAnimationOptionLayoutSubviews animations:^{
@@ -127,6 +129,7 @@ int idrec = 0;
             } completion:^(BOOL finished) {
                 
             }];
+            
             [TableWords reloadData];
         }
         else{
@@ -143,6 +146,13 @@ int idrec = 0;
     else{
       [searchByGoogleView removeFromSuperview];
         [ArrayWords removeAllObjects];
+        if (flagLang == LanguageTHA) {
+            ArrayWords = [Vocab listDictByVocab:@"ก"];
+        }
+        else{
+            ArrayWords = [Vocab listDictByVocab:@"a"];
+        }
+        
         [TableWords reloadData];
     }
     
@@ -189,14 +199,6 @@ int idrec = 0;
     [self performSegueWithIdentifier:@"chooseVocab" sender:@"textfield"];
     return YES;
 }
-//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-//
-//    UITouch *touch = [[event allTouches] anyObject];
-//    if ([SearchBox isFirstResponder] && [touch view] != SearchBox) {
-//        [SearchBox resignFirstResponder];
-//    }
-//    [super touchesBegan:touches withEvent:event];
-//}
 
 #pragma mark tableview
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -277,20 +279,6 @@ int idrec = 0;
         [cell hideUtilityButtonsAnimated:YES];
     [TableWords reloadData];
     [SearchBox resignFirstResponder];
-//    switch (index) {
-//        case 0:
-//        {
-//            //when favorite button is pressed, add to database
-//            Vocab *info = [ArrayWords objectAtIndex:indexPath.row];
-//            [self insertFavInDatabase:info];
-//            [cell hideUtilityButtonsAnimated:YES];
-//            [TableWords reloadData];
-//            [SearchBox resignFirstResponder];
-//            break;
-//        }
-//        default:
-//            break;
-//    }
 
 }
 

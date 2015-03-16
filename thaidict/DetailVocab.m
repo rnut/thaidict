@@ -31,6 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.BaseTableview setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [self.BaseTableview setBackgroundColor:[UIColor whiteColor]];
     [self.IndicatorSpeak setHidden:YES];
     if (ChooseVocab == nil) {
         [self setHiddenInterface:YES];
@@ -39,7 +40,7 @@
     else{
         self.SearchLabel.text = [ChooseVocab Search];
         [self setHiddenInterface:NO];
-        UIView *lineView2 = [[UIView alloc] initWithFrame:CGRectMake(0, self.BaseTableview.frame.origin.y, self.view.bounds.size.width, 3)];
+        UIView *lineView2 = [[UIView alloc] initWithFrame:CGRectMake(0, self.SearchLabel.bounds.origin.y+self.SearchLabel.bounds.size.height+20, self.view.bounds.size.width, 3)];
         lineView2.backgroundColor = [UIColor blackColor];
         [self.view addSubview:lineView2];
     }
@@ -56,7 +57,7 @@
         }
     }
     
-    return nil;
+    return NO;
 }
 
 -(void)stateFavoriteButton{

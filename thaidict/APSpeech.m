@@ -28,7 +28,7 @@
 {
   if ( self = [super init] )
   {
-    _Volume = 1.0f;
+    _Volume = 3.0f;
     _Loop   = 0;
   }
   

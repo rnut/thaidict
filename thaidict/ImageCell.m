@@ -21,22 +21,24 @@
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
     NSLog(@"tap ImageView");
 //        [self loadImage];
-        [self.IndicatorImage startAnimating];
-        dispatch_queue_t externalque = dispatch_queue_create("getInformation", nil);
-        
-        dispatch_async(externalque, ^{
-                        APImage *img = [[APImage alloc] initWithVocabSearch:[ChooseVocab Search] Language:[ChooseVocab Language]];
-                        _pageImages = [img Image];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                                [self.Collectionview reloadData];
-                                [self.IndicatorImage stopAnimating];
-            });
-        });
-}
 
+}
+-(void)load{
+    [self.IndicatorImage startAnimating];
+    dispatch_queue_t externalque = dispatch_queue_create("getInformation", nil);
+    
+    dispatch_async(externalque, ^{
+        APImage *img = [[APImage alloc] initWithVocabSearch:[ChooseVocab Search] Language:[ChooseVocab Language]];
+        _pageImages = [img Image];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.Collectionview reloadData];
+            [self.IndicatorImage stopAnimating];
+        });
+    });
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    [self load];
 
 }
 

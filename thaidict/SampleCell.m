@@ -24,6 +24,9 @@
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
     NSLog(@"tap exampleview");
+
+}
+-(void)load{
     if (flagSample) {
         [self addOverlayAndIndicator];
         dispatch_queue_t externalque = dispatch_queue_create("getInformation", nil);
@@ -36,9 +39,9 @@
         flagSample= NO;
     }
 }
-
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
+    [self load];
 }
 -(void)loadExample{
     if(ChooseVocab.Language == LanguageENG){
