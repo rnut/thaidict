@@ -37,6 +37,7 @@
         NSDictionary *parsedObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&localError];
         
         NSArray *result = [[parsedObject objectForKey:@"responseData"] objectForKey:@"results"];
+        [self setRawData:result];
         if ([result count] > 0) {
             for (NSDictionary *obj in result) {
                 NSURL *tempURL = [NSURL URLWithString:[obj objectForKey:@"tbUrl"]];

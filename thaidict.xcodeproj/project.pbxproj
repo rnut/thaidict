@@ -87,6 +87,7 @@
 		6984DAD81AAD9ADB003F800C /* FeedbackService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6984DACF1AAD9ADB003F800C /* FeedbackService.m */; };
 		6984DAD91AAD9ADB003F800C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6984DAD11AAD9ADB003F800C /* Localizable.strings */; };
 		6984DADA1AAD9ADB003F800C /* MyAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 6984DAD41AAD9ADB003F800C /* MyAlert.m */; };
+		69B769CE1AB6D24300336B04 /* FullImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B769CD1AB6D24300336B04 /* FullImage.m */; };
 		69BC97781A8361250019F71B /* Edit_Fav_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BC97771A8361250019F71B /* Edit_Fav_ViewController.m */; };
 		69C230571AA594B6003D8570 /* icon-speak.png in Resources */ = {isa = PBXBuildFile; fileRef = 69C230561AA594B6003D8570 /* icon-speak.png */; };
 		69C2305A1AA59AF3003D8570 /* speak-icon(flat).png in Resources */ = {isa = PBXBuildFile; fileRef = 69C230591AA59AF3003D8570 /* speak-icon(flat).png */; };
@@ -255,6 +256,8 @@
 		6984DAD21AAD9ADB003F800C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = Localizable.strings; sourceTree = "<group>"; };
 		6984DAD31AAD9ADB003F800C /* MyAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyAlert.h; path = AAMFeedback/MyAlert.h; sourceTree = "<group>"; };
 		6984DAD41AAD9ADB003F800C /* MyAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyAlert.m; path = AAMFeedback/MyAlert.m; sourceTree = "<group>"; };
+		69B769CC1AB6D24300336B04 /* FullImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullImage.h; sourceTree = "<group>"; };
+		69B769CD1AB6D24300336B04 /* FullImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FullImage.m; sourceTree = "<group>"; };
 		69BC97761A8361250019F71B /* Edit_Fav_ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Edit_Fav_ViewController.h; sourceTree = "<group>"; };
 		69BC97771A8361250019F71B /* Edit_Fav_ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Edit_Fav_ViewController.m; sourceTree = "<group>"; };
 		69C230561AA594B6003D8570 /* icon-speak.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-speak.png"; sourceTree = "<group>"; };
@@ -336,6 +339,8 @@
 				694B49681AA079850015A546 /* SampleCell.m */,
 				694B496A1AA079910015A546 /* ImageCell.h */,
 				694B496B1AA079910015A546 /* ImageCell.m */,
+				69B769CC1AB6D24300336B04 /* FullImage.h */,
+				69B769CD1AB6D24300336B04 /* FullImage.m */,
 				6955AD271A9322000017D45F /* VocabCell.h */,
 				6955AD281A9322000017D45F /* VocabCell.m */,
 				693A53751A91E2B80081120C /* SplitViewSearch.h */,
@@ -810,6 +815,7 @@
 				697545031A91B20C009ACB65 /* NSString_stripHtml.m in Sources */,
 				694B49661AA078970015A546 /* DefinitionCell.m in Sources */,
 				697A6BB71A6F989E008A893A /* SWUtilityButtonView.m in Sources */,
+				69B769CE1AB6D24300336B04 /* FullImage.m in Sources */,
 				697A6BB41A6F989E008A893A /* SWLongPressGestureRecognizer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

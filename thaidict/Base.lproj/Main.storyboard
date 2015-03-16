@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="tLH-mT-MpS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cJy-TO-WHV">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
@@ -202,7 +202,7 @@
                                         </variation>
                                     </label>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="lcl-47-3zn">
-                                        <rect key="frame" x="246" y="22" width="37" height="37"/>
+                                        <rect key="frame" x="247" y="21" width="37" height="37"/>
                                         <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                             <rect key="frame" x="245" y="21" width="37" height="38"/>
                                         </variation>
@@ -328,7 +328,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="130" height="122"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gVy-Zc-VO9">
@@ -775,7 +775,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GSr-Wz-qrP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2144" y="384"/>
+            <point key="canvasLocation" x="-2144" y="410"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="UBZ-ZC-nft">
@@ -933,7 +933,7 @@
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="62" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="5wf-Qs-sld">
-                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                                <rect key="frame" x="0.0" y="44" width="600" height="496"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="62" id="zZl-aV-zeT">
@@ -977,17 +977,23 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="VuI-4u-QYL" firstAttribute="top" secondItem="5wf-Qs-sld" secondAttribute="bottom" id="BhX-BB-WCd"/>
+                            <constraint firstItem="VuI-4u-QYL" firstAttribute="top" secondItem="5wf-Qs-sld" secondAttribute="bottom" constant="58" id="BhX-BB-WCd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qQn-aB-hvf" secondAttribute="trailing" constant="-16" id="Ddz-ge-8BJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="5wf-Qs-sld" secondAttribute="trailing" constant="-16" id="JRy-3a-Tty"/>
                             <constraint firstItem="5wf-Qs-sld" firstAttribute="top" secondItem="qQn-aB-hvf" secondAttribute="bottom" id="Nn2-dt-OOh"/>
                             <constraint firstItem="qQn-aB-hvf" firstAttribute="leading" secondItem="s1R-uT-fK8" secondAttribute="leadingMargin" constant="-16" id="Tch-iT-hWx"/>
                             <constraint firstAttribute="trailingMargin" secondItem="209-5W-soc" secondAttribute="trailing" constant="-20" id="hYh-bq-vCP"/>
                             <constraint firstItem="209-5W-soc" firstAttribute="leading" secondItem="s1R-uT-fK8" secondAttribute="leadingMargin" constant="-20" id="i1O-QG-AL2"/>
+                            <constraint firstItem="209-5W-soc" firstAttribute="top" secondItem="5wf-Qs-sld" secondAttribute="bottom" id="k4f-ye-b1r"/>
                             <constraint firstItem="VuI-4u-QYL" firstAttribute="top" secondItem="209-5W-soc" secondAttribute="bottom" id="npb-NT-HtB"/>
                             <constraint firstItem="5wf-Qs-sld" firstAttribute="leading" secondItem="s1R-uT-fK8" secondAttribute="leadingMargin" constant="-16" id="ogN-cZ-aDk"/>
                             <constraint firstItem="qQn-aB-hvf" firstAttribute="top" secondItem="A7M-3F-Qj2" secondAttribute="bottom" id="tQa-UL-O8l"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="BhX-BB-WCd"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="sss" id="XCy-tu-dzL"/>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -1291,7 +1297,7 @@
                                 </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="6nM-lX-vll">
-                                <rect key="frame" x="546" y="17" width="37" height="37"/>
+                                <rect key="frame" x="546" y="16" width="37" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="3vH-Hx-n6C"/>
                                     <constraint firstAttribute="width" constant="37" id="hPy-6R-DVe"/>
@@ -1351,8 +1357,8 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BzL-wk-mDj">
                                                     <rect key="frame" x="16" y="12" width="568" height="83"/>
                                                     <subviews>
-                                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="RQK-SQ-ETQ">
-                                                            <rect key="frame" x="266" y="23" width="37" height="37"/>
+                                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="RQK-SQ-ETQ">
+                                                            <rect key="frame" x="267" y="23" width="37" height="37"/>
                                                             <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                             <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                                                 <rect key="frame" x="167" y="23" width="37" height="37"/>
@@ -1877,7 +1883,7 @@
                                 </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ec5-iN-OtT">
-                                <rect key="frame" x="546" y="17" width="37" height="37"/>
+                                <rect key="frame" x="546" y="16" width="37" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="37" id="IIA-B4-nfr"/>
                                     <constraint firstAttribute="height" constant="37" id="P0v-SZ-WhN"/>
@@ -2084,8 +2090,8 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C0P-H0-zUk">
                                                     <rect key="frame" x="16" y="12" width="568" height="83"/>
                                                     <subviews>
-                                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="tkP-wY-gNE">
-                                                            <rect key="frame" x="266" y="23" width="37" height="37"/>
+                                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="tkP-wY-gNE">
+                                                            <rect key="frame" x="267" y="23" width="37" height="37"/>
                                                             <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                             <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                                                 <rect key="frame" x="167" y="23" width="37" height="37"/>
@@ -2901,7 +2907,7 @@ All right reserved</string>
                                 </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="39K-dc-W3P">
-                                <rect key="frame" x="546" y="17" width="37" height="37"/>
+                                <rect key="frame" x="546" y="16" width="37" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="8UP-gg-fwA"/>
                                     <constraint firstAttribute="width" constant="37" id="iX5-V6-lNY"/>
@@ -2959,13 +2965,13 @@ All right reserved</string>
                                                     <rect key="frame" x="16" y="12" width="568" height="83"/>
                                                     <subviews>
                                                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="hFP-9g-HQ7">
-                                                            <rect key="frame" x="267" y="23" width="37" height="37"/>
+                                                            <rect key="frame" x="268" y="23" width="37" height="37"/>
                                                             <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                             <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                                                 <rect key="frame" x="167" y="23" width="37" height="37"/>
                                                             </variation>
                                                         </activityIndicatorView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="please tap to get information" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSr-P6-VWb">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSr-P6-VWb">
                                                             <rect key="frame" x="0.0" y="2" width="568" height="83"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" red="0.34338304920000001" green="0.1184381541" blue="0.099352773510000006" alpha="1" colorSpace="calibratedRGB"/>
@@ -3144,6 +3150,9 @@ All right reserved</string>
                                                                             <include reference="zfB-Na-hWm"/>
                                                                         </mask>
                                                                     </variation>
+                                                                    <connections>
+                                                                        <segue destination="MMU-s8-Bs4" kind="presentation" identifier="FullImage" id="KZ8-O8-82x"/>
+                                                                    </connections>
                                                                 </collectionViewCell>
                                                             </cells>
                                                             <variation key="default">
@@ -3388,6 +3397,63 @@ All right reserved</string>
             </objects>
             <point key="canvasLocation" x="2805" y="850"/>
         </scene>
+        <!--Full Image-->
+        <scene sceneID="K5Z-Uq-B38">
+            <objects>
+                <viewController restorationIdentifier="FullImage" storyboardIdentifier="FullImage" id="MMU-s8-Bs4" customClass="FullImage" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xGW-sP-l2D"/>
+                        <viewControllerLayoutGuide type="bottom" id="Hai-UE-64w"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3DZ-AL-NS2">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HNi-kz-OOv">
+                                <rect key="frame" x="547" y="20" width="37" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="37" id="aPI-hK-r5y"/>
+                                    <constraint firstAttribute="height" constant="30" id="xjZ-y0-TZj"/>
+                                </constraints>
+                                <state key="normal" title="close">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="close:" destination="MMU-s8-Bs4" eventType="touchUpInside" id="Rpv-lc-Clx"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z8T-RR-eCE">
+                                <rect key="frame" x="75" y="75" width="450" height="450"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="450" id="Hag-Hi-clH"/>
+                                    <constraint firstAttribute="height" constant="450" id="cTF-ok-LUc"/>
+                                </constraints>
+                            </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="LxK-Zq-JSt">
+                                <rect key="frame" x="282" y="281" width="37" height="37"/>
+                                <color key="color" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="HNi-kz-OOv" firstAttribute="top" secondItem="xGW-sP-l2D" secondAttribute="bottom" id="3HS-E4-E7m"/>
+                            <constraint firstItem="LxK-Zq-JSt" firstAttribute="centerY" secondItem="Z8T-RR-eCE" secondAttribute="centerY" constant="-0.5" id="8qH-5I-F5q"/>
+                            <constraint firstAttribute="centerX" secondItem="Z8T-RR-eCE" secondAttribute="centerX" id="A98-6R-ANh"/>
+                            <constraint firstItem="LxK-Zq-JSt" firstAttribute="centerX" secondItem="Z8T-RR-eCE" secondAttribute="centerX" constant="0.5" id="Dky-AN-ol4"/>
+                            <constraint firstAttribute="trailing" secondItem="HNi-kz-OOv" secondAttribute="trailing" constant="16" id="Enb-Gv-yWi"/>
+                            <constraint firstAttribute="centerY" secondItem="Z8T-RR-eCE" secondAttribute="centerY" id="OSP-vH-Kcr"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="pf9-E9-8J1"/>
+                    <connections>
+                        <outlet property="FullImage" destination="Z8T-RR-eCE" id="Qno-Ra-LNM"/>
+                        <outlet property="Indicator" destination="LxK-Zq-JSt" id="kqd-Hv-50D"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eQh-cm-DOC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3509" y="850"/>
+        </scene>
         <!--Detail Vocab-->
         <scene sceneID="ycs-0Z-qYw">
             <objects>
@@ -3467,7 +3533,7 @@ All right reserved</string>
                                 </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="qT1-LQ-S7F">
-                                <rect key="frame" x="546" y="17" width="37" height="37"/>
+                                <rect key="frame" x="546" y="16" width="37" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="2VO-g4-qjf"/>
                                     <constraint firstAttribute="width" constant="37" id="EXv-da-36q"/>
@@ -3525,7 +3591,7 @@ All right reserved</string>
                                                     <rect key="frame" x="16" y="12" width="568" height="83"/>
                                                     <subviews>
                                                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="u0c-Sl-9lL">
-                                                            <rect key="frame" x="267" y="23" width="37" height="37"/>
+                                                            <rect key="frame" x="268" y="23" width="37" height="37"/>
                                                             <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                             <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                                                 <rect key="frame" x="167" y="23" width="37" height="37"/>

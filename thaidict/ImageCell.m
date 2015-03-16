@@ -12,8 +12,8 @@
 @synthesize pageImages = _pageImages,ChooseVocab,Collectionview;
 - (void)awakeFromNib {
     //add touch gesture
-    UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
-    [self.ViewImage addGestureRecognizer:singleFingerTap];
+//    UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+//    [self.ViewImage addGestureRecognizer:singleFingerTap];
     ((UICollectionViewFlowLayout *)self.Collectionview.collectionViewLayout).minimumLineSpacing = 2.0f;
     ((UICollectionViewFlowLayout *)self.Collectionview.collectionViewLayout).scrollDirection = UICollectionViewScrollDirectionHorizontal;
 
@@ -28,8 +28,8 @@
     dispatch_queue_t externalque = dispatch_queue_create("getInformation", nil);
     
     dispatch_async(externalque, ^{
-        APImage *img = [[APImage alloc] initWithVocabSearch:[ChooseVocab Search] Language:[ChooseVocab Language]];
-        _pageImages = [img Image];
+        self.apI = [[APImage alloc] initWithVocabSearch:[ChooseVocab Search] Language:[ChooseVocab Language]];
+        _pageImages = [self.apI Image];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.Collectionview reloadData];
             [self.IndicatorImage stopAnimating];
@@ -61,7 +61,26 @@
     }
     return nil;
 }
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    NSString *url = [[self.apI.RawData objectAtIndex:indexPath.row] objectForKey:@"url"];
+    NSLog(@"test :%@",url);
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    FullImage *ivc = [storyboard instantiateViewControllerWithIdentifier:@"FullImage"];
+//    ivc.UrlImage = url;
+//    ivc.view.opaque = NO;
+//    ivc.view.backgroundColor = [UIColor clearColor];
+//    [(UINavigationController*)self.window.rootViewController presentViewController:ivc animated:NO completion:nil];
+    
 
+}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([[segue identifier] isEqualToString:@"FullImage"]) {
+        NSString *url = @"test";
+        FullImage *fullView = [segue destinationViewController];
+        [fullView setUrlImage:url];
+    }
+}
 //-(void)loadImage{
 //    APImage *img = [[APImage alloc] initWithVocabSearch:[ChooseVocab Search] Language:[ChooseVocab Language]];
 //    _pageImages = [img Image];

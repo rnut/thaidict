@@ -137,6 +137,7 @@
             CellIdentifier = @"Image";
             ImageCell *cell = (ImageCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             cell.ChooseVocab = ChooseVocab;
+            cell.dt = self.view;
             return cell;
             break;
         }
@@ -170,6 +171,9 @@
         SampleCell *cell = (SampleCell *)[tableView cellForRowAtIndexPath:indexPath];
         [cell setChooseVocab:ChooseVocab];
 //        [self loadExample];
+    }
+    if (indexPath.section == 2) {
+        NSLog(@"click image");
     }
 }
 

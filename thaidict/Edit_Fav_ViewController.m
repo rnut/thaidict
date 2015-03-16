@@ -103,7 +103,11 @@
     NSArray *selected = [self.TableView indexPathsForSelectedRows];
     if ([selected count] > 0) {
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Are you sure want to delete?" delegate:self cancelButtonTitle:@"no" otherButtonTitles:@"yes", nil];
+        UIAlertView *alert;
+        if (selected.count != self.FavInfo.count) {
+            alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:[NSString stringWithFormat:@"Are you sure want to delete %lu items?",(unsigned long)selected.count] delegate:self cancelButtonTitle:@"no" otherButtonTitles:@"yes", nil];
+        }
+        else alert = [[UIAlertView alloc] initWithTitle:@"Delete favorite" message:@"Are you sure want to delete all ?" delegate:self cancelButtonTitle:@"no" otherButtonTitles:@"yes", nil];
         [alert show];
         
     }

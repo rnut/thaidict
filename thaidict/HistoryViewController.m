@@ -95,14 +95,19 @@
 
 #pragma mark IBAction
 - (IBAction)editBtn:(id)sender {
-
-    [History clearHistory];
-    [hisInfo removeAllObjects];
-    [TableView reloadData];
-    NSLog(@"clear");
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Clear History" message:@"Are you sure want to clear history?" delegate:self cancelButtonTitle:@"cancel" otherButtonTitles:@"confirm", nil];
+    [alert show];
+    
 }
-
-
+#pragma mark - alert view delegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 1) {
+        [History clearHistory];
+        [hisInfo removeAllObjects];
+        [TableView reloadData];
+        NSLog(@"clear");
+    }
+}
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation

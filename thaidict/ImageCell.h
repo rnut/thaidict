@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "APImage.h"
 #import "Vocab.h"
+#import "FullImage.h"
+#import "DetailVocab.h"
+
 @interface ImageCell : UITableViewCell<UICollectionViewDataSource,UICollectionViewDelegate>
-
-
+@property(nonatomic,strong)UIView *dt;
+@property(nonatomic,strong)APImage *apI;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *IndicatorImage;
 @property(nonatomic,strong)Vocab *ChooseVocab;
 @property (strong, nonatomic) IBOutlet UIView *ViewImage;

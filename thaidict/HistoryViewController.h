@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "History.h"
 #import "DetailVocabViewController.h"
-@interface HistoryViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface HistoryViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 {
     NSMutableArray *hisInfo;
     IBOutlet UITableView *TableView;

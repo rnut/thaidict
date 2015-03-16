@@ -13,6 +13,7 @@
 #import "DetailVocabViewController.h"
 #import "Favorite.h"
 #import "APSample.h"
+#import <QuartzCore/QuartzCore.h>
 //#import "History.h"
 
 @interface SearchViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, SWTableViewCellDelegate>

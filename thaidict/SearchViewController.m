@@ -273,7 +273,7 @@ int idrec = 0;
     else{
         Favorite *obf = [[Favorite alloc] init];
         [obf setFav_vocab:info];
-        [Favorite deleteFavorite:obf];
+        [self removefromFavList:obf];
     }
         
         [cell hideUtilityButtonsAnimated:YES];
@@ -282,23 +282,62 @@ int idrec = 0;
 
 }
 
-
-- (void) insertFavInDatabase:(Vocab *) favword;
-{
-    //int favID = fav;
-    Favorite *obj = [[Favorite alloc] init];
+-(void)removefromFavList:(Favorite*)fav{
+    UILabel *lbl = [[UILabel alloc] init];
+    [lbl setFrame:CGRectMake(0, 0, 220, 50)];
+    lbl.textColor = [UIColor whiteColor];
+    [lbl setBackgroundColor:[UIColor blackColor]];
+    lbl.layer.cornerRadius = 10;
+    lbl.layer.masksToBounds = YES;
+    lbl.center = self.view.center;
+    lbl.textAlignment = NSTextAlignmentCenter;
+    lbl.alpha = 0.7;
     
-    if ([obj keepFavorite:favword]) {
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Success Favorite Word++" message:@"Added word to your favorite list" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil];
-        [alert show];
-    }
-    else {
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Repeated Favorite Word" message:@"This word has been already added on your favorite list" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil];
-        [alert show];
-    }
+        if ([Favorite deleteFavorite:fav]) {
+            lbl.text = @"remove from favorite list";
+            
+        }
+        else {
+            NSLog(@"error remove to database");
+        }
+    
+        [self.view addSubview:lbl];
+        [self performSelector:@selector(dismissView:) withObject:lbl afterDelay:0.5];
     
 }
-
+- (void) insertFavInDatabase:(Vocab *) favword;
+{
+    Favorite *obj = [[Favorite alloc] init];
+    UILabel *lbl = [[UILabel alloc] init];
+    [lbl setFrame:CGRectMake(0, 0, 220, 50)];
+    lbl.textColor = [UIColor whiteColor];
+    [lbl setBackgroundColor:[UIColor blackColor]];
+    lbl.layer.cornerRadius = 10;
+    lbl.layer.masksToBounds = YES;
+    lbl.center = self.view.center;
+    lbl.textAlignment = NSTextAlignmentCenter;
+    lbl.alpha = 0.7;
+    
+    if ([obj keepFavorite:favword]) {
+        lbl.text = @"saved to favorite list";
+        
+    }
+    else {
+        NSLog(@"error insert to database");
+    }
+//    [view addSubview:lbl];
+    [self.view addSubview:lbl];
+    [self performSelector:@selector(dismissView:) withObject:lbl afterDelay:0.5];
+    
+}
+-(void)dismissView:(UIView *)View{
+    [UIView transitionWithView:View duration:0.8 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        View.alpha = 0.0;
+        
+    } completion:^(BOOL finished) {
+        [View removeFromSuperview];
+    }];
+}
 #pragma mark view Disappear
 -(void)viewWillDisappear:(BOOL)animated{
     [[self navigationController] setNavigationBarHidden:NO animated:YES];

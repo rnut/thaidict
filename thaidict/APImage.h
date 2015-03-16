@@ -16,5 +16,6 @@
 
 
 @property(nonatomic,strong)NSMutableArray *Image;
+@property(nonatomic,strong)NSArray *RawData;
 -(id)initWithVocabSearch:(NSString *)search Language:(DictLanguage)lang;
 @end
