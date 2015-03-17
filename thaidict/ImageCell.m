@@ -7,9 +7,17 @@
 //
 
 #import "ImageCell.h"
-
+#import "DetailVocab.h"
 @implementation ImageCell
-@synthesize pageImages = _pageImages,ChooseVocab,Collectionview;
+@synthesize pageImages = _pageImages,ChooseVocab,Collectionview,ctrl;
+
+-(id)initWithViewController:(UIViewController*)c {
+    if (self = [super init]) {
+        ctrl = c;
+    }
+    return self;
+}
+
 - (void)awakeFromNib {
     //add touch gesture
 //    UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
@@ -62,28 +70,46 @@
     return nil;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSString *url = [[self.apI.RawData objectAtIndex:indexPath.row] objectForKey:@"url"];
-    NSLog(@"test :%@",url);
+//    NSString *url = [[self.apI.RawData objectAtIndex:indexPath.row] objectForKey:@"url"];
+//    NSLog(@"test :%@",url);
 //    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 //    FullImage *ivc = [storyboard instantiateViewControllerWithIdentifier:@"FullImage"];
-//    ivc.UrlImage = url;
+//    DetailVocab *dtvc = [storyboard instantiateViewControllerWithIdentifier:@"DetailVocab"];
+////    ivc.UrlImage = url;
+//    ivc.rawData = [self.apI RawData];
+//    ivc.indexChoose = (int)indexPath.row;
 //    ivc.view.opaque = NO;
-//    ivc.view.backgroundColor = [UIColor clearColor];
-//    [(UINavigationController*)self.window.rootViewController presentViewController:ivc animated:NO completion:nil];
-    
+//    ivc.view.backgroundColor = [UIColor blackColor];
+//    [(UINavigationController*)self.window.viewForBaselineLayout presentViewController:ivc animated:NO completion:nil];
+//    UIStoryboardSegue *segue = [UIStoryboardSegue segueWithIdentifier:@"FullImage" source:dtvc destination:ivc performHandler:^{
+//        
+//    }];
+//    [self prepareForSegue:segue sender:dtvc];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    FullImage *ivc = [storyboard instantiateViewControllerWithIdentifier:@"FullImage"];
+        ivc.rawData = [self.apI RawData];
+        ivc.indexChoose = (int)indexPath.row;
+        ivc.view.opaque = NO;
+        ivc.view.backgroundColor = [UIColor clearColor];
+//    UIGraphicsBeginImageContextWithOptions(ctrl.view.bounds.size, NO, 0);
+//    CGContextRef context = UIGraphicsGetCurrentContext();
+//    [ctrl.view.layer renderInContext:context];
+//    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+    ivc.bg = [self captureScreen:ctrl];
+    ctrl.modalPresentationStyle = UIModalPresentationCurrentContext;
+    [ctrl presentViewController:ivc animated:YES completion:nil];
 
 }
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-    if ([[segue identifier] isEqualToString:@"FullImage"]) {
-        NSString *url = @"test";
-        FullImage *fullView = [segue destinationViewController];
-        [fullView setUrlImage:url];
-    }
+-(UIImage *)captureScreen:(UIViewController *)vc{
+    UIImage *ret = [[UIImage alloc] init];
+    CALayer *layer = [[UIApplication sharedApplication] keyWindow].layer;
+    CGFloat scale = [UIScreen mainScreen].scale;
+    CGSize size =  CGSizeMake(vc.view.layer.frame.size.width, vc.view.layer.frame.size.height);
+    UIGraphicsBeginImageContextWithOptions(size, NO, scale);
+    [layer renderInContext:UIGraphicsGetCurrentContext()];
+    ret = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return ret;
 }
-//-(void)loadImage{
-//    APImage *img = [[APImage alloc] initWithVocabSearch:[ChooseVocab Search] Language:[ChooseVocab Language]];
-//    _pageImages = [img Image];
-//    [self.Collectionview reloadData];
-//}
 @end

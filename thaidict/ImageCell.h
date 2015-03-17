@@ -12,7 +12,9 @@
 #import "FullImage.h"
 #import "DetailVocab.h"
 
-@interface ImageCell : UITableViewCell<UICollectionViewDataSource,UICollectionViewDelegate>
+@interface ImageCell : UITableViewCell<UICollectionViewDataSource,UICollectionViewDelegate>{
+    __weak UIViewController *ctrl;
+}
 @property(nonatomic,strong)UIView *dt;
 @property(nonatomic,strong)APImage *apI;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *IndicatorImage;
@@ -20,4 +22,7 @@
 @property (strong, nonatomic) IBOutlet UIView *ViewImage;
 @property (strong, nonatomic) IBOutlet UICollectionView *Collectionview;
 @property (nonatomic, strong) NSArray *pageImages;
+@property(nonatomic,weak)UIViewController *ctrl;
+-(id)initWithViewController:(UIViewController*)c;
+
 @end

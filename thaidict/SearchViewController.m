@@ -146,13 +146,10 @@ int idrec = 0;
     else{
       [searchByGoogleView removeFromSuperview];
         [ArrayWords removeAllObjects];
-        if (flagLang == LanguageTHA) {
-            ArrayWords = [Vocab listDictByVocab:@"ก"];
-        }
-        else{
-            ArrayWords = [Vocab listDictByVocab:@"a"];
-        }
-        
+        if (flagLang == LanguageTHA) SearchText = @"ก";
+        else  SearchText = @"a";
+
+        ArrayWords = [Vocab listDictByVocab:SearchText];
         [TableWords reloadData];
     }
     

@@ -16,17 +16,22 @@
     WYPopoverController* popoverController;
     BOOL flagtranslate; //yes = internal , no = external;
     CGFloat definitionHeight;
+    
+    UIImage *CaptureImg;
 }
 @end
 
 @implementation DetailVocab
 @synthesize ChooseVocab,Player,speakBtn,TranslateInfo;
-
+-(void)viewDidAppear:(BOOL)animated{
+    [self performSelector:@selector(captureScreen) withObject:nil afterDelay:0];
+}
 -(void)viewWillAppear:(BOOL)animated{
     [self setNeedsStatusBarAppearanceUpdate];
     flagtranslate = [self translateVocab];
     [self stateFavoriteButton];
     definitionHeight = [self checklengthOfcharecter];
+    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -44,6 +49,7 @@
         lineView2.backgroundColor = [UIColor blackColor];
         [self.view addSubview:lineView2];
     }
+
 }
 -(BOOL)translateVocab{
     if (ChooseVocab != nil && ![ChooseVocab.Search isEqualToString:@""]) {
@@ -138,6 +144,7 @@
             ImageCell *cell = (ImageCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             cell.ChooseVocab = ChooseVocab;
             cell.dt = self.view;
+            cell.ctrl = self;
             return cell;
             break;
         }
@@ -337,22 +344,72 @@
 
 
 #pragma mark External API
-
+-(void)captureScreen{
+    CALayer *layer = [[UIApplication sharedApplication] keyWindow].layer;
+    CGFloat scale = [UIScreen mainScreen].scale;
+    CGSize size =  CGSizeMake(layer.frame.size.width, definitionHeight+180);
+    UIGraphicsBeginImageContextWithOptions(size, NO, scale);
+    [layer renderInContext:UIGraphicsGetCurrentContext()];
+    CaptureImg = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    NSLog(@"capture fininsed");
+}
 - (IBAction)share:(id)sender {
+//    UIGraphicsBeginImageContext(self.view.frame.size);
+    if(CaptureImg == nil) return;
+    SLComposeViewController * fbSheetOBJ;
     if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
-        SLComposeViewController * fbSheetOBJ = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+        fbSheetOBJ = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+        [fbSheetOBJ addURL:[NSURL URLWithString:@"https://itunes.apple.com/th/app/Thaidict"]];
+//        [fbSheetOBJ setInitialText:[NSString stringWithFormat:@"Thaidict Application \n%@ : ความหมาย xxxxx",self.ChooseVocab.Search]];
         
-        [fbSheetOBJ setInitialText:@"Post from my iOS application"];
-        [fbSheetOBJ addURL:[NSURL URLWithString:@"http://www.weblineindia.com"]];
-        [fbSheetOBJ addImage:[UIImage imageNamed:@"my_image_to_share.png"]];
+        [fbSheetOBJ addImage:CaptureImg];
         [self presentViewController:fbSheetOBJ animated:YES completion:Nil];
     }
     else{
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warningb" message:@"please login facebook in your device" delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles: nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No account logged in" message:@"please login facebook in your device" delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles: nil];
         [alert show];
     }
+    
+    [fbSheetOBJ setCompletionHandler:^(SLComposeViewControllerResult result){
+       NSString *output;
+        switch (result) {
+            case SLComposeViewControllerResultCancelled:
+                output = @"canceled";
+                break;
+            case SLComposeViewControllerResultDone:{
+                output = @"share done";
+                UILabel *lbl = [[UILabel alloc] init];
+                [lbl setFrame:CGRectMake(0, 0, 220, 50)];
+                lbl.textColor = [UIColor whiteColor];
+                [lbl setBackgroundColor:[UIColor blackColor]];
+                lbl.layer.cornerRadius = 6;
+                lbl.layer.masksToBounds = YES;
+                lbl.center = self.view.center;
+                lbl.textAlignment = NSTextAlignmentCenter;
+                lbl.alpha = 0.6;
+                lbl.text = output;
+                
+                //    [view addSubview:lbl];
+                [self.view addSubview:lbl];
+                [self performSelector:@selector(dismissView:) withObject:lbl afterDelay:1];
+                break;
+            }
+                
+            default:
+                break;
+        }
+        
+    }];
 }
-
+-(void)dismissView:(UIView *)View{
+    [UIView transitionWithView:View duration:0.8 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        View.alpha = 0.0;
+        
+    } completion:^(BOOL finished) {
+        [View removeFromSuperview];
+    }];
+}
 -(IBAction)speakSpeech:(id)sender{
     [self loadSound];
 }
@@ -385,7 +442,6 @@
         [self.IndicatorSpeak startAnimating];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0ul), ^{
             BOOL flag = [ChooseVocab loadSound];
-            
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (flag) {
@@ -426,4 +482,11 @@
     [super didReceiveMemoryWarning];
 }
 
+
+
+-(void)persentView{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    FullImage *ivc = [storyboard instantiateViewControllerWithIdentifier:@"FullImage"];
+    [self presentViewController:ivc animated:YES completion:nil];
+}
 @end
