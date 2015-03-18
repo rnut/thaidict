@@ -36,7 +36,33 @@ int idrec = 0;
     [TableWords reloadData];
     [self setNeedsStatusBarAppearanceUpdate];
     [self setgoogleviewInterface];
+    
+    [self checkdatabaseSuccess];
 }
+- (void)checkdatabaseSuccess {
+    BOOL success;
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSError *error;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    // Database filename can have extension db/sqlite.
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *appDBPath = [documentsDirectory stringByAppendingPathComponent:@"lexitron.sqlite"];
+
+    success = [fileManager fileExistsAtPath:appDBPath];
+    if (success){
+        unsigned long long fileSize = [[[NSFileManager defaultManager] attributesOfItemAtPath:appDBPath error:nil] fileSize];
+        if (fileSize != 61014016l) {
+            UIAlertView *aa = [[UIAlertView alloc] initWithTitle:@"error" message:@"size db not correct" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil];
+            [aa show];
+            success = [[NSFileManager defaultManager] removeItemAtPath:appDBPath error: &error];
+            NSString *defaultDBPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"lexitron.sqlite"];
+            success = [fileManager copyItemAtPath:defaultDBPath toPath:appDBPath error:&error];
+        }
+        return;
+    }
+    
+}
+
 -(void)setgoogleviewInterface{
     UIVisualEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
     

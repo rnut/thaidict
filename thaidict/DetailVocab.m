@@ -22,7 +22,7 @@
 @end
 
 @implementation DetailVocab
-@synthesize ChooseVocab,Player,speakBtn,TranslateInfo;
+@synthesize ChooseVocab,Player,speakBtn,TranslateInfo,BaseTableview;
 -(void)viewDidAppear:(BOOL)animated{
     [self performSelector:@selector(captureScreen) withObject:nil afterDelay:0];
 }
@@ -31,6 +31,7 @@
     flagtranslate = [self translateVocab];
     [self stateFavoriteButton];
     definitionHeight = [self checklengthOfcharecter];
+    [self.BaseTableview reloadData];
     
 }
 - (void)viewDidLoad {
@@ -49,7 +50,7 @@
         lineView2.backgroundColor = [UIColor blackColor];
         [self.view addSubview:lineView2];
     }
-
+    
 }
 -(BOOL)translateVocab{
     if (ChooseVocab != nil && ![ChooseVocab.Search isEqualToString:@""]) {
@@ -106,8 +107,12 @@
     return  3;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+    });
     static NSString *CellIdentifier;
     UITableViewCell *cell;
+    
     switch (indexPath.section) {
         case 0:{
             CellIdentifier = @"Definition";
@@ -115,6 +120,7 @@
             cell.chooseVocab = ChooseVocab;
             cell.TranslateInfo = TranslateInfo;
             cell.Source = flagtranslate;
+
             return cell;
         break;}
         case 1:{
@@ -136,6 +142,8 @@
                 }
             }
             cell.ChooseVocab = ChooseVocab;
+//            [BaseTableview reloadData];
+//            [self reloadSections:0 withRowAnimation:UITableViewRowAnimationNone];
             return cell;
             break;
         }
@@ -152,8 +160,13 @@
             return cell;
             break;
     }
-    
     return cell;
+}
+- (void)reloadSections:(NSIndexSet *)sections withRowAnimation:(UITableViewRowAnimation)animation{
+
+    NSRange range = NSMakeRange(0, 1);
+    NSIndexSet *sectionToReload = [NSIndexSet indexSetWithIndexesInRange:range];
+    [self reloadSections:sectionToReload withRowAnimation:UITableViewRowAnimationFade];
 }
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     switch (section) {

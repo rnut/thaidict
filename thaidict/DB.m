@@ -14,7 +14,7 @@
 -(id)init{
     NSArray  *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *docsPath = [paths objectAtIndex:0];
-    NSString *dbPath = [docsPath stringByAppendingPathComponent:@"lexitron2.sqlite"];
+    NSString *dbPath = [docsPath stringByAppendingPathComponent:@"lexitron.sqlite"];
     ObjDb = [FMDatabase databaseWithPath:dbPath];
     [self openDB];
     return self;
@@ -60,6 +60,27 @@
     }
     return 0;
 }
+
+
++(NSString *)checkDatabase{
+    NSString *str = @"";
+    int count = 0;
+    DB *db = [[DB alloc] init];
+    [db openDB];
+    NSString *strQuery = [NSString stringWithFormat:@"select count(*)as count from eng2th_A"];
+    [db queryWithString:strQuery];
+    while ([db.ObjResult next]) {
+        count = [db.ObjResult intForColumn:@"count"];
+    }
+//    str = [str stringByAppendingString:strQuery];
+//    str = [str stringByAppendingString:@"\n\n"];
+    str = [str stringByAppendingString:[NSString stringWithFormat:@"count : %d",count]];
+//    str =  [NSString stringWithFormat:@"count : %d",[db.ObjResult intForColumn:@"lastID"]];
+    [db closeDB];
+    return str;
+}
 @end
+
+
 
 

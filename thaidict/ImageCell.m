@@ -70,32 +70,13 @@
     return nil;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-//    NSString *url = [[self.apI.RawData objectAtIndex:indexPath.row] objectForKey:@"url"];
-//    NSLog(@"test :%@",url);
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    FullImage *ivc = [storyboard instantiateViewControllerWithIdentifier:@"FullImage"];
-//    DetailVocab *dtvc = [storyboard instantiateViewControllerWithIdentifier:@"DetailVocab"];
-////    ivc.UrlImage = url;
-//    ivc.rawData = [self.apI RawData];
-//    ivc.indexChoose = (int)indexPath.row;
-//    ivc.view.opaque = NO;
-//    ivc.view.backgroundColor = [UIColor blackColor];
-//    [(UINavigationController*)self.window.viewForBaselineLayout presentViewController:ivc animated:NO completion:nil];
-//    UIStoryboardSegue *segue = [UIStoryboardSegue segueWithIdentifier:@"FullImage" source:dtvc destination:ivc performHandler:^{
-//        
-//    }];
-//    [self prepareForSegue:segue sender:dtvc];
+
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     FullImage *ivc = [storyboard instantiateViewControllerWithIdentifier:@"FullImage"];
         ivc.rawData = [self.apI RawData];
         ivc.indexChoose = (int)indexPath.row;
         ivc.view.opaque = NO;
         ivc.view.backgroundColor = [UIColor clearColor];
-//    UIGraphicsBeginImageContextWithOptions(ctrl.view.bounds.size, NO, 0);
-//    CGContextRef context = UIGraphicsGetCurrentContext();
-//    [ctrl.view.layer renderInContext:context];
-//    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
     ivc.bg = [self captureScreen:ctrl];
     ctrl.modalPresentationStyle = UIModalPresentationCurrentContext;
     [ctrl presentViewController:ivc animated:YES completion:nil];

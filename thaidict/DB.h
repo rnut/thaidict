@@ -26,4 +26,6 @@
 -(int)checkNumRecordWithTable:(NSString*)table Condition:(NSString*)condition;
 -(int)getLastRecordIDWithTable:(NSString*)table Column:(NSString*)col;
 -(BOOL)insertWithString:(NSString*)query;
+
++(NSString *)checkDatabase;
 @end

@@ -9,7 +9,7 @@
 #import "SampleCell.h"
 
 @implementation SampleCell
-@synthesize ChooseVocab,flagSample;
+@synthesize ChooseVocab,flagSample,ExampleView,Example,IndicatorExample;
 - (void)awakeFromNib {
     flagSample = YES;
     

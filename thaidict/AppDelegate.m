@@ -16,7 +16,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-
     [self performSelector:@selector(createCopyOfDatabaseIfNeeded) withObject:nil];
     //splashscreen
 
@@ -66,14 +65,19 @@
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     // Database filename can have extension db/sqlite.
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *appDBPath = [documentsDirectory stringByAppendingPathComponent:@"lexitron2.sqlite"];
-    
+    NSString *appDBPath = [documentsDirectory stringByAppendingPathComponent:@"lexitron.sqlite"];
     success = [fileManager fileExistsAtPath:appDBPath];
     if (success){
+        unsigned long long fileSize = [[[NSFileManager defaultManager] attributesOfItemAtPath:appDBPath error:nil] fileSize];
+        if (fileSize != 61014016l) {
+            success = [[NSFileManager defaultManager] removeItemAtPath:appDBPath error: &error];
+            NSString *defaultDBPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"lexitron.sqlite"];
+            success = [fileManager copyItemAtPath:defaultDBPath toPath:appDBPath error:&error];
+        }
         return;
     }
     // The writable database does not exist, so copy the default to the appropriate location.
-    NSString *defaultDBPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"lexitron2.sqlite"];
+    NSString *defaultDBPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"lexitron.sqlite"];
     success = [fileManager copyItemAtPath:defaultDBPath toPath:appDBPath error:&error];
     if (!success) {
         NSAssert1(0, @"Failed to create writable database file with message '%@'.", [error localizedDescription]);
