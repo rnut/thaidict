@@ -13,6 +13,11 @@
     UIImage *img;
 }
 @end
+#define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 
 @implementation FullImage
 @synthesize FullImage;
@@ -22,19 +27,25 @@
                                             action:@selector(upSwipe:)];
     [upSwipe setDirection:UISwipeGestureRecognizerDirectionUp];
     [self.view addGestureRecognizer:upSwipe];
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:self.bg]];
-    UIVisualEffect *blurEffect;
-    blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
     
-    UIVisualEffectView *visualEffectView;
-    visualEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+    if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
+        [self.view setBackgroundColor:[UIColor whiteColor]];
+    }else{
+        [self.view setBackgroundColor:[UIColor colorWithPatternImage:self.bg]];
+        UIVisualEffect *blurEffect;
+        blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+        
+        UIVisualEffectView *visualEffectView;
+        visualEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+        
+        visualEffectView.frame = self.view.bounds;
+        [self.view addSubview:visualEffectView];
+        
+        [self.view bringSubviewToFront:FullImage];
+        [self.view bringSubviewToFront:self.Indicator];
+        [self.view bringSubviewToFront:self.close];
+    }
     
-    visualEffectView.frame = self.view.bounds;
-    [self.view addSubview:visualEffectView];
-    
-    [self.view bringSubviewToFront:FullImage];
-    [self.view bringSubviewToFront:self.Indicator];
-    [self.view bringSubviewToFront:self.close];
     
 }
 - (void)upSwipe:(UISwipeGestureRecognizer *)recognizer {

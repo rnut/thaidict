@@ -52,8 +52,6 @@ int idrec = 0;
     if (success){
         unsigned long long fileSize = [[[NSFileManager defaultManager] attributesOfItemAtPath:appDBPath error:nil] fileSize];
         if (fileSize != 61014016l) {
-            UIAlertView *aa = [[UIAlertView alloc] initWithTitle:@"error" message:@"size db not correct" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil];
-            [aa show];
             success = [[NSFileManager defaultManager] removeItemAtPath:appDBPath error: &error];
             NSString *defaultDBPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"lexitron.sqlite"];
             success = [fileManager copyItemAtPath:defaultDBPath toPath:appDBPath error:&error];

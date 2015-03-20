@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
-
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+#import <TrueMoveOnly/TMSplashScreen.h>
+@interface AppDelegate : UIResponder <UIApplicationDelegate,TMSplashScreenDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

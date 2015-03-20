@@ -13,16 +13,28 @@
 @end
 
 @implementation ScreenViewController
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (BOOL)shouldAutorotate
+{
+    return NO;
 }
-*/
+- (void)splashScreenBecomeLoadingState{
+    NSLog(@"become");
+}
 
+/**
+ Action after splashScreen play finished.
+ */
+
+- (void)splashScreenDidPlayFinished{
+    NSLog(@"did");
+}
+
+/**
+ Custom splash screen orientation.
+ */
+
+- (UIInterfaceOrientation)splashScreenOrientation{
+    NSLog(@"ori");
+    return UIInterfaceOrientationIsPortrait(UIInterfaceOrientationPortrait);
+}
 @end

@@ -17,6 +17,10 @@
     //add touch gesture
     UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
     [self.ExampleView addGestureRecognizer:singleFingerTap];
+    NSLog(@"x : %f",self.viewForBaselineLayout.frame.origin.x);
+    NSLog(@"y : %f",self.viewForBaselineLayout.frame.origin.y);
+    NSLog(@"width : %f",self.viewForBaselineLayout.frame.size.width);
+    NSLog(@"hei : %f",self.viewForBaselineLayout.frame.size.height);
 }
 
 
@@ -45,6 +49,7 @@
 }
 -(void)loadExample{
     if(ChooseVocab.Language == LanguageENG){
+//        [self addOverlayAndIndicator];
         dispatch_queue_t exQueue_ = dispatch_queue_create("exampleque", NULL);
         dispatch_async(exQueue_, ^{
             
@@ -65,18 +70,22 @@
     }
 }
 
+
+
+
+
 #pragma mark Overlay
 -(void)addOverlayAndIndicator{
     [self.IndicatorExample setHidden:NO];
     [self.IndicatorExample startAnimating];
-    overlayView = [[UIView alloc] initWithFrame:[self.ExampleView bounds]];
-    overlayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
-    [self.ExampleView addSubview:overlayView];
+//    overlayView = [[UIView alloc] initWithFrame:[self.ExampleView bounds]];
+//    overlayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+//    [self.ExampleView addSubview:overlayView];
 }
 -(void)removeOverlayAndIndicator{
     [self.IndicatorExample setHidden:YES];
     [self.IndicatorExample stopAnimating];
-    [overlayView removeFromSuperview];
+//    [overlayView removeFromSuperview];
 }
 
 @end

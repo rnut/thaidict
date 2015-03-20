@@ -7,7 +7,6 @@
 //
 
 #import "DetailVocab.h"
-
 @interface DetailVocab ()
 {
     BOOL flagFav; //yes = not exist , no = exist
@@ -29,15 +28,20 @@
 -(void)viewWillAppear:(BOOL)animated{
     [self setNeedsStatusBarAppearanceUpdate];
     flagtranslate = [self translateVocab];
+
     [self stateFavoriteButton];
     definitionHeight = [self checklengthOfcharecter];
-    [self.BaseTableview reloadData];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [BaseTableview reloadData];
+    });
     
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.BaseTableview setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    [self.BaseTableview setBackgroundColor:[UIColor whiteColor]];
+    [BaseTableview setDelegate:self];
+    [BaseTableview setDataSource:self];
+    [BaseTableview setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [BaseTableview setBackgroundColor:[UIColor whiteColor]];
     [self.IndicatorSpeak setHidden:YES];
     if (ChooseVocab == nil) {
         [self setHiddenInterface:YES];
@@ -51,10 +55,14 @@
         [self.view addSubview:lineView2];
     }
     
+    
+
+    
 }
 -(BOOL)translateVocab{
     if (ChooseVocab != nil && ![ChooseVocab.Search isEqualToString:@""]) {
         TranslateInfo = [Vocab translateVocab:ChooseVocab];
+
         if (TranslateInfo.count > 0) {
             return YES;
         }
@@ -90,7 +98,7 @@
 }
 -(void)setHiddenInterface:(BOOL)boolean{
 
-    [self.BaseTableview setHidden:boolean];
+    [BaseTableview setHidden:boolean];
     [self.speakBtn setHidden:boolean];
     [self.SearchLabel setHidden:boolean];
     [self.FavBtn setHidden:boolean];
@@ -107,9 +115,6 @@
     return  3;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-    });
     static NSString *CellIdentifier;
     UITableViewCell *cell;
     
@@ -120,11 +125,12 @@
             cell.chooseVocab = ChooseVocab;
             cell.TranslateInfo = TranslateInfo;
             cell.Source = flagtranslate;
-
+            [cell.Webview setFrame:CGRectMake(8, 0, cell.frame.size.width-8, cell.frame.size.height-8)];
             return cell;
         break;}
         case 1:{
             CellIdentifier = @"Sample";
+            
             SampleCell *cell = (SampleCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
             
@@ -142,8 +148,6 @@
                 }
             }
             cell.ChooseVocab = ChooseVocab;
-//            [BaseTableview reloadData];
-//            [self reloadSections:0 withRowAnimation:UITableViewRowAnimationNone];
             return cell;
             break;
         }
@@ -162,12 +166,7 @@
     }
     return cell;
 }
-- (void)reloadSections:(NSIndexSet *)sections withRowAnimation:(UITableViewRowAnimation)animation{
 
-    NSRange range = NSMakeRange(0, 1);
-    NSIndexSet *sectionToReload = [NSIndexSet indexSetWithIndexesInRange:range];
-    [self reloadSections:sectionToReload withRowAnimation:UITableViewRowAnimationFade];
-}
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     switch (section) {
         case 0:

@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <TrueMoveOnly/TMSplashScreen.h>
 @interface AppDelegate ()
 
 @end
@@ -15,6 +16,16 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [_window makeKeyAndVisible];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *splashController = [storyboard instantiateViewControllerWithIdentifier:@"SplashScreen"];
+//    splashController.delegate = self;
+    
+    [self.window setRootViewController:splashController];
+//    [self.window.rootViewController presentViewController:splashController animated:YES completion:nil];
+
+    
+    
     // Override point for customization after application launch.
     [self performSelector:@selector(createCopyOfDatabaseIfNeeded) withObject:nil];
     //splashscreen
