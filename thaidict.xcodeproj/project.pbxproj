@@ -119,6 +119,13 @@
 		6989526F1AB91CCA007230EE /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 6989525B1AB91CCA007230EE /* iTunesArtwork */; };
 		698952701AB91CCA007230EE /* iTunesArtwork@2x in Resources */ = {isa = PBXBuildFile; fileRef = 6989525C1AB91CCA007230EE /* iTunesArtwork@2x */; };
 		698952721AB9246C007230EE /* close-37.png in Resources */ = {isa = PBXBuildFile; fileRef = 698952711AB9246C007230EE /* close-37.png */; };
+		69ACAD8D1AC289B500FDEA79 /* banner.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 69ACAD8C1AC289B500FDEA79 /* banner.jpg */; };
+		69ACB0861AC2A1A000FDEA79 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69ACB0841AC2A18A00FDEA79 /* AssetsLibrary.framework */; };
+		69ACB13A1AC2AB7700FDEA79 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69ACB1391AC2AB7700FDEA79 /* ImageIO.framework */; };
+		69ACB13C1AC2AC2D00FDEA79 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69ACB13B1AC2AC2D00FDEA79 /* MessageUI.framework */; };
+		69ACB1EE1AC2B10800FDEA79 /* MWPhotoBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 69ACB1ED1AC2B10800FDEA79 /* MWPhotoBrowser.bundle */; };
+		69ACB1F31AC2B39000FDEA79 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69ACB1F21AC2B39000FDEA79 /* MapKit.framework */; };
+		69ACB1F91AC2B62B00FDEA79 /* libMWPhotoBrowser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69ACB1F81AC2B40800FDEA79 /* libMWPhotoBrowser.a */; };
 		69B769CE1AB6D24300336B04 /* FullImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B769CD1AB6D24300336B04 /* FullImage.m */; };
 		69BC97781A8361250019F71B /* Edit_Fav_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BC97771A8361250019F71B /* Edit_Fav_ViewController.m */; };
 		69BFDE071AB97D86006AF1A6 /* Ratina4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 69BFDE061AB97D86006AF1A6 /* Ratina4@2x.png */; };
@@ -142,6 +149,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 697A6AD11A6F8D6A008A893A;
 			remoteInfo = thaidict;
+		};
+		69ACB1F71AC2B40800FDEA79 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 69ACB1E71AC2B0DA00FDEA79 /* MWPhotoBrowser.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4C6F96C414AF704100F8389A;
+			remoteInfo = MWPhotoBrowser;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -324,6 +338,13 @@
 		6989525B1AB91CCA007230EE /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		6989525C1AB91CCA007230EE /* iTunesArtwork@2x */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iTunesArtwork@2x"; sourceTree = "<group>"; };
 		698952711AB9246C007230EE /* close-37.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-37.png"; sourceTree = "<group>"; };
+		69ACAD8C1AC289B500FDEA79 /* banner.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = banner.jpg; sourceTree = "<group>"; };
+		69ACB0841AC2A18A00FDEA79 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		69ACB1391AC2AB7700FDEA79 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		69ACB13B1AC2AC2D00FDEA79 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		69ACB1E71AC2B0DA00FDEA79 /* MWPhotoBrowser.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MWPhotoBrowser.xcodeproj; path = "../../../Downloads/mwaterfall-MWPhotoBrowser-d68f9cd/MWPhotoBrowser/MWPhotoBrowser.xcodeproj"; sourceTree = "<group>"; };
+		69ACB1ED1AC2B10800FDEA79 /* MWPhotoBrowser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MWPhotoBrowser.bundle; path = ../MWPhotoBrowser.bundle; sourceTree = "<group>"; };
+		69ACB1F21AC2B39000FDEA79 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		69B769CC1AB6D24300336B04 /* FullImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullImage.h; sourceTree = "<group>"; };
 		69B769CD1AB6D24300336B04 /* FullImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FullImage.m; sourceTree = "<group>"; };
 		69BC97761A8361250019F71B /* Edit_Fav_ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Edit_Fav_ViewController.h; sourceTree = "<group>"; };
@@ -354,6 +375,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69ACB1F91AC2B62B00FDEA79 /* libMWPhotoBrowser.a in Frameworks */,
+				69ACB1F31AC2B39000FDEA79 /* MapKit.framework in Frameworks */,
+				69784CA21A9D96A9000E6B73 /* CoreGraphics.framework in Frameworks */,
+				69ACB13C1AC2AC2D00FDEA79 /* MessageUI.framework in Frameworks */,
+				69ACB13A1AC2AB7700FDEA79 /* ImageIO.framework in Frameworks */,
+				69ACB0861AC2A1A000FDEA79 /* AssetsLibrary.framework in Frameworks */,
 				695F64D61AB0148B008F8F80 /* libz.1.2.5.dylib in Frameworks */,
 				695F64D41AB0147E008F8F80 /* MobileCoreServices.framework in Frameworks */,
 				695F64D21AB01473008F8F80 /* Security.framework in Frameworks */,
@@ -362,7 +389,6 @@
 				695F64CC1AB0141A008F8F80 /* SystemConfiguration.framework in Frameworks */,
 				696343FF1AA4359D0099BCF9 /* Social.framework in Frameworks */,
 				695F64C61AAFE7C8008F8F80 /* TrueMoveOnly.framework in Frameworks */,
-				69784CA21A9D96A9000E6B73 /* CoreGraphics.framework in Frameworks */,
 				69784CA01A9D96A0000E6B73 /* QuartzCore.framework in Frameworks */,
 				697544FD1A919812009ACB65 /* libxml2.dylib in Frameworks */,
 				697A6C031A6F991C008A893A /* libsqlite3.0.dylib in Frameworks */,
@@ -611,17 +637,8 @@
 		697A6C011A6F98C6008A893A /* thirdparty */ = {
 			isa = PBXGroup;
 			children = (
-				695F64D51AB0148B008F8F80 /* libz.1.2.5.dylib */,
-				695F64D31AB0147E008F8F80 /* MobileCoreServices.framework */,
-				695F64D11AB01473008F8F80 /* Security.framework */,
-				695F64CF1AB01456008F8F80 /* CoreTelephony.framework */,
-				695F64CD1AB0142A008F8F80 /* CFNetwork.framework */,
-				695F64CB1AB0141A008F8F80 /* SystemConfiguration.framework */,
-				695F64C51AAFE7C8008F8F80 /* TrueMoveOnly.framework */,
-				695F64C31AAFE727008F8F80 /* SplashScreen.bundle */,
-				696343FE1AA4359D0099BCF9 /* Social.framework */,
-				69784CA11A9D96A9000E6B73 /* CoreGraphics.framework */,
-				69784C9F1A9D96A0000E6B73 /* QuartzCore.framework */,
+				69ACB1ED1AC2B10800FDEA79 /* MWPhotoBrowser.bundle */,
+				69ACB1E71AC2B0DA00FDEA79 /* MWPhotoBrowser.xcodeproj */,
 				69784C981A9D8FB9000E6B73 /* WYPopoverController */,
 				697544F81A919574009ACB65 /* HTMLParser */,
 				697A6C191A6FB310008A893A /* lexitron.sqlite */,
@@ -634,6 +651,21 @@
 		697A6C071A6F99FA008A893A /* framwork */ = {
 			isa = PBXGroup;
 			children = (
+				69ACB1F21AC2B39000FDEA79 /* MapKit.framework */,
+				69ACB13B1AC2AC2D00FDEA79 /* MessageUI.framework */,
+				69ACB1391AC2AB7700FDEA79 /* ImageIO.framework */,
+				695F64D51AB0148B008F8F80 /* libz.1.2.5.dylib */,
+				695F64C31AAFE727008F8F80 /* SplashScreen.bundle */,
+				69ACB0841AC2A18A00FDEA79 /* AssetsLibrary.framework */,
+				695F64D31AB0147E008F8F80 /* MobileCoreServices.framework */,
+				695F64D11AB01473008F8F80 /* Security.framework */,
+				695F64CF1AB01456008F8F80 /* CoreTelephony.framework */,
+				695F64CD1AB0142A008F8F80 /* CFNetwork.framework */,
+				695F64CB1AB0141A008F8F80 /* SystemConfiguration.framework */,
+				695F64C51AAFE7C8008F8F80 /* TrueMoveOnly.framework */,
+				696343FE1AA4359D0099BCF9 /* Social.framework */,
+				69784CA11A9D96A9000E6B73 /* CoreGraphics.framework */,
+				69784C9F1A9D96A0000E6B73 /* QuartzCore.framework */,
 				697544FC1A919812009ACB65 /* libxml2.dylib */,
 				697A6C021A6F991C008A893A /* libsqlite3.0.dylib */,
 			);
@@ -729,9 +761,18 @@
 			path = app_icon;
 			sourceTree = "<group>";
 		};
+		69ACB1F41AC2B40800FDEA79 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				69ACB1F81AC2B40800FDEA79 /* libMWPhotoBrowser.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		69C230581AA594BE003D8570 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				69ACAD8C1AC289B500FDEA79 /* banner.jpg */,
 				698952711AB9246C007230EE /* close-37.png */,
 				6979A2321ABFDB3500199C3C /* fav_off@2x.png */,
 				6979A2331ABFDB3500199C3C /* fav_off@3x.png */,
@@ -828,6 +869,12 @@
 			mainGroup = 697A6AC91A6F8D6A008A893A;
 			productRefGroup = 697A6AD31A6F8D6A008A893A /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 69ACB1F41AC2B40800FDEA79 /* Products */;
+					ProjectRef = 69ACB1E71AC2B0DA00FDEA79 /* MWPhotoBrowser.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				697A6AD11A6F8D6A008A893A /* thaidict */,
@@ -835,6 +882,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		69ACB1F81AC2B40800FDEA79 /* libMWPhotoBrowser.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libMWPhotoBrowser.a;
+			remoteRef = 69ACB1F71AC2B40800FDEA79 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		697A6AD01A6F8D6A008A893A /* Resources */ = {
@@ -874,6 +931,7 @@
 				698952671AB91CCA007230EE /* Icon-Small.png in Resources */,
 				6989526F1AB91CCA007230EE /* iTunesArtwork in Resources */,
 				698952651AB91CCA007230EE /* Icon-Small-50.png in Resources */,
+				69ACAD8D1AC289B500FDEA79 /* banner.jpg in Resources */,
 				6979A23E1ABFDB3500199C3C /* share-icon@2x.png in Resources */,
 				698952631AB91CCA007230EE /* Icon-76@2x.png in Resources */,
 				698952621AB91CCA007230EE /* Icon-76.png in Resources */,
@@ -886,6 +944,7 @@
 				6989526D1AB91CCA007230EE /* Icon.png in Resources */,
 				6989525D1AB91CCA007230EE /* Icon-60.png in Resources */,
 				698952641AB91CCA007230EE /* Icon-76@3x.png in Resources */,
+				69ACB1EE1AC2B10800FDEA79 /* MWPhotoBrowser.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1121,6 +1180,7 @@
 		697A6AF91A6F8D6B008A893A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1131,15 +1191,24 @@
 				INFOPLIST_FILE = thaidict/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "-all_load";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MWPhotoBrowser/build/Debug-iphoneos",
+				);
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = ThaiDict;
 				PROVISIONING_PROFILE = "91a8fb71-42d8-44b1-a26a-1623948ff1c2";
+				USER_HEADER_SEARCH_PATHS = "/Users/rnut/Downloads/mwaterfall-MWPhotoBrowser-d68f9cd/MWPhotoBrowser/**";
 			};
 			name = Debug;
 		};
 		697A6AFA1A6F8D6B008A893A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1150,9 +1219,17 @@
 				INFOPLIST_FILE = thaidict/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "-all_load";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MWPhotoBrowser/build/Debug-iphoneos",
+				);
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = ThaiDict;
 				PROVISIONING_PROFILE = "91a8fb71-42d8-44b1-a26a-1623948ff1c2";
+				USER_HEADER_SEARCH_PATHS = "/Users/rnut/Downloads/mwaterfall-MWPhotoBrowser-d68f9cd/MWPhotoBrowser/**";
 			};
 			name = Release;
 		};

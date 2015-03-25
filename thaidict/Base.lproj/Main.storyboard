@@ -689,7 +689,7 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZXC-uV-wiA">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ZXC-uV-wiA">
                                 <rect key="frame" x="175" y="8" width="250" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="EaX-JA-UQp"/>
@@ -1444,6 +1444,38 @@ All right reserved</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yN7-A8-iIv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2805" y="850"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Hrw-Z7-zdJ">
+            <objects>
+                <viewController id="rPV-nU-L3a" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="khg-2E-zUk"/>
+                        <viewControllerLayoutGuide type="bottom" id="ogy-pL-4mB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bf8-N8-htK">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TEST" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZIP-14-CR6">
+                                <rect key="frame" x="29" y="41" width="353" height="90"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="53"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EDQ-xF-pkH">
+                                <rect key="frame" x="37" y="139" width="40" height="30"/>
+                                <state key="normal" title="Close">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oqj-kj-Xof" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3397" y="-831"/>
         </scene>
         <!--Full Image-->
         <scene sceneID="K5Z-Uq-B38">
@@ -3263,6 +3295,7 @@ All right reserved</string>
     </scenes>
     <resources>
         <image name="Icon-72.png" width="72" height="72"/>
+        <image name="banner.jpg" width="320" height="113"/>
         <image name="close-37.png" width="37" height="37"/>
         <image name="fav_off.png" width="40" height="40"/>
         <image name="share-icon.png" width="40" height="40"/>

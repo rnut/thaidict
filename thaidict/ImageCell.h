@@ -11,9 +11,12 @@
 #import "Vocab.h"
 #import "FullImage.h"
 #import "DetailVocab.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+#import "MWPhotoBrowser.h"
 
-@interface ImageCell : UITableViewCell<UICollectionViewDataSource,UICollectionViewDelegate>{
+@interface ImageCell : UITableViewCell<UICollectionViewDataSource,UICollectionViewDelegate,MWPhotoBrowserDelegate>{
     __weak UIViewController *ctrl;
+    int chooseIndex;
 }
 @property(nonatomic,strong)UIView *dt;
 @property(nonatomic,strong)APImage *apI;
@@ -23,6 +26,11 @@
 @property (strong, nonatomic) IBOutlet UICollectionView *Collectionview;
 @property (nonatomic, strong) NSArray *pageImages;
 @property(nonatomic,weak)UIViewController *ctrl;
+@property (nonatomic, strong) NSMutableArray *photos;
+@property (nonatomic, strong) NSMutableArray *thumbs;
+
+
+
 -(id)initWithViewController:(UIViewController*)c;
 
 @end

@@ -157,6 +157,7 @@
             cell.ChooseVocab = ChooseVocab;
             cell.dt = self.view;
             cell.ctrl = self;
+//            [cell.button1 addTarget:self action:@selector(pushView1:) forControlEvents:UIControlEventTouchUpInside];
             return cell;
             break;
         }
