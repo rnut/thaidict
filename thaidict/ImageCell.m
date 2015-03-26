@@ -90,18 +90,7 @@
     BOOL displayNavArrows = NO;
     BOOL enableGrid = NO;
     BOOL startOnGrid = NO;
-    // Photos
-//    photo = [MWPhoto photoWithImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"photo5" ofType:@"jpg"]]];
-//    photo.caption = @"White Tower";
-//    [photos addObject:photo];
-//    for (int i =0 ; i<[self.apI.RawData count]; i++) {
-//        UIImage *thumbimg = [_pageImages objectAtIndex:i] ;
-//        NSString *strUrl = [[self.apI.RawData objectAtIndex:i] objectForKey:@"url"];
-//        MWPhoto *imgx = [[MWPhoto alloc] initWithURL:[NSURL URLWithString:strUrl]];
-//        MWPhoto *thumbx = [[MWPhoto alloc] initWithImage:thumbimg];
-//        [photos addObject:thumbx];
-//        [thumbs addObject:thumbimg];
-//    }
+
     for (UIImage *img in _pageImages) {
         MWPhoto *thumbx = [[MWPhoto alloc] initWithImage:img];
         [thumbs addObject:thumbx];
@@ -116,19 +105,21 @@
     displayNavArrows = NO;
     MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
     browser.displayActionButton = displayActionButton;
-//    browser.displayNavArrows = displayNavArrows;
+    browser.displayNavArrows = displayNavArrows;
     browser.displaySelectionButtons = displaySelectionButtons;
     browser.alwaysShowControls = displaySelectionButtons;
     browser.zoomPhotosToFill = YES;
+    
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
     browser.wantsFullScreenLayout = YES;
 #endif
     browser.enableGrid = enableGrid;
     browser.startOnGrid = startOnGrid;
     browser.enableSwipeToDismiss = YES;
-    [browser setCurrentPhotoIndex:0];
+    
     self.thumbs = thumbs;
     self.photos = photos;
+    [browser setCurrentPhotoIndex:chooseIndex];
     [ctrl.navigationController pushViewController:browser animated:YES];
 }
 
@@ -149,17 +140,6 @@
         return [_thumbs objectAtIndex:index];
     return nil;
 }
-
-//- (MWCaptionView *)photoBrowser:(MWPhotoBrowser *)photoBrowser captionViewForPhotoAtIndex:(NSUInteger)index {
-//    MWPhoto *photo = [self.photos objectAtIndex:index];
-//    MWCaptionView *captionView = [[MWCaptionView alloc] initWithPhoto:photo];
-//    return [captionView autorelease];
-//}
-
-//- (void)photoBrowser:(MWPhotoBrowser *)photoBrowser actionButtonPressedForPhotoAtIndex:(NSUInteger)index {
-//    NSLog(@"ACTION!");
-//}
-
 - (void)photoBrowser:(MWPhotoBrowser *)photoBrowser didDisplayPhotoAtIndex:(NSUInteger)index {
     NSLog(@"Did start viewing photo at index %lu", (unsigned long)index);
 }
@@ -167,11 +147,6 @@
 - (BOOL)photoBrowser:(MWPhotoBrowser *)photoBrowser isPhotoSelectedAtIndex:(NSUInteger)index {
     return YES;
 }
-
-//- (NSString *)photoBrowser:(MWPhotoBrowser *)photoBrowser titleForPhotoAtIndex:(NSUInteger)index {
-//    return [NSString stringWithFormat:@"Photo %lu", (unsigned long)index+1];
-//}
-
 - (void)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index selectedChanged:(BOOL)selected {
 //    [_selections replaceObjectAtIndex:index withObject:[NSNumber numberWithBool:selected]];
     NSLog(@"Photo at index %lu selected %@", (unsigned long)index, selected ? @"YES" : @"NO");
@@ -183,15 +158,15 @@
     [ctrl dismissViewControllerAnimated:YES completion:nil];
 }
 
--(UIImage *)captureScreen:(UIViewController *)vc{
-    UIImage *ret = [[UIImage alloc] init];
-    CALayer *layer = [[UIApplication sharedApplication] keyWindow].layer;
-    CGFloat scale = [UIScreen mainScreen].scale;
-    CGSize size =  CGSizeMake(vc.view.layer.frame.size.width, vc.view.layer.frame.size.height);
-    UIGraphicsBeginImageContextWithOptions(size, NO, scale);
-    [layer renderInContext:UIGraphicsGetCurrentContext()];
-    ret = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return ret;
-}
+//-(UIImage *)captureScreen:(UIViewController *)vc{
+//    UIImage *ret = [[UIImage alloc] init];
+//    CALayer *layer = [[UIApplication sharedApplication] keyWindow].layer;
+//    CGFloat scale = [UIScreen mainScreen].scale;
+//    CGSize size =  CGSizeMake(vc.view.layer.frame.size.width, vc.view.layer.frame.size.height);
+//    UIGraphicsBeginImageContextWithOptions(size, NO, scale);
+//    [layer renderInContext:UIGraphicsGetCurrentContext()];
+//    ret = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//    return ret;
+//}
 @end
