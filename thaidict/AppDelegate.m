@@ -16,12 +16,13 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [_window makeKeyAndVisible];
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *splashController = [storyboard instantiateViewControllerWithIdentifier:@"SplashScreen"];
-//    splashController.delegate = self;
     
-    [self.window setRootViewController:splashController];
+    
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    UIViewController *splashController = [storyboard instantiateViewControllerWithIdentifier:@"SplashScreen"];
+//    [self.window setRootViewController:splashController];
+//    [_window makeKeyAndVisible];
+    
 //    [self.window.rootViewController presentViewController:splashController animated:YES completion:nil];
 
     
@@ -41,7 +42,7 @@
     [[UITabBar appearance] setBarTintColor:red];
     [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-    [self.window setBackgroundColor:[UIColor whiteColor]];
+//    [self.window setBackgroundColor:[UIColor whiteColor]];
     return YES;
     
 }

@@ -8,6 +8,9 @@
 
 #import "ImageCell.h"
 #import "DetailVocab.h"
+#import "AFNetworking.h"
+#import "UIImageView+AFNetworking.h"
+#import "AppDelegate.h"
 @implementation ImageCell
 @synthesize pageImages = _pageImages,ChooseVocab,Collectionview,ctrl;
 
@@ -19,33 +22,58 @@
 }
 
 - (void)awakeFromNib {
-    //add touch gesture
-//    UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
-//    [self.ViewImage addGestureRecognizer:singleFingerTap];
+    _pageImages = [[NSMutableArray alloc] init];
     ((UICollectionViewFlowLayout *)self.Collectionview.collectionViewLayout).minimumLineSpacing = 2.0f;
     ((UICollectionViewFlowLayout *)self.Collectionview.collectionViewLayout).scrollDirection = UICollectionViewScrollDirectionHorizontal;
-
 }
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
     NSLog(@"tap ImageView");
 //        [self loadImage];
 
 }
+//-(void)load{
+//    [self.IndicatorImage startAnimating];
+//    dispatch_queue_t externalque = dispatch_queue_create("getInformation", nil);
+//    
+//    dispatch_async(externalque, ^{
+//        self.apI = [[APImage alloc] initWithVocabSearch:[ChooseVocab Search] Language:[ChooseVocab Language]];
+//        _pageImages = [self.apI Image];
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self.Collectionview reloadData];
+//            [self.IndicatorImage stopAnimating];
+//        });
+//    });
+//}
 -(void)load{
+    if (self.rawData == nil) {
+        self.rawData = [[NSMutableArray alloc] init];
+    }
+    NSString *ln;
+    if ([Language checkLanguage:ChooseVocab.Search] == LanguageENG) {
+        ln = @"en";
+    }else ln = @"th";
+    NSString *path = [NSString stringWithFormat:@"https://ajax.googleapis.com/ajax/services/search/images?v=1.0&hl=%@&q=%@&rsz=5",ln,ChooseVocab.Search];
+
+    NSString *encoded = [path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [self.IndicatorImage startAnimating];
-    dispatch_queue_t externalque = dispatch_queue_create("getInformation", nil);
-    
-    dispatch_async(externalque, ^{
-        self.apI = [[APImage alloc] initWithVocabSearch:[ChooseVocab Search] Language:[ChooseVocab Language]];
-        _pageImages = [self.apI Image];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.Collectionview reloadData];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:encoded parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        if (responseObject != nil) {
             [self.IndicatorImage stopAnimating];
-        });
-    });
+            self.rawData = [[responseObject objectForKey:@"responseData"] objectForKey:@"results"];
+            [self.Collectionview reloadData];
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+
+    
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
+//    _pageImages = [[NSMutableArray alloc] init];
     [self load];
 
 }
@@ -53,56 +81,44 @@
 
 #pragma mark collectionview
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    if (_pageImages == nil) {
+    if (self.rawData == nil) {
         return 0;
     }
-    return [_pageImages count];
+    return [self.rawData count];
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    
-    if (collectionView == self.Collectionview){
-        static NSString *identifier = @"Cell";
-        UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
-        UIImageView *IMG = (UIImageView *)[cell viewWithTag:100];
-        IMG.image = [self.pageImages objectAtIndex:indexPath.row];
-        return cell;
-    }
-    return nil;
+    static NSString *identifier = @"Cell";
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+    UIImageView *IMG = (UIImageView *)[cell viewWithTag:100];
+ 
+    [IMG setImageWithURL:[NSURL URLWithString:[[self.rawData objectAtIndex:indexPath.row] objectForKey:@"tbUrl"]] placeholderImage:[UIImage imageNamed:@"banner.jpg"]];
+    return cell;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
 
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    FullImage *ivc = [storyboard instantiateViewControllerWithIdentifier:@"FullImage"];
-//        ivc.rawData = [self.apI RawData];
-//        ivc.indexChoose = (int)indexPath.row;
-//        ivc.view.opaque = NO;
-//        ivc.view.backgroundColor = [UIColor clearColor];
-//    ivc.bg = [self captureScreen:ctrl];
-//    ctrl.modalPresentationStyle = UIModalPresentationCurrentContext;
-//    [ctrl presentViewController:ivc animated:YES completion:nil];
-    
-    chooseIndex = indexPath.row;
+
+    chooseIndex = (int)indexPath.row;
     NSMutableArray *photos = [[NSMutableArray alloc] init];
     NSMutableArray *thumbs = [[NSMutableArray alloc] init];
     
-    BOOL displayActionButton = NO;
+    BOOL displayActionButton = YES;
     BOOL displaySelectionButtons = NO;
-    BOOL displayNavArrows = NO;
-    BOOL enableGrid = NO;
-    BOOL startOnGrid = NO;
+    BOOL displayNavArrows = YES;
+    BOOL enableGrid = YES;
+    BOOL startOnGrid = YES;
 
-    for (UIImage *img in _pageImages) {
-        MWPhoto *thumbx = [[MWPhoto alloc] initWithImage:img];
-        [thumbs addObject:thumbx];
-    }
-    for(NSDictionary *dict in [self.apI RawData]){
-        NSString *str = [dict objectForKey:@"url"];
-        MWPhoto *photox = [[MWPhoto alloc] initWithURL:[NSURL URLWithString:str]];
+    for (NSDictionary *dict in [self rawData]) {
+        NSString *str = [dict objectForKey:@"tbUrl"];
+        MWPhoto *thumbx = [[MWPhoto alloc] initWithURL:[NSURL URLWithString:str]];
+        NSString *strurl = [dict objectForKey:@"url"];
+        MWPhoto *photox = [[MWPhoto alloc] initWithURL:[NSURL URLWithString:strurl]];
+        
         [photos addObject:photox];
+        [thumbs addObject:thumbx];
     }
     // Options
     startOnGrid = NO;
-    displayNavArrows = NO;
+    displayNavArrows = YES;
     MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
     browser.displayActionButton = displayActionButton;
     browser.displayNavArrows = displayNavArrows;
@@ -113,6 +129,7 @@
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
     browser.wantsFullScreenLayout = YES;
 #endif
+
     browser.enableGrid = enableGrid;
     browser.startOnGrid = startOnGrid;
     browser.enableSwipeToDismiss = YES;
@@ -120,7 +137,22 @@
     self.thumbs = thumbs;
     self.photos = photos;
     [browser setCurrentPhotoIndex:chooseIndex];
-    [ctrl.navigationController pushViewController:browser animated:YES];
+//    if ([ctrl isKindOfClass:[UISplitViewController class]])
+//        [[[ctrl.childViewControllers objectAtIndex:1] navigationController] pushViewController:browser animated:YES];
+//    else{
+//        //[ctrl.parentViewController.parentViewController.navigationController pushViewController:browser animated:YES];
+////        [ctrl.parentViewController.parentViewController.tabBarController.tabBar setHidden:YES];
+////        [ctrl.parentViewController hidesBottomBarWhenPushed];
+//        UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:browser];
+//        nc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+//        [ctrl presentViewController:nc animated:YES completion:nil];
+////        [ctrl.navigationController pushViewController:browser animated:YES];
+//
+//    }
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:browser];
+    nc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [ctrl presentViewController:nc animated:YES completion:nil];
+    
 }
 
 #pragma mark - MWPhotoBrowserDelegate

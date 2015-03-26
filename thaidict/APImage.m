@@ -67,6 +67,54 @@
     return self;
 }
 
+//+(NSArray *)getImageArrayFromAPI:(APImage *)api{
+//    
+//    NSArray *arr = [[NSArray alloc] init];
+//    NSString *ln;
+//    if ([Language checkLanguage:str] == LanguageENG) {
+//        ln = @"en";
+//    }
+//    else{
+//        ln = @"th";
+//    }
+//    
+//    NSString *path = [NSString stringWithFormat:@"https://ajax.googleapis.com/ajax/services/search/images?v=1.0&hl=%@&q=%@&rsz=5",ln,str];
+//    NSURL *url = [NSURL URLWithString:[path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+//    
+//    
+//    NSError *error = nil;
+//    NSData *data = [NSData dataWithContentsOfURL:url options:0 error:&error];
+//    NSError *localError = nil;
+//    if (data != nil) {
+//        NSDictionary *parsedObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&localError];
+//        
+//        NSArray *result = [[parsedObject objectForKey:@"responseData"] objectForKey:@"results"];
+//        if ([result count] > 0) {
+//            for (NSDictionary *obj in result) {
+//                NSURL *tempURL = [NSURL URLWithString:[obj objectForKey:@"url"]];
+//                // Create the request.
+//                NSURLRequest *postRequest = [NSURLRequest requestWithURL:tempURL];
+//                NSHTTPURLResponse *response = nil;
+//                NSError *error = nil;
+//                NSData *responseData = [NSURLConnection sendSynchronousRequest:postRequest returningResponse:&response error:&error];
+//                
+//                NSDictionary *dict = [response allHeaderFields];
+//                NSLog(@"Status code: %ld",(long)[response statusCode]);
+//                NSLog(@"Headers:\n %@",dict.description);
+//                NSLog(@"Error: %@",error.description);
+//                UIImage *img = [UIImage imageWithData:responseData];
+//                [self.Image addObject:img];
+//            }
+//        }
+//        if (localError != nil) {
+//            error = localError;
+//            return nil;
+//        }
+//        
+//    }
+//
+//    return arr;
+//}
 #pragma mark delegate urlconnection
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {

@@ -24,6 +24,8 @@
 @synthesize ChooseVocab,Player,speakBtn,TranslateInfo,BaseTableview;
 -(void)viewDidAppear:(BOOL)animated{
     [self performSelector:@selector(captureScreen) withObject:nil afterDelay:0];
+    //        [ctrl.parentViewController.tabBarController.tabBar setHidden:NO];
+    [self.tabBarController.tabBar setHidden:NO];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [self setNeedsStatusBarAppearanceUpdate];
@@ -156,7 +158,11 @@
             ImageCell *cell = (ImageCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             cell.ChooseVocab = ChooseVocab;
             cell.dt = self.view;
+//            if ([self.splitViewController childViewControllers].count > 1) cell.ctrl = self.splitViewController;
+//            else cell.ctrl = self;
+
             cell.ctrl = self;
+            
 //            [cell.button1 addTarget:self action:@selector(pushView1:) forControlEvents:UIControlEventTouchUpInside];
             return cell;
             break;

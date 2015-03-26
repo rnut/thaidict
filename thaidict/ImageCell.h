@@ -15,20 +15,21 @@
 #import "MWPhotoBrowser.h"
 
 @interface ImageCell : UITableViewCell<UICollectionViewDataSource,UICollectionViewDelegate,MWPhotoBrowserDelegate>{
-    __weak UIViewController *ctrl;
+
     int chooseIndex;
 }
 @property(nonatomic,strong)UIView *dt;
-@property(nonatomic,strong)APImage *apI;
+@property(nonatomic,strong)APImage *apI;//mark
+
+@property(nonatomic,strong)UIViewController *ctrl;
+@property(nonatomic,strong)NSMutableArray *rawData;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *IndicatorImage;
 @property(nonatomic,strong)Vocab *ChooseVocab;
 @property (strong, nonatomic) IBOutlet UIView *ViewImage;
 @property (strong, nonatomic) IBOutlet UICollectionView *Collectionview;
-@property (nonatomic, strong) NSArray *pageImages;
-@property(nonatomic,weak)UIViewController *ctrl;
+@property (nonatomic, strong) NSMutableArray *pageImages;
 @property (nonatomic, strong) NSMutableArray *photos;
 @property (nonatomic, strong) NSMutableArray *thumbs;
-
 
 
 -(id)initWithViewController:(UIViewController*)c;

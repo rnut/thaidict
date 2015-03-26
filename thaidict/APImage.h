@@ -9,8 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "Language.h"
-#import "AFNetworking.h"
-#import "UIKit+AFNetworking.h"
 @interface APImage : NSObject
 
 
