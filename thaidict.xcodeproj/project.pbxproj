@@ -1213,6 +1213,7 @@
 				);
 				PRODUCT_NAME = ThaiDict;
 				PROVISIONING_PROFILE = "91a8fb71-42d8-44b1-a26a-1623948ff1c2";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "/Users/rnut/Downloads/mwaterfall-MWPhotoBrowser-d68f9cd/MWPhotoBrowser/**";
 			};
 			name = Debug;
@@ -1241,6 +1242,7 @@
 				);
 				PRODUCT_NAME = ThaiDict;
 				PROVISIONING_PROFILE = "91a8fb71-42d8-44b1-a26a-1623948ff1c2";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "/Users/rnut/Downloads/mwaterfall-MWPhotoBrowser-d68f9cd/MWPhotoBrowser/**";
 			};
 			name = Release;
